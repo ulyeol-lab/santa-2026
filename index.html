@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>2026 크리스마스, 산타가 내게 줄 선물 타입은? 🎄</title>
+<meta name="description" content="5문항 1분이면 끝나는 크리스마스 선물 타입 테스트. 결과는 인스타 스토리 카드로 저장하고, 예산별 크리스마스 선물 추천까지 한 번에 받아가세요." />
+<meta property="og:title" content="2026 크리스마스, 산타가 내게 줄 선물 타입은?" />
+<meta property="og:description" content="5문항 1분. 내 크리스마스 취향과 딱 맞는 선물 추천까지." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0F291E" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230F291E'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle'%3E%F0%9F%8E%84%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  window.tailwind = window.tailwind || {};
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          forest: '#0F291E',
+          cream: '#FAF5EB',
+          crimson: '#B91C1C',
+          gold: '#D4AF37'
+        },
+        fontFamily: {
+          display: ['Gowun Batang', 'Noto Serif CJK KR', 'serif'],
+          sans: ['Pretendard Variable', 'Pretendard', 'Noto Sans KR', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+
+<style>
+  :root{
+    --forest:#0F291E;
+    --forest-2:#16382a;
+    --forest-3:#0A1D15;
+    --cream:#FAF5EB;
+    --cream-2:#F2EADA;
+    --cream-3:#EFE4D0;
+    --crimson:#B91C1C;
+    --crimson-2:#9E1414;
+    --gold:#D4AF37;
+    --gold-2:#B8932C;
+    --ink:#16261E;
+    --muted:#6C7C71;
+    --line:rgba(15,41,30,.10);
+    --serif:'Gowun Batang','Noto Serif CJK KR','Apple SD Gothic Neo',serif;
+    --sans:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Noto Sans KR','Noto Sans CJK KR','Apple SD Gothic Neo',sans-serif;
+  }
+  *{ -webkit-tap-highlight-color: transparent; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(1200px 600px at 12% -8%, rgba(212,175,55,.16), transparent 60%),
+      radial-gradient(900px 500px at 92% 4%, rgba(185,28,28,.14), transparent 62%),
+      radial-gradient(700px 700px at 50% 120%, rgba(212,175,55,.10), transparent 60%),
+      linear-gradient(180deg,#0C221A 0%, #0F291E 45%, #0A1C15 100%);
+    background-attachment: fixed;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.01em;
+  }
+  body::before{
+    content:'';
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.5;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;
+  }
+
+  /* ---------- snow ---------- */
+  .snow{ position:fixed; inset:0; pointer-events:none; z-index:60; overflow:hidden; }
+  .flake{
+    position:absolute; top:-18px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #fff, rgba(255,255,255,.55) 60%, rgba(255,255,255,.15));
+    animation:fall linear infinite;
+    will-change:transform;
+  }
+  @keyframes fall{
+    0%{ transform:translate3d(0,-5vh,0); opacity:0 }
+    10%{ opacity:var(--o,.55) }
+    90%{ opacity:var(--o,.55) }
+    100%{ transform:translate3d(var(--drift,18px),108vh,0); opacity:0 }
+  }
+
+  /* ---------- shell ---------- */
+  .app{
+    position:relative; z-index:2;
+    width:100%; max-width:440px; margin:0 auto;
+    background:var(--cream);
+    min-height:100vh;
+    overflow-x:hidden;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.65), 0 0 0 1px rgba(212,175,55,.16);
+  }
+  @media (min-width:760px){
+    body{ padding:28px 0; }
+    .app{ border-radius:30px; min-height:calc(100vh - 56px); }
+  }
+  .screen{ display:none; }
+  .screen.active{ display:block; animation:rise .48s cubic-bezier(.22,.68,.28,1) both; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(14px) } to{ opacity:1; transform:none } }
+  .pad{ padding-left:22px; padding-right:22px; }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 20px 12px;
+    border-bottom:1px solid rgba(15,41,30,.06);
+    background:linear-gradient(180deg, rgba(250,245,235,.96), rgba(250,245,235,.86));
+    backdrop-filter:blur(8px);
+    position:sticky; top:0; z-index:20;
+  }
+  .brand{ display:flex; align-items:center; gap:8px; font-size:12px; font-weight:700; letter-spacing:.06em; color:var(--forest); }
+  .brand .dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 3px rgba(212,175,55,.18); }
+  .topbar .mini-btn{
+    font-size:11.5px; font-weight:700; color:var(--forest);
+    border:1px solid rgba(15,41,30,.16); border-radius:999px; padding:7px 12px;
+    background:rgba(255,255,255,.6); cursor:pointer; transition:.2s;
+  }
+  .topbar .mini-btn:hover{ background:#fff; border-color:rgba(15,41,30,.3); }
+
+  /* ---------- typography ---------- */
+  .eyebrow{
+    font-size:10.5px; font-weight:800; letter-spacing:.24em; color:var(--gold-2);
+    text-transform:uppercase;
+  }
+  .title{
+    font-family:var(--serif); font-weight:700;
+    font-size:34px; line-height:1.28; letter-spacing:-.03em; color:var(--forest);
+    margin:0;
+  }
+  .title .accent{ color:var(--crimson); position:relative; }
+  .title .accent::after{
+    content:''; position:absolute; left:0; right:0; bottom:2px; height:6px;
+    background:linear-gradient(90deg, rgba(212,175,55,.45), rgba(212,175,55,.08));
+    border-radius:4px; z-index:-1;
+  }
+  .title-sm{ font-family:var(--serif); font-weight:700; font-size:27px; line-height:1.35; letter-spacing:-.03em; color:var(--forest); margin:6px 0 0; }
+  .lede{ font-size:13.5px; line-height:1.72; color:var(--muted); margin:12px 0 0; }
+  .micro{ font-size:11.5px; color:#8A9A90; text-align:center; margin:10px 0 0; letter-spacing:-.005em; }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    width:100%; box-sizing:border-box; border:0; border-radius:999px; cursor:pointer;
+    font-family:var(--sans); font-weight:800; letter-spacing:-.02em;
+    transition:transform .16s ease, box-shadow .22s ease, background .22s ease, border-color .2s;
+    -webkit-appearance:none;
+  }
+  .btn:active{ transform:translateY(1px) scale(.994); }
+  .btn-primary{
+    padding:18px 22px; font-size:16.5px; color:#FFF6E8;
+    background:linear-gradient(180deg,#C42323 0%, #A91717 100%);
+    box-shadow:0 18px 30px -16px rgba(185,28,28,.85), inset 0 1px 0 rgba(255,255,255,.22), inset 0 -2px 0 rgba(0,0,0,.18);
+  }
+  .btn-primary:hover{ box-shadow:0 22px 38px -16px rgba(185,28,28,.95), inset 0 1px 0 rgba(255,255,255,.26); }
+  .btn-primary .arrow{ transition:transform .2s; }
+  .btn-primary:hover .arrow{ transform:translateX(3px); }
+  .btn-ghost{
+    padding:15px 20px; font-size:14px; font-weight:700; color:var(--forest);
+    background:rgba(255,255,255,.65); border:1px solid rgba(15,41,30,.16);
+  }
+  .btn-ghost:hover{ background:#fff; border-color:rgba(15,41,30,.28); }
+  .btn-gold{
+    padding:17px 20px; font-size:15px; color:#241B04;
+    background:linear-gradient(180deg,#E8CC72 0%, #CFA93B 55%, #C09B31 100%);
+    box-shadow:0 16px 28px -16px rgba(212,175,55,.9), inset 0 1px 0 rgba(255,255,255,.5);
+  }
+  .btn-outline-light{
+    padding:15px 20px; font-size:14px; color:var(--cream);
+    background:rgba(250,245,235,.06); border:1px solid rgba(250,245,235,.32);
+  }
+  .btn-outline-light:hover{ background:rgba(250,245,235,.12); }
+  .btn-link{
+    background:none; border:0; color:#7E8F84; font-size:12.5px; font-weight:600;
+    text-decoration:underline; text-underline-offset:3px; cursor:pointer; padding:10px;
+  }
+  .btn-link:hover{ color:var(--forest); }
+
+  /* 링크 공유를 1순위로, 이미지 저장은 조용한 보조 링크로 */
+  .btn-share{
+    padding:16px 20px; font-size:15px; color:#2C2205; letter-spacing:-.02em;
+    background:linear-gradient(180deg,#F6E5AE 0%, #E7CB7C 58%, #DDC06B 100%);
+    border:1px solid rgba(212,175,55,.62);
+    box-shadow:0 16px 28px -18px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.62);
+  }
+  .btn-share:hover{ filter:brightness(1.03); }
+  .btn-sm{ padding:11px 16px; font-size:12.5px; }
+  .link-quiet{
+    background:none; border:0; color:rgba(250,245,235,.6); font-family:var(--sans);
+    font-size:11.5px; font-weight:600; cursor:pointer; padding:8px 4px 2px;
+    text-decoration:underline; text-underline-offset:3px;
+  }
+  .link-quiet:hover{ color:rgba(250,245,235,.92); }
+  .share-hint{
+    margin:2px 0 0; text-align:center; font-size:10.5px; line-height:1.6;
+    color:rgba(250,245,235,.5);
+  }
+
+  /* ---------- home ---------- */
+  .hero{ position:relative; padding:26px 22px 34px; overflow:hidden; }
+  .hero::before{
+    content:''; position:absolute; top:-120px; left:50%; transform:translateX(-50%);
+    width:520px; height:320px; border-radius:50%;
+    background:radial-gradient(closest-side, rgba(212,175,55,.20), transparent 72%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; }
+  .garland{ display:flex; justify-content:center; margin:4px 0 18px; opacity:.9; }
+  .dday{
+    display:inline-flex; align-items:center; gap:8px; margin:18px 0 0;
+    padding:8px 14px; border-radius:999px;
+    background:rgba(15,41,30,.055); border:1px solid rgba(15,41,30,.08);
+    font-size:12px; color:#4C5F54;
+  }
+  .dday b{ color:var(--crimson); font-weight:800; letter-spacing:.02em; }
+  .cta-block{ margin-top:22px; display:flex; flex-direction:column; gap:10px; }
+  .teaser{ margin-top:26px; }
+  .teaser h3{ font-size:11px; letter-spacing:.18em; color:#8A9A90; font-weight:800; text-transform:uppercase; margin:0 0 12px; }
+  .teaser-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .teaser-card{
+    display:flex; align-items:center; gap:9px; padding:11px 12px; border-radius:14px;
+    background:rgba(255,255,255,.55); border:1px solid rgba(15,41,30,.07);
+    font-size:12px; color:#33473C; font-weight:600;
+  }
+  .teaser-card span.e{ font-size:15px; }
+
+  /* ---------- quiz ---------- */
+  .quiz-wrap{ padding:18px 20px 40px; min-height:calc(100vh - 2px); display:flex; flex-direction:column; }
+  .quiz-top{ display:flex; align-items:center; gap:12px; }
+  .icon-btn{
+    width:34px; height:34px; flex:0 0 auto; border-radius:50%;
+    border:1px solid rgba(15,41,30,.12); background:rgba(255,255,255,.7);
+    color:var(--forest); font-size:15px; cursor:pointer; display:grid; place-items:center;
+    transition:.2s;
+  }
+  .icon-btn:hover{ background:#fff; border-color:rgba(15,41,30,.26); }
+  .icon-btn[disabled]{ opacity:.35; cursor:default; }
+  .progress{ flex:1; height:6px; border-radius:999px; background:rgba(15,41,30,.09); overflow:hidden; }
+  .progress-fill{
+    height:100%; width:20%; border-radius:999px;
+    background:linear-gradient(90deg, var(--gold), #E6CB7A 55%, var(--crimson) 130%);
+    transition:width .45s cubic-bezier(.3,.8,.2,1);
+  }
+  .progress-num{ font-size:11.5px; font-weight:800; color:#7D8D82; letter-spacing:.04em; font-variant-numeric:tabular-nums; }
+  .quiz-body{ flex:1; padding-top:34px; }
+  .q-index{ font-size:11px; font-weight:800; letter-spacing:.22em; color:var(--crimson); margin:0 0 12px; }
+  .q-text{
+    font-family:var(--serif); font-weight:700; font-size:24px; line-height:1.42;
+    letter-spacing:-.03em; color:var(--forest); margin:0 0 26px; min-height:98px;
+  }
+  .options{ display:flex; flex-direction:column; gap:10px; }
+  .opt{
+    display:flex; align-items:center; gap:13px; width:100%; text-align:left;
+    padding:16px 16px; border-radius:18px; cursor:pointer;
+    background:#fff; border:1px solid rgba(15,41,30,.09);
+    box-shadow:0 2px 0 rgba(15,41,30,.03);
+    font-family:var(--sans); font-size:14px; font-weight:600; color:#26382E; line-height:1.5;
+    transition:transform .16s ease, border-color .2s, background .2s, box-shadow .2s;
+    animation:optIn .34s cubic-bezier(.2,.8,.3,1) both;
+  }
+  @keyframes optIn{ from{ opacity:0; transform:translateY(8px) } to{ opacity:1; transform:none } }
+  .opt:hover{ transform:translateY(-1px); border-color:rgba(185,28,28,.35); box-shadow:0 8px 18px -12px rgba(15,41,30,.5); }
+  .opt .num{
+    flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+    display:grid; place-items:center; font-size:11px; font-weight:800;
+    background:var(--cream-2); color:#9A7A24;
+  }
+  .opt.picked{ background:#FFF6EF; border-color:rgba(185,28,28,.55); box-shadow:0 10px 24px -16px rgba(185,28,28,.9); }
+  .opt.picked .num{ background:var(--crimson); color:#fff; }
+  .quiz-foot{ font-size:11px; color:#98A79D; text-align:center; padding:18px 0 0; }
+
+  /* ---------- result ---------- */
+  .result-hero{
+    position:relative; overflow:hidden;
+    background:linear-gradient(165deg,#143527 0%, #0F291E 48%, #091D15 100%);
+    color:var(--cream);
+    padding:30px 22px 26px;
+    border-radius:0 0 30px 30px;
+    text-align:center;
+  }
+  .result-hero::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(420px 240px at 50% 6%, rgba(212,175,55,.22), transparent 70%),
+      radial-gradient(300px 300px at 90% 100%, rgba(185,28,28,.16), transparent 70%);
+    pointer-events:none;
+  }
+  .result-hero::after{
+    content:''; position:absolute; inset:12px; border-radius:22px;
+    border:1px solid rgba(212,175,55,.22); pointer-events:none;
+  }
+  .result-inner{ position:relative; }
+  .r-eyebrow{ font-size:10px; letter-spacing:.26em; color:rgba(212,175,55,.9); font-weight:800; }
+  .r-emoji{
+    width:96px; height:96px; margin:14px auto 4px; border-radius:50%;
+    display:grid; place-items:center; font-size:44px;
+    background:radial-gradient(circle at 40% 30%, rgba(212,175,55,.24), rgba(212,175,55,.04) 70%);
+    border:1px solid rgba(212,175,55,.45);
+    box-shadow:0 0 0 8px rgba(212,175,55,.05), inset 0 0 24px rgba(212,175,55,.12);
+  }
+  .r-name{ font-family:var(--serif); font-weight:700; font-size:27px; letter-spacing:-.03em; margin:8px 0 0; color:#FFF9EE; word-break:keep-all; }
+  .r-tagline{ font-size:12.5px; color:rgba(250,245,235,.72); margin:9px 0 0; line-height:1.6; }
+  .r-divider{ display:flex; align-items:center; gap:10px; margin:20px 0 0; color:rgba(212,175,55,.7); }
+  .r-divider::before,.r-divider::after{ content:''; flex:1; height:1px; background:linear-gradient(90deg, transparent, rgba(212,175,55,.55), transparent); }
+  .r-divider span{ font-size:10px; letter-spacing:.2em; }
+  .r-desc{ font-size:12.5px; line-height:1.85; color:rgba(250,245,235,.86); text-align:left; margin:18px 0 0; letter-spacing:-.005em; }
+  .r-traits{ list-style:none; margin:16px 0 0; padding:0; text-align:left; display:flex; flex-direction:column; gap:7px; }
+  .r-traits li{ position:relative; padding-left:18px; font-size:12.5px; color:rgba(250,245,235,.9); line-height:1.6; }
+  .r-traits li::before{ content:'✦'; position:absolute; left:0; top:0; color:var(--gold); font-size:10px; }
+  .r-quote{
+    margin:18px 0 0; padding:13px 15px; border-radius:12px; text-align:left;
+    background:rgba(250,245,235,.06); border:1px solid rgba(250,245,235,.14);
+    font-family:var(--serif); font-size:12.5px; line-height:1.7; color:rgba(250,245,235,.88);
+  }
+  .r-quote b{ display:block; font-size:9.5px; letter-spacing:.2em; color:rgba(212,175,55,.85); margin-bottom:5px; font-family:var(--sans); font-weight:800; }
+  .r-matches{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:16px 0 0; }
+  .match{
+    text-align:left; padding:12px; border-radius:14px;
+    background:rgba(250,245,235,.055); border:1px solid rgba(250,245,235,.12);
+  }
+  .match .m-label{ display:block; font-size:9.5px; letter-spacing:.16em; font-weight:800; margin-bottom:6px; }
+  .match.best .m-label{ color:#E6CB7A; }
+  .match.worst .m-label{ color:#E58C8C; }
+  .match .m-name{ display:flex; align-items:center; gap:6px; font-size:12.5px; font-weight:700; color:#FFF9EE; }
+  .match .m-why{ display:block; margin-top:5px; font-size:10.5px; line-height:1.55; color:rgba(250,245,235,.62); }
+  .r-actions{ display:flex; flex-direction:column; gap:9px; margin-top:22px; }
+
+  .gift-strip{ padding:26px 22px 8px; }
+  .gift-strip h3, .other-types h3{
+    font-family:var(--serif); font-size:16px; font-weight:700; color:var(--forest);
+    margin:0 0 14px; letter-spacing:-.02em; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+  }
+  .gift-strip h3 .hint{ font-family:var(--sans); font-size:10.5px; font-weight:600; color:#93A296; letter-spacing:0; }
+  .result-gifts{ display:flex; flex-direction:column; gap:9px; margin-bottom:12px; }
+  .other-types{ padding:16px 22px 6px; }
+  .type-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .type-chip{
+    display:flex; align-items:center; gap:7px; padding:10px 11px; border-radius:12px;
+    background:#fff; border:1px solid rgba(15,41,30,.08); font-size:11.5px; font-weight:600;
+    color:#33473C; cursor:pointer; text-align:left; transition:.18s; font-family:var(--sans);
+  }
+  .type-chip:hover{ border-color:rgba(185,28,28,.32); transform:translateY(-1px); }
+  .type-chip[aria-current="true"]{ background:#FFF6EF; border-color:rgba(185,28,28,.45); }
+  .result-foot{ padding:10px 22px 34px; text-align:center; }
+
+  /* ---------- gifts ---------- */
+  .gift-head{ padding:22px 22px 4px; }
+  .filters{ padding:20px 22px 0; display:flex; flex-direction:column; gap:14px; }
+  .filter-label{ display:block; font-size:10px; font-weight:800; letter-spacing:.16em; color:#8B9B90; margin-bottom:8px; text-transform:uppercase; }
+  .chips{ display:flex; flex-wrap:wrap; gap:7px; }
+  .chip{
+    border:1px solid rgba(15,41,30,.12); background:rgba(255,255,255,.7); color:#3C5146;
+    padding:8px 13px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer;
+    font-family:var(--sans); transition:.18s; letter-spacing:-.01em;
+  }
+  .chip:hover{ background:#fff; border-color:rgba(15,41,30,.28); }
+  .chip[aria-pressed="true"]{
+    background:var(--forest); border-color:var(--forest); color:#FFF7E9;
+    box-shadow:0 8px 16px -10px rgba(15,41,30,.9);
+  }
+  .count{ padding:16px 22px 10px; font-size:11.5px; color:#93A296; font-weight:600; }
+  .gift-list{ padding:0 22px; display:flex; flex-direction:column; gap:10px; }
+  .gift{
+    display:grid; grid-template-columns:44px 1fr; gap:12px;
+    padding:14px; border-radius:16px; background:#fff;
+    border:1px solid rgba(15,41,30,.08); box-shadow:0 2px 0 rgba(15,41,30,.025);
+    transition:transform .18s ease, box-shadow .2s, border-color .2s;
+  }
+  .gift:hover{ transform:translateY(-1px); border-color:rgba(15,41,30,.16); box-shadow:0 12px 26px -20px rgba(15,41,30,.75); }
+  .gift-emoji{
+    width:44px; height:44px; border-radius:12px; display:grid; place-items:center; font-size:21px;
+    background:linear-gradient(160deg, #FBF3E2, #F1E5CE); border:1px solid rgba(212,175,55,.28);
+  }
+  .gift-body{ min-width:0; }
+  .gift-top{ display:flex; align-items:baseline; gap:8px; justify-content:space-between; }
+  .gift-name{ font-size:13.5px; font-weight:800; color:#1D2F25; letter-spacing:-.02em; line-height:1.45; margin:0; }
+  .gift-price{ flex:0 0 auto; font-size:11.5px; font-weight:800; color:var(--crimson); font-variant-numeric:tabular-nums; }
+  .gift-why{ font-size:11.5px; color:#7C8C81; margin:5px 0 0; line-height:1.55; }
+  .gift-bottom{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:9px; }
+  .gift-tags{ display:flex; gap:5px; flex-wrap:wrap; }
+  .tag{
+    font-size:9.5px; font-weight:700; letter-spacing:-.01em; color:#7A6A33;
+    background:rgba(212,175,55,.12); border:1px solid rgba(212,175,55,.22);
+    padding:3px 7px; border-radius:6px;
+  }
+  .tag.grey{ color:#75857A; background:rgba(15,41,30,.05); border-color:rgba(15,41,30,.08); }
+  .gift-cta{
+    flex:0 0 auto; font-size:11px; font-weight:800; color:#FFF6E8; text-decoration:none;
+    background:linear-gradient(180deg,#C42323,#A91717); padding:7px 11px; border-radius:999px;
+    transition:.18s; white-space:nowrap;
+  }
+  .gift-cta:hover{ filter:brightness(1.06); }
+  .empty{ padding:34px 22px; text-align:center; color:#93A296; font-size:12.5px; line-height:1.7; }
+
+  /* ---------- ad slots ---------- */
+  .ad-slot{
+    margin:20px 22px;
+    min-height:64px; border-radius:14px;
+    border:1px dashed rgba(15,41,30,.16);
+    background:linear-gradient(180deg, rgba(255,255,255,.5), rgba(243,235,219,.55));
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+    color:#9CAA9F; text-align:center; padding:14px;
+  }
+  .ad-slot .ad-label{ font-size:9.5px; font-weight:800; letter-spacing:.22em; }
+  .ad-slot .ad-note{ font-size:10px; letter-spacing:-.01em; color:#B3BEB5; }
+  .ad-slot iframe{ max-width:100%; }
+
+  /* ---------- footer ---------- */
+  .footer{
+    margin-top:14px; padding:22px 22px 30px; border-top:1px solid rgba(15,41,30,.07);
+    background:rgba(242,234,218,.5);
+  }
+  .footer p{ margin:0; font-size:10.5px; line-height:1.75; color:#82928A; }
+  .footer .disclosure{
+    font-size:10.5px; color:#6C7C71; background:rgba(212,175,55,.1);
+    border:1px solid rgba(212,175,55,.22); border-radius:10px; padding:10px 12px; margin-bottom:12px;
+  }
+  .footer .brand-line{ display:flex; align-items:center; gap:7px; margin-bottom:10px; font-size:11px; font-weight:800; color:var(--forest); letter-spacing:.04em; }
+
+  /* ---------- modal / toast ---------- */
+  .modal{ position:fixed; inset:0; z-index:120; display:none; align-items:center; justify-content:center; padding:20px; }
+  .modal.open{ display:flex; }
+  .modal-bg{ position:absolute; inset:0; background:rgba(8,18,13,.82); backdrop-filter:blur(6px); }
+  .modal-card{ position:relative; width:100%; max-width:340px; border-radius:22px; overflow:hidden; background:#0F291E; box-shadow:0 40px 80px -20px rgba(0,0,0,.8); }
+  .modal-card img{ display:block; width:100%; height:auto; }
+  .modal-close{
+    position:absolute; top:10px; right:10px; width:32px; height:32px; border-radius:50%;
+    border:1px solid rgba(250,245,235,.3); background:rgba(9,22,16,.6); color:#FAF5EB;
+    font-size:15px; cursor:pointer; display:grid; place-items:center; backdrop-filter:blur(4px);
+  }
+  .modal-caption{ padding:12px 14px 14px; text-align:center; }
+  .modal-caption p{ margin:0 0 10px; font-size:11px; color:rgba(250,245,235,.7); line-height:1.6; }
+
+  .toast{
+    position:fixed; left:50%; bottom:26px; transform:translate(-50%, 18px);
+    z-index:200; padding:12px 18px; border-radius:999px;
+    background:rgba(15,41,30,.96); color:#FAF5EB; font-size:12.5px; font-weight:700;
+    border:1px solid rgba(212,175,55,.35); box-shadow:0 20px 40px -18px rgba(0,0,0,.8);
+    opacity:0; pointer-events:none; transition:.28s ease; max-width:calc(100% - 40px); text-align:center;
+  }
+  .toast.show{ opacity:1; transform:translate(-50%, 0); }
+
+  /* ---------- coupang result cta ---------- */
+  a.btn{ text-decoration:none; }
+  .coupang-cta{
+    display:block; margin:20px 0 0; padding:14px 16px; border-radius:14px; text-decoration:none;
+    background:linear-gradient(180deg,#FFE096 0%, #F5B93C 100%); color:#3A2503; text-align:left;
+    box-shadow:0 14px 30px -14px rgba(212,175,55,.95), inset 0 1px 0 rgba(255,255,255,.55);
+    transition:transform .16s ease, filter .2s ease;
+  }
+  .coupang-cta:hover{ filter:brightness(1.04); transform:translateY(-1px); }
+  .coupang-cta .cc-eyebrow{ display:block; font-size:10px; font-weight:800; letter-spacing:.12em; color:#7A5A10; }
+  .coupang-cta .cc-main{ display:block; margin-top:4px; font-size:13.5px; font-weight:800; letter-spacing:-.02em; line-height:1.4; }
+
+  /* ---------- wish funding ---------- */
+  .gift-act{ display:flex; align-items:center; gap:6px; flex:0 0 auto; }
+  .gift-wish{
+    font-size:11px; font-weight:800; color:#8A6A12; background:rgba(212,175,55,.14);
+    border:1px solid rgba(212,175,55,.3); padding:7px 11px; border-radius:999px; cursor:pointer;
+    white-space:nowrap; font-family:var(--sans); transition:.18s;
+  }
+  .gift-wish:hover{ background:rgba(212,175,55,.26); }
+  .wishmake-head{ padding:26px 22px 6px; }
+  .wish-form{ padding:16px 22px 30px; display:flex; flex-direction:column; gap:14px; }
+  .field label{ display:block; font-size:11px; font-weight:800; color:#4C5F53; margin-bottom:6px; letter-spacing:-.01em; }
+  .field .opt-label{ font-weight:600; color:#93A296; font-size:10px; }
+  .field input, .field textarea{
+    width:100%; box-sizing:border-box; border:1px solid rgba(15,41,30,.16); border-radius:12px;
+    background:#fff; padding:12px 13px; font-size:13px; font-family:var(--sans); color:#1D2F25;
+  }
+  .field textarea{ resize:vertical; }
+  .field input:focus, .field textarea:focus{ outline:2px solid rgba(212,175,55,.5); outline-offset:1px; border-color:rgba(212,175,55,.6); }
+  .w-gift-card{
+    margin:16px 0 0; padding:12px 14px; border-radius:12px; background:rgba(250,245,235,.08);
+    border:1px solid rgba(212,175,55,.3); display:flex; flex-direction:column; gap:3px; text-align:left;
+  }
+  .w-gift-name{ font-size:13.5px; font-weight:800; color:#FFF9EE; line-height:1.45; }
+  .w-gift-price{ font-size:11.5px; font-weight:800; color:var(--gold); }
+  .w-goal{ font-size:11px; color:rgba(250,245,235,.65); margin:10px 0 0; }
+  .field-note{ margin:6px 0 0; font-size:10.5px; line-height:1.6; color:#93A296; }
+  .pane[hidden]{ display:none; }
+  .pane .field + .field{ margin-top:12px; }
+  .curated-card{
+    display:flex; align-items:flex-start; gap:11px; padding:13px 14px; border-radius:14px;
+    background:#fff; border:1px solid rgba(212,175,55,.38); box-shadow:0 2px 0 rgba(15,41,30,.03);
+  }
+  .curated-card .cz-emoji{
+    flex:0 0 auto; width:38px; height:38px; border-radius:11px; display:grid; place-items:center;
+    font-size:19px; background:linear-gradient(160deg,#FBF3E2,#F1E5CE); border:1px solid rgba(212,175,55,.28);
+  }
+  .curated-card .cz-name{ margin:0; font-size:13px; font-weight:800; color:#1D2F25; line-height:1.45; }
+  .curated-card .cz-note{ margin:4px 0 0; font-size:10.5px; line-height:1.55; color:#7C8C81; }
+  .mode-chips .chip{ font-size:11.5px; padding:8px 12px; }
+  .w-disclosure{
+    margin:12px 0 0; padding:9px 11px; border-radius:10px; text-align:left;
+    font-size:10px; line-height:1.6; color:rgba(250,245,235,.62);
+    background:rgba(250,245,235,.05); border:1px solid rgba(250,245,235,.12);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .snow{ display:none; }
+    .screen.active{ animation:none; }
+    .opt{ animation:none; }
+  }
+</style>
+</head>
+<body>
+<div class="snow" id="snowLayer" aria-hidden="true"></div>
+
+<main class="app" id="app">
+
+  <header class="topbar" id="topbar">
+    <div class="brand"><span class="dot"></span>SANTA'S GIFT LAB</div>
+    <button class="mini-btn" type="button" data-go="gift">선물 고르기 🎁</button>
+  </header>
+
+  <!-- ================= HOME ================= -->
+  <section id="screen-home" class="screen active">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="garland">
+          <svg width="150" height="26" viewBox="0 0 150 26" fill="none" aria-hidden="true">
+            <path d="M2 6C24 22 50 22 74 10C98 -2 124 -2 148 14" stroke="#B91C1C" stroke-width="1.4" stroke-linecap="round" opacity=".55"/>
+            <circle cx="24" cy="16" r="3.4" fill="#D4AF37" opacity=".85"/>
+            <circle cx="52" cy="17" r="2.6" fill="#B91C1C" opacity=".7"/>
+            <circle cx="76" cy="10" r="3.4" fill="#0F291E" opacity=".55"/>
+            <circle cx="102" cy="6" r="2.6" fill="#D4AF37" opacity=".8"/>
+            <circle cx="128" cy="9" r="3.4" fill="#B91C1C" opacity=".6"/>
+          </svg>
+        </div>
+        <p class="eyebrow">2026 · CHRISTMAS GIFT TEST</p>
+        <h1 class="title" style="margin-top:12px;">산타가 내게 줄<br /><span class="accent">선물 타입</span>은?</h1>
+        <p class="lede">5문항이면 끝. 내 크리스마스 취향을 알아내고<br />딱 맞는 선물 추천까지 받아가세요.</p>
+        <div class="dday">🎄 크리스마스까지 <b id="dday">D-39</b></div>
+
+        <div class="cta-block">
+          <button class="btn btn-primary" type="button" data-go="quiz">
+            테스트 시작하기 <span class="arrow" aria-hidden="true">→</span>
+          </button>
+          <p class="micro">1분 · 결과는 스토리·단톡방 링크로 바로 공유</p>
+          <button class="btn btn-ghost" type="button" data-go="gift">선물만 바로 고르기 🎁</button>
+        </div>
+
+        <div class="ad-slot" data-ad="home">
+          <span class="ad-label">ADVERTISEMENT</span>
+          <span class="ad-note">광고 영역 · 애드핏 / 애드센스</span>
+        </div>
+
+        <div class="teaser">
+          <h3>8가지 크리스마스 타입</h3>
+          <div class="teaser-grid" id="homeTeaser"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="brand-line"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:#D4AF37;"></span> SANTA'S GIFT LAB</div>
+      <p class="disclosure">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+      <p>가격 정보는 시점·판매처에 따라 달라질 수 있습니다. · © 2026 Christmas Gift Lab</p>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section id="screen-quiz" class="screen">
+    <div class="quiz-wrap">
+      <div class="quiz-top">
+        <button class="icon-btn" type="button" id="btnBack" aria-label="이전 질문으로">←</button>
+        <div class="progress" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" id="progressBar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="progress-num" id="progressNum">1 / 5</span>
+      </div>
+
+      <div class="quiz-body">
+        <p class="q-index" id="qIndex">Q1</p>
+        <h2 class="q-text" id="qText">질문을 불러오는 중…</h2>
+        <div class="options" id="options" role="group" aria-label="보기 선택"></div>
+      </div>
+
+      <p class="quiz-foot" id="quizFoot">정답은 없어요. 끌리는 쪽으로 눌러주세요.</p>
+    </div>
+  </section>
+
+  <!-- ================= RESULT ================= -->
+  <section id="screen-result" class="screen">
+    <div class="result-hero">
+      <div class="result-inner">
+        <p class="r-eyebrow" id="rEyebrow">당신의 크리스마스 선물 타입</p>
+        <div class="r-emoji" id="rEmoji">🎄</div>
+        <h2 class="r-name" id="rName">타입</h2>
+        <p class="r-tagline" id="rTagline"></p>
+        <div class="r-divider"><span>2026</span></div>
+        <p class="r-desc" id="rDesc"></p>
+        <ul class="r-traits" id="rTraits"></ul>
+        <p class="r-quote" id="rQuote"><b>SANTA'S NOTE</b>산타의 한마디</p>
+        <div class="r-matches">
+          <div class="match best">
+            <span class="m-label">찰떡 상대</span>
+            <span class="m-name"><span id="bestEmoji">🎁</span><span id="bestName">-</span></span>
+            <span class="m-why" id="bestWhy"></span>
+          </div>
+          <div class="match worst">
+            <span class="m-label">상극</span>
+            <span class="m-name"><span id="worstEmoji">🎁</span><span id="worstName">-</span></span>
+            <span class="m-why" id="worstWhy"></span>
+          </div>
+        </div>
+        <div class="r-actions">
+          <a class="coupang-cta" id="coupangCta" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">
+            <span class="cc-eyebrow">🎁 산타가 고른 내 찰떡 선물</span>
+            <span class="cc-main" id="coupangCtaLabel">선물을 확인해보세요</span>
+          </a>
+          <button class="btn btn-share" type="button" id="btnShare">🔗 인스타 스토리·카톡에 링크 바로 공유하기</button>
+          <button class="btn btn-primary" type="button" id="btnWishTop">🎁 내 선물 펀딩 링크 만들기</button>
+          <p class="share-hint">링크 하나만 붙여넣으면 스토리·단톡방에 그대로 공유돼요.</p>
+          <button class="link-quiet" type="button" id="btnStory">📸 이미지로 저장하기</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="gift-strip">
+      <h3>이 타입이 좋아할 선물 <span class="hint">예산대별로 골랐어요</span></h3>
+      <div class="result-gifts" id="resultGifts"></div>
+      <button class="btn btn-ghost" type="button" data-go="gift">선물 전체 보기 →</button>
+    </section>
+
+    <div class="ad-slot" data-ad="result">
+      <span class="ad-label">ADVERTISEMENT</span>
+      <span class="ad-note">광고 영역 · 애드핏 / 애드센스</span>
+    </div>
+
+    <section class="other-types">
+      <h3>다른 타입 구경하기</h3>
+      <div class="type-grid" id="typeGrid"></div>
+    </section>
+
+    <div class="result-foot">
+      <button class="btn-link" type="button" id="btnRestart">테스트 다시 하기</button>
+    </div>
+  </section>
+
+  <!-- ================= GIFTS ================= -->
+  <section id="screen-gift" class="screen">
+    <div class="gift-head">
+      <p class="eyebrow">CHRISTMAS GIFT CURATION</p>
+      <h2 class="title-sm">예산으로 고르는<br />크리스마스 선물</h2>
+      <p class="lede">가격대와 받는 사람만 정하면, 나머지는 저희가.</p>
+    </div>
+
+    <div class="filters">
+      <div class="filter-row">
+        <span class="filter-label">예산</span>
+        <div class="chips" id="budgetChips" role="group" aria-label="예산 필터"></div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">받는 사람</span>
+        <div class="chips" id="targetChips" role="group" aria-label="대상 필터"></div>
+      </div>
+    </div>
+
+    <p class="count" id="giftCount"></p>
+    <div class="gift-list" id="giftList"></div>
+
+    <div class="ad-slot" data-ad="gift">
+      <span class="ad-label">ADVERTISEMENT</span>
+      <span class="ad-note">광고 영역 · 애드핏 / 애드센스</span>
+    </div>
+
+    <div class="footer">
+      <div class="brand-line">SANTA'S GIFT LAB</div>
+      <p class="disclosure">이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+      <p>표시된 가격은 대략적인 시세이며, 판매처·시점에 따라 달라질 수 있습니다. 상품 링크는 쿠팡 검색 결과로 연결됩니다.</p>
+    </div>
+  </section>
+
+  <!-- ================= WISH MAKE (펀딩 링크 만들기) ================= -->
+  <section id="screen-wishmake" class="screen">
+    <div class="wishmake-head">
+      <p class="eyebrow">CHRISTMAS WISH FUNDING</p>
+      <h2 class="title-sm">내 선물 펀딩 링크 만들기 🎁</h2>
+      <p class="lede" id="wishmakeGiftLine">선택한 선물이 여기에 표시돼요.</p>
+    </div>
+    <div class="wish-form">
+      <div class="field">
+        <label for="wishNick">내 닉네임</label>
+        <input id="wishNick" type="text" maxlength="12" placeholder="예) 우렬" />
+      </div>
+      <div class="field">
+        <label for="wishMsg">받고 싶은 한마디</label>
+        <textarea id="wishMsg" maxlength="80" rows="3">얘들아 나 올해 이거 진짜 필요해 🎄</textarea>
+      </div>
+
+      <div class="field">
+        <span class="filter-label" id="giftModeLabel">받고 싶은 선물</span>
+        <div class="chips mode-chips" id="giftModeChips" role="group" aria-labelledby="giftModeLabel"></div>
+      </div>
+
+      <div class="pane" id="paneCurated">
+        <div class="curated-card">
+          <span class="cz-emoji" id="curatedEmoji" aria-hidden="true">🎁</span>
+          <div>
+            <p class="cz-name" id="curatedName">-</p>
+            <p class="cz-note">친구가 누르면 쿠팡 파트너스 링크로 연결돼요 · <span id="curatedPrice">-</span></p>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-sm" type="button" data-go="gift" style="margin-top:9px;">다른 추천 선물 고르기 →</button>
+      </div>
+
+      <div class="pane" id="paneCustom" hidden>
+        <div class="field">
+          <label for="customGiftName">받고 싶은 선물 이름</label>
+          <input id="customGiftName" type="text" maxlength="40" placeholder="예) 무선 청소기" />
+        </div>
+        <div class="field">
+          <label for="customCoupangUrl">받고 싶은 쿠팡 상품 링크가 있다면 붙여넣기 <span class="opt-label">(선택)</span></label>
+          <input id="customCoupangUrl" type="url" placeholder="https://www.coupang.com/vp/products/…" />
+          <p class="field-note">링크가 없어도 괜찮아요. 선물 이름으로 쿠팡 검색 링크를 자동으로 만들어 드려요.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="wishLink">송금 링크 <span class="opt-label">(선택 · 토스 https://toss.me/… 또는 카카오페이 링크)</span></label>
+        <input id="wishLink" type="url" placeholder="https://toss.me/내아이디" />
+      </div>
+      <div class="field">
+        <label for="wishGoal">목표 금액 (원) <span class="opt-label">선물 가격으로 자동 입력됐어요</span></label>
+        <input id="wishGoal" type="number" inputmode="numeric" min="0" step="1000" />
+      </div>
+      <button class="btn btn-primary" type="button" id="btnWishCreate">🔗 펀딩 초대 링크 만들고 바로 공유하기</button>
+    </div>
+  </section>
+
+  <!-- ================= WISH VIEW (#wish=…) ================= -->
+  <section id="screen-wish" class="screen">
+    <div class="result-hero">
+      <div class="result-inner">
+        <p class="r-eyebrow">2026 크리스마스 위시 🎁</p>
+        <div class="r-emoji" id="wGiftEmoji">🎁</div>
+        <h2 class="r-name" id="wTitle">크리스마스 위시</h2>
+        <p class="w-gift-card">
+          <span class="w-gift-name" id="wGiftName"></span>
+          <span class="w-gift-price" id="wGiftPrice"></span>
+        </p>
+        <p class="r-quote" id="wMsg"><b>MY WISH</b></p>
+        <p class="w-goal" id="wGoal"></p>
+        <div class="r-actions">
+          <a class="btn btn-gold" id="wBtnGift" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">🎁 쿠팡에서 선물 가격·상세 확인하기 (파트너스)</a>
+          <a class="btn btn-outline-light" id="wBtnCustom" href="#" target="_blank" rel="noopener noreferrer nofollow" style="display:none;">🔗 올린 상품 링크 그대로 보기</a>
+          <a class="btn btn-primary" id="wBtnPay" href="#" target="_blank" rel="noopener noreferrer nofollow">💸 선물 보태주기</a>
+          <button class="btn btn-share" type="button" id="wBtnCopy">🔗 인스타 스토리·카톡에 링크 바로 공유하기</button>
+          <button class="btn btn-outline-light" type="button" id="wBtnStart">나도 내 크리스마스 선물 펀딩 만들기 →</button>
+          <button class="link-quiet" type="button" id="wBtnCard">📸 위시 카드 이미지로 저장하기</button>
+          <p class="w-disclosure" id="wDisclosure">이 페이지의 상품 링크는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다. 표시 가격은 시점·판매처에 따라 달라질 수 있어요.</p>
+        </div>
+      </div>
+    </div>
+    <div class="result-foot">
+      <button class="btn-link" type="button" data-go="gift">선물 둘러보기</button>
+    </div>
+  </section>
+
+  <!-- ================= FRIEND (shared result) ================= -->
+  <section id="screen-friend" class="screen">
+    <div class="result-hero">
+      <div class="result-inner">
+        <p class="r-eyebrow">친구가 보낸 크리스마스 타입</p>
+        <div class="r-emoji" id="fEmoji">🎄</div>
+        <h2 class="r-name" id="fName">타입</h2>
+        <p class="r-tagline" id="fTagline"></p>
+        <div class="r-divider"><span>2026</span></div>
+        <p class="r-desc" id="fDesc"></p>
+        <div class="r-matches">
+          <div class="match best">
+            <span class="m-label">찰떡 상대</span>
+            <span class="m-name"><span id="fBestEmoji">🎁</span><span id="fBestName">-</span></span>
+          </div>
+          <div class="match worst">
+            <span class="m-label">상극</span>
+            <span class="m-name"><span id="fWorstEmoji">🎁</span><span id="fWorstName">-</span></span>
+          </div>
+        </div>
+        <div class="r-actions">
+          <button class="btn btn-primary" type="button" id="btnMine">나도 테스트하기 <span class="arrow">→</span></button>
+        </div>
+      </div>
+    </div>
+    <section class="gift-strip">
+      <h3>이 타입에게 줄 만한 선물</h3>
+      <div class="result-gifts" id="friendGifts"></div>
+      <button class="btn btn-ghost" type="button" data-go="gift">선물 전체 보기 →</button>
+    </section>
+  </section>
+
+</main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="결과 카드 미리보기">
+  <div class="modal-bg" data-close-modal></div>
+  <div class="modal-card">
+    <button class="modal-close" type="button" aria-label="닫기" data-close-modal>✕</button>
+    <img id="modalImg" alt="크리스마스 선물 타입 결과 카드 미리보기" />
+    <div class="modal-caption">
+      <p>이미지가 저장되지 않으면 길게 눌러 저장해 주세요.</p>
+      <button class="btn btn-gold" type="button" id="btnModalSave" style="padding:13px 18px;font-size:13.5px;">이미지 저장</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function () {
+  'use strict';
+
+  /* =======================================================================
+     1) 설정 — 여기만 고치면 1분 만에 내 링크 · 광고로 바뀝니다
+     ======================================================================= */
+
+  // 배포 후 실제 주소를 넣어주세요. 비워두면 현재 접속 주소를 그대로 씁니다.
+  var SITE_URL = '';
+
+  // 쿠팡 파트너스 설정
+  //  - deepLinks: 파트너스에서 발급받은 상품 딥링크를 상품 id로 붙여넣으면 그 링크로 연결됩니다.
+  //    예) 'bangsho': 'https://link.coupang.com/a/abcdEF',
+  //  - 딥링크가 없는 상품은 searchBase + 검색어(상품별 kw)로 자동 연결됩니다.
+  //  - lptag: 파트너스 회원 ID (AF로 시작하는 값). 쿠팡 주소마다 자동으로 붙어서 내 실적으로 잡힙니다.
+  //  - tracking: 모든 링크 뒤에 붙일 추적 파라미터 (없으면 그대로 두세요. 예: 'subid=santa')
+  var PARTNERS_LINKS = {
+    deepLinks: {
+      // 'bangsho': 'https://link.coupang.com/a/여기에_딥링크',
+    },
+    searchBase: 'https://www.coupang.com/np/search?q=',
+    lptag: 'AF7786795',
+    tracking: ''
+  };
+
+  // 광고 설정 (둘 중 하나만 채우면 해당 광고가 자동 삽입됩니다. 비우면 '광고 영역' 자리만 표시)
+  var AD_CONFIG = {
+    adfit: { unitId: '' },              // 카카오 애드핏 광고 단위 ID (예: 'DAN-xxxxxx')
+    adsense: { client: '', slot: '' }   // 구글 애드센스 (예: client 'ca-pub-123...', slot '1234567890')
+  };
+
+  /* =======================================================================
+     2) 데이터
+     ======================================================================= */
+
+  // 8가지 타입. best/worst 는 서로의 상대 유형 id 입니다.
+  var TYPES = {
+    LUXE: {
+      id: 'LUXE', emoji: '🥂', name: '럭셔리 트리의 주인',
+      tagline: '12월의 나는, 내가 제일 잘 아껴주는 사람',
+      desc: '선물도, 트리도, 연말의 온도도 내 기준에 맞춰야 직성이 풀리는 타입. "싼 게 비지떡"보다 "좋은 걸 오래"가 좌우명이고, 12월이면 집이 작은 호텔 라운지가 됩니다. 산타에게도 리본 색까지 요구할 준비가 되어 있죠.',
+      traits: ['선물도 포장도 결국 \'브랜드\'가 기준', '12월엔 집이 곧 부티크 호텔', '좋은 것엔 고민 없이 지갑을 엽니다'],
+      quote: '산타, 이번엔 리본 색까지 신경 써줘.',
+      best: 'FILM', bestWhy: '화려함에 감성을 얹어주는 조합',
+      worst: 'SMART', worstWhy: '가성비 얘기 나오면 분위기가 3도 내려감'
+    },
+    HOME: {
+      id: 'HOME', emoji: '🕯️', name: '따뜻한 뱅쇼 집순이',
+      tagline: '12월 24일, 가장 좋은 자리는 내 이불 속',
+      desc: '약속은 하나면 충분하고, 그마저 취소되면 조용히 기뻐하는 타입. 시나몬 향, 극세사 담요, 재생 버튼 하나로 크리스마스가 완성됩니다. 밖은 추우니까, 나는 안에서 따뜻하면 됩니다.',
+      traits: ['뱅쇼 스파이스는 이미 장바구니에', '담요 3장 + 수면 양말 2겹이 국룰', '"집에서 보자"가 가장 설레는 초대'],
+      quote: '산타, 현관에 두고 가면 조용히 가져갈게요.',
+      best: 'SMALL', bestWhy: '이불 속에서도 대화가 끝나지 않는 사이',
+      worst: 'PARTY', worstWhy: '홈파티도 "나가서" 해야 하는 사람'
+    },
+    SURPRISE: {
+      id: 'SURPRISE', emoji: '🎁', name: '서프라이즈 산타',
+      tagline: '받는 사람 표정이 내 선물의 진짜 가격',
+      desc: '선물 목록을 짜도 결국 "이거 받으면 웃겠다"는 상상으로 고르는 타입. 남 몰래 준비하고, 타이밍을 재고, 마지막에 제일 크게 웃습니다. 크리스마스는 내가 누군가에게 베푸는 이벤트입니다.',
+      traits: ['깜짝 선물 계획은 100% 비밀', '받는 사람 반응은 영상으로 남김', '"이거 너한테 어울릴 것 같아서" 단골 멘트'],
+      quote: '산타보다 내가 먼저 줄지도 몰라.',
+      best: 'PARTY', bestWhy: '서프라이즈에 환호로 답해주는 유일한 사람',
+      worst: 'LUXE', worstWhy: '서프라이즈보다 브랜드가 먼저 보이는 사이'
+    },
+    FLEX: {
+      id: 'FLEX', emoji: '💸', name: '연말 플렉스 요정',
+      tagline: '12월의 나는, 나에게 가장 후한 사람',
+      desc: '1년 열심히 살았으니 연말엔 나한테 써야 한다는 신념이 확고한 타입. 장바구니에 담아둔 것들이 12월에 결제되고, 집에서도 플렉스는 계속됩니다. 후회는 1월에, 만족은 지금.',
+      traits: ['12월 카드값 알림은 읽지 않음', '"나에게 주는 선물"이 이미 3개', '플렉스 만족도 90%, 1월 후회 10%'],
+      quote: '산타, 영수증은 필요 없어요.',
+      best: 'SMART', bestWhy: '플렉스 충동을 딱 한 번만 말려주는 사람',
+      worst: 'HOME', worstWhy: '약속은 잡아놓고 집에서 안 나옴'
+    },
+    FILM: {
+      id: 'FILM', emoji: '📷', name: '감성 필름 수집가',
+      tagline: '12월의 빛은, 찍어두지 않으면 아깝잖아',
+      desc: '누가 봐도 예쁜 순간을 발견하는 눈을 가진 타입. 필름을 챙기고, 빛 좋은 시간을 계산해서 나가고, 돌아와서 그 장면을 다시 곱씹습니다. 그래서 이 사람의 선물은 물건보다 "기억"에 가깝습니다.',
+      traits: ['필름카메라 가방은 항상 대기 중', '노을 30분 전엔 이미 도착', '인화한 사진을 손편지와 함께 줌'],
+      quote: '산타, 오늘 밤 눈은 꼭 찍게 해줘.',
+      best: 'LUXE', bestWhy: '예쁜 걸 알아봐 주는 취향의 합',
+      worst: 'FLEX', worstWhy: '감성값 앞에서 계산기가 먼저 튀어나옴'
+    },
+    SMALL: {
+      id: 'SMALL', emoji: '🌿', name: '소소한 행복 마니아',
+      tagline: '큰 이벤트보다, 매일 조금씩 예쁜 것',
+      desc: '12월의 설렘을 거창한 이벤트가 아니라 작은 것들로 채우는 타입. 문구점의 크리스마스 스티커, 따뜻한 홍차 한 잔, 손글씨 카드 한 장. 소소하지만 계획적이라, 이 사람의 12월은 늘 알차게 예쁩니다.',
+      traits: ['다이어리에 크리스마스까지 D-day 적어둠', '선물엔 항상 손편지 동봉', '"작지만 오래 남는 것"을 고름'],
+      quote: '산타, 작아도 되니까 오래 남는 걸로 주세요.',
+      best: 'HOME', bestWhy: '조용한 저녁을 같이 보낼 수 있는 사이',
+      worst: 'FLEX', worstWhy: '소소함이 플렉스 앞에서 작아지는 순간'
+    },
+    PARTY: {
+      id: 'PARTY', emoji: '🦌', name: '파티의 중심 루돌프',
+      tagline: '크리스마스는 사람 많은 쪽이 이긴다',
+      desc: '12월이 시작되면 단톡방이 먼저 들썩이는 타입. 자리를 만들고, 사람을 모으고, 노래방 1번 타자까지 도맡습니다. 혼자 보내는 크리스마스는 상상도 못 하고, 사실 혼자 있어도 제일 시끄러운 사람.',
+      traits: ['12월 단톡방 방장은 나', '"모여라" 세 글자에 3초 만에 반응', '노래방 1번 타자, 앙코르까지'],
+      quote: '산타, 선물은 파티장으로 배송해줘.',
+      best: 'SURPRISE', bestWhy: '파티에 깜짝을 더하는 최강 조합',
+      worst: 'HOME', worstWhy: '초대는 하는데 한 명은 절대 안 나옴'
+    },
+    SMART: {
+      id: 'SMART', emoji: '🧰', name: '실속파 겨울 장인',
+      tagline: '좋은 걸, 가장 합리적인 가격에',
+      desc: '들뜬 12월 분위기 속에서도 리뷰 200개와 최저가 비교를 놓치지 않는 타입. 겨울 장비는 이미 실사용 후기로 검증했고, 세일 캘린더는 머릿속에 있습니다. 화려하진 않지만 가장 오래 쓰는 선물을 고릅니다.',
+      traits: ['11월에 이미 위시리스트 완성', '"이 가격이면 이 정도는 해야"가 기준', '선물도 A/S 되는 걸로'],
+      quote: '산타, 가격 비교표도 같이 주세요.',
+      best: 'FLEX', bestWhy: '플렉스와 실속, 서로의 지갑을 맞춰주는 사이',
+      worst: 'FILM', worstWhy: '"감성"에 가격표를 붙이려는 순간'
+    }
+  };
+
+  var TYPE_ORDER = ['LUXE', 'HOME', 'SURPRISE', 'FLEX', 'FILM', 'SMALL', 'PARTY', 'SMART'];
+
+  // 축 → 타입 매핑
+  // 각 보기의 v = [공간(밖/사람들과 +1 / 집·소수와 -1), 취향(화려·감성·플렉스 +1 / 실용·소소·가성비 -1), 방향(남을 위해 +1 / 나를 위해 -1)]
+  // 매핑 검증: 4^5 = 1024개 조합 전수 시뮬레이션에서 8개 타입 모두 도달, 비중 8.1%~16.6%로 균형 확인.
+  var AXIS_MAP = {
+    '1,1,-1': 'LUXE', '-1,1,-1': 'FLEX', '1,1,1': 'PARTY', '-1,1,1': 'FILM',
+    '1,-1,1': 'SURPRISE', '1,-1,-1': 'SMART', '-1,-1,1': 'SMALL', '-1,-1,-1': 'HOME'
+  };
+
+  var QUESTIONS = [
+    {
+      q: '12월 달력이 나왔어요. 제일 먼저 적히는 것은?',
+      options: [
+        { text: '사람들 약속부터 — 크리스마스 파티는 무조건 산다', v: [1, 1, 1] },
+        { text: '아무 약속 없는 밤을 지킨다. 그게 진짜 크리스마스', v: [-1, -1, -1] },
+        { text: '호텔 라운지 예약 오픈 알람. 12월은 내가 주인공', v: [1, 1, -1] },
+        { text: '나를 위한 위시리스트부터 장바구니에 잔뜩', v: [-1, 1, -1] }
+      ]
+    },
+    {
+      q: '12월 24일 밤, 내가 제일 좋아하는 장면은?',
+      options: [
+        { text: '호텔 라운지, 샴페인 한 잔', v: [1, 1, -1] },
+        { text: '러그 깔고 넷플릭스 + 뱅쇼', v: [-1, -1, -1] },
+        { text: '친구들이 몰래 준비한 깜짝 파티, 제일 큰 소리로', v: [1, 1, 1] },
+        { text: '오래된 카메라 들고 조용한 골목 산책', v: [-1, 1, 1] }
+      ]
+    },
+    {
+      q: '크리스마스 선물 예산과 기준, 솔직하게?',
+      options: [
+        { text: '"올해는 나한테 쓰는 거야" — 마음에 들면 가격은 안 본다', v: [-1, 1, -1] },
+        { text: '리뷰 200개 정독, 최저가로 담아뒀다', v: [1, -1, -1] },
+        { text: '5만원 안쪽, 센스와 정성으로 승부', v: [-1, -1, 1] },
+        { text: '받을 사람이 웃을 게 1순위, 예산은 2순위', v: [1, -1, 1] }
+      ]
+    },
+    {
+      q: '선물을 고를 때 나의 방식은?',
+      options: [
+        { text: '받을 사람 웃는 얼굴을 상상하며 몰래 준비한다', v: [1, -1, 1] },
+        { text: '찍어둔 사진 인화해서 손편지와 함께 준다', v: [-1, 1, 1] },
+        { text: '후기 200개 읽고 실용성까지 확인한다', v: [1, -1, -1] },
+        { text: '손글씨 카드에 작지만 오래 남는 것을 골라', v: [-1, -1, 1] }
+      ]
+    },
+    {
+      q: '산타에게 딱 한 가지 부탁할 수 있다면?',
+      options: [
+        { text: '선물은 파티장으로 배송해줘', v: [1, 1, 1] },
+        { text: '가격 비교표도 같이 주세요', v: [1, -1, -1] },
+        { text: '작아도 되니까 오래 남는 걸로 주세요', v: [-1, -1, 1] },
+        { text: '리본 색까지 신경 써준 호캉스급으로 주세요', v: [1, 1, -1] }
+      ]
+    }
+  ];
+
+  var BUCKETS = [
+    { id: 'all', label: '전체' },
+    { id: 'u20', label: '2만원 이하' },
+    { id: 'mid', label: '3~5만원대' },
+    { id: 'high', label: '10만원대+' }
+  ];
+  var BUCKET_LABEL = { u20: '2만원 이하', mid: '3~5만원대', high: '10만원대+' };
+
+  var TARGETS = [
+    { id: 'all', label: '전체' },
+    { id: 'me', label: '나에게' },
+    { id: 'lover', label: '연인' },
+    { id: 'friend', label: '친구/동료' }
+  ];
+  var TARGET_LABEL = { me: '나에게', lover: '연인', friend: '친구/동료' };
+
+  // 선물 큐레이션 (b: 예산대, t: 대상, y: 어울리는 타입, kw: 쿠팡 검색어)
+  var GIFTS = [
+    { id: 'bangsho', e: '🍷', n: '뱅쇼 스파이스 키트 (시나몬·스타아니스·오렌지)', p: '13,900원~', pv: 13900, b: 'u20', t: ['me', 'friend', 'lover'], y: ['HOME', 'SMALL'], why: '테이블에 올리면 그 자리가 바로 12월', kw: '뱅쇼 스파이스 키트' },
+    { id: 'candle', e: '🕯️', n: '캔들워머 + 소이 캔들 세트', p: '18,900원~', pv: 18900, b: 'u20', t: ['me', 'lover'], y: ['HOME', 'LUXE'], why: '불 끄고 켜면 방이 크리스마스', kw: '캔들워머 소이캔들 세트' },
+    { id: 'blanket', e: '🧣', n: '극세사 담요 + 수면 양말 세트', p: '15,900원~', pv: 15900, b: 'u20', t: ['me', 'friend', 'lover'], y: ['HOME', 'SMART'], why: '한 번 쓰면 못 버티는 겨울 필수템', kw: '극세사 담요 양말 세트' },
+    { id: 'minitree', e: '🎄', n: '미니 트리 + 오너먼트 DIY 세트', p: '14,900원~', pv: 14900, b: 'u20', t: ['friend', 'lover'], y: ['SMALL', 'SURPRISE'], why: '같이 만드는 시간까지 선물', kw: '미니 트리 오너먼트 세트' },
+    { id: 'tea', e: '🍵', n: '홍차·밀크티 샘플러 틴케이스', p: '16,800원~', pv: 16800, b: 'u20', t: ['friend', 'lover'], y: ['SMALL', 'HOME'], why: '매일 다른 향으로 12월 보내기', kw: '홍차 샘플러 틴케이스' },
+    { id: 'handcream', e: '🧴', n: '핸드크림 미니 3종 세트', p: '12,900원~', pv: 12900, b: 'u20', t: ['me', 'friend'], y: ['SMALL', 'SMART'], why: '겨울 손에는 언제나 정답', kw: '핸드크림 미니 세트' },
+    { id: 'diary', e: '📔', n: '2026 다이어리 + 마스킹테이프 세트', p: '17,500원~', pv: 17500, b: 'u20', t: ['friend', 'me'], y: ['SMALL', 'SMART'], why: '1월부터 쓸 게 확실한 선물', kw: '2026 다이어리' },
+    { id: 'filmprint', e: '🖼️', n: '사진 인화 20장 + 미니 포토앨범', p: '14,000원~', pv: 14000, b: 'u20', t: ['lover', 'friend'], y: ['FILM', 'SMALL'], why: '돈보다 마음이 크게 보이는 선물', kw: '사진 인화 미니 앨범' },
+    { id: 'ornament', e: '✨', n: '크리스마스 오너먼트 6종 세트', p: '11,900원~', pv: 11900, b: 'u20', t: ['friend', 'lover'], y: ['LUXE', 'SURPRISE', 'PARTY'], why: '트리 없어도 분위기 완성', kw: '크리스마스 오너먼트 세트' },
+    { id: 'projector', e: '🌌', n: '무드등 별 프로젝터', p: '19,800원~', pv: 19800, b: 'u20', t: ['me', 'lover'], y: ['HOME', 'FILM'], why: '불 끄고 누우면 천장이 은하수', kw: '무드등 별 프로젝터' },
+    { id: 'socks', e: '🧦', n: '크리스마스 패턴 양말 5켤레', p: '12,500원~', pv: 12500, b: 'u20', t: ['friend'], y: ['PARTY', 'SURPRISE'], why: '실패 없는 단체 선물의 정답', kw: '크리스마스 양말 세트' },
+
+    { id: 'tumbler', e: '☕', n: '보온 텀블러 + 핸드드립 세트', p: '39,000원~', pv: 39000, b: 'mid', t: ['lover', 'friend'], y: ['SMART', 'HOME'], why: '출근길이 5분은 따뜻해집니다', kw: '보온 텀블러 핸드드립 세트' },
+    { id: 'perfume5', e: '🌸', n: '향수 디스커버리 세트 (미니 5종)', p: '45,000원~', pv: 45000, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'FILM'], why: '취향 테스트 겸 선물', kw: '향수 디스커버리 세트' },
+    { id: 'cake', e: '🎂', n: '크리스마스 케이크 + 무알콜 스파클링', p: '49,000원~', pv: 49000, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'HOME', 'SURPRISE'], why: '사진 잘 나오는 케이크가 반', kw: '크리스마스 케이크' },
+    { id: 'speaker', e: '🔊', n: '블루투스 미니 스피커', p: '44,000원~', pv: 44000, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'FLEX'], why: '캐럴 틀면 분위기 담당', kw: '블루투스 미니 스피커' },
+    { id: 'muffler', e: '🧣', n: '캐시미어 블렌드 머플러', p: '38,000원~', pv: 38000, b: 'mid', t: ['lover', 'me'], y: ['LUXE', 'SMART'], why: '목도리 하나로 겨울이 달라짐', kw: '캐시미어 머플러' },
+    { id: 'instaxfilm', e: '📸', n: '인스탁스 미니 필름 5팩 + 앨범', p: '45,000원~', pv: 45000, b: 'mid', t: ['lover', 'friend'], y: ['FILM'], why: '찍는 사람에겐 필름이 제일 실용적', kw: '인스탁스 미니 필름' },
+    { id: 'beauty', e: '💄', n: '립밤·핸드크림·페이스오일 뷰티 세트', p: '42,000원~', pv: 42000, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'SMALL'], why: '포장만 봐도 기분 좋아지는 세트', kw: '뷰티 기프트 세트' },
+    { id: 'wineglass', e: '🥂', n: '와인잔 2P + 뱅쇼 세트', p: '35,000원~', pv: 35000, b: 'mid', t: ['lover', 'friend'], y: ['HOME', 'PARTY'], why: '집 데이트가 바로 바(bar)', kw: '와인잔 세트' },
+    { id: 'lego', e: '🧱', n: '레고 크리스마스 미니 세트', p: '42,000원~', pv: 42000, b: 'mid', t: ['friend', 'lover'], y: ['SURPRISE', 'FILM'], why: '조립하는 시간까지 선물', kw: '레고 크리스마스 세트' },
+    { id: 'cushion', e: '🛋️', n: '니트 쿠션 + 소파 러그 세트', p: '39,000원~', pv: 39000, b: 'mid', t: ['me', 'lover'], y: ['HOME', 'SMALL'], why: '집이 호텔이 되는 마법', kw: '쿠션 러그 세트' },
+    { id: 'whisky', e: '🥃', n: '미니 위스키 3종 테이스팅 세트', p: '39,000원~', pv: 39000, b: 'mid', t: ['friend', 'lover'], y: ['PARTY', 'LUXE'], why: '모임에 들고 가면 대접받습니다', kw: '위스키 미니어처 세트' },
+    { id: 'puzzle', e: '🧩', n: '겨울 풍경 1000피스 퍼즐', p: '32,000원~', pv: 32000, b: 'mid', t: ['friend', 'me'], y: ['SMART', 'SMALL'], why: '12월 밤을 조용히 채우는 취미', kw: '겨울 풍경 퍼즐 1000피스' },
+
+    { id: 'headphones', e: '🎧', n: '노이즈캔슬링 무선 헤드폰', p: '129,000원~', pv: 129000, b: 'high', t: ['me', 'lover', 'friend'], y: ['FLEX', 'PARTY'], why: '한 번 쓰면 못 돌아가는 선물', kw: '노이즈캔슬링 헤드폰' },
+    { id: 'instax', e: '📷', n: '인스탁스 미니 12 즉석카메라', p: '119,000원~', pv: 119000, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '찍어서 바로 주는 재미', kw: '인스탁스 미니 12' },
+    { id: 'perfume50', e: '🌹', n: '베스트셀러 향수 50ml', p: '149,000원~', pv: 149000, b: 'high', t: ['lover', 'me'], y: ['LUXE'], why: '가장 무난하게, 가장 확실한 럭셔리', kw: '향수 50ml 선물' },
+    { id: 'smartwatch', e: '⌚', n: '스마트워치', p: '119,000원~', pv: 119000, b: 'high', t: ['me', 'friend'], y: ['SMART', 'FLEX'], why: '"건강 챙겨"라는 말보다 낫습니다', kw: '스마트워치' },
+    { id: 'hotel', e: '🏨', n: '호텔 뷔페 2인 식사권', p: '118,000원~', pv: 118000, b: 'high', t: ['lover'], y: ['LUXE', 'PARTY'], why: '물건이 아니라 하루를 주는 선물', kw: '호텔 뷔페 이용권' },
+    { id: 'cashmere', e: '🧥', n: '캐시미어 100% 니트', p: '139,000원~', pv: 139000, b: 'high', t: ['lover', 'me'], y: ['LUXE', 'HOME'], why: '입는 순간 온도가 다릅니다', kw: '캐시미어 니트' },
+    { id: 'wine', e: '🍾', n: '프리미엄 와인 2병 선물 세트', p: '129,000원~', pv: 129000, b: 'high', t: ['friend', 'lover'], y: ['PARTY', 'LUXE'], why: '모임에 들고 가면 대접받습니다', kw: '와인 선물 세트' },
+    { id: 'airfryer', e: '🍳', n: '에어프라이어 5L', p: '109,000원~', pv: 109000, b: 'high', t: ['friend', 'me'], y: ['SMART', 'HOME'], why: '실용템의 끝판왕', kw: '에어프라이어 5L' },
+    { id: 'padding', e: '🧥', n: '경량 패딩', p: '159,000원~', pv: 159000, b: 'high', t: ['me', 'lover'], y: ['SMART', 'FLEX'], why: '겨울 외투는 선물로 제일 실용적', kw: '경량 패딩' },
+    { id: 'filmcam', e: '🎞️', n: '필름카메라 (오토 포커스)', p: '159,000원~', pv: 159000, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '감성의 정석', kw: '필름카메라' }
+  ];
+
+  /* =======================================================================
+     3) 상태 · 유틸
+     ======================================================================= */
+
+  var state = { idx: 0, answers: [], locked: false, typeId: null, budget: 'all', target: 'all', lastCard: null, wishMode: 'curated', viewWishData: null, pendingCard: null };
+  var SANS = "'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif";
+  var SERIF = "'Gowun Batang', 'Noto Serif CJK KR', 'Apple SD Gothic Neo', serif";
+
+  function $(id) { return document.getElementById(id); }
+  function toggleClass(el, cls, on) { if (!el) { return; } el.classList[on ? 'add' : 'remove'](cls); }
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  var toastTimer = null;
+  function toast(msg) {
+    var t = $('toast');
+    if (!t) { return; }
+    t.textContent = msg;
+    t.classList.add('show');
+    if (toastTimer) { clearTimeout(toastTimer); }
+    toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
+  }
+
+  /* =======================================================================
+     4) 화면 전환
+     ======================================================================= */
+
+  var SCREENS = ['home', 'quiz', 'result', 'wishmake', 'wish', 'gift', 'friend'];
+
+  function show(name) {
+    SCREENS.forEach(function (n) {
+      var el = $('screen-' + n);
+      if (el) { toggleClass(el, 'active', n === name); }
+    });
+    var bar = $('topbar');
+    if (bar) { bar.style.display = (name === 'quiz') ? 'none' : 'flex'; }
+    try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
+  }
+
+  function go(name) {
+    if (name === 'quiz') { startQuiz(); return; }
+    if (name === 'gift') { renderGifts(); show('gift'); return; }
+    show(name);
+  }
+
+  /* =======================================================================
+     5) 테스트 진행
+     ======================================================================= */
+
+  function startQuiz() {
+    state.idx = 0;
+    state.answers = [];
+    state.locked = false;
+    show('quiz');
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    var q = QUESTIONS[state.idx];
+    var total = QUESTIONS.length;
+    $('qIndex').textContent = 'Q' + (state.idx + 1);
+    $('qText').textContent = q.q;
+    $('progressFill').style.width = (((state.idx + 1) / total) * 100) + '%';
+    $('progressNum').textContent = (state.idx + 1) + ' / ' + total;
+    $('progressBar').setAttribute('aria-valuenow', String(state.idx + 1));
+    $('btnBack').disabled = state.idx === 0;
+    $('quizFoot').textContent = state.idx === total - 1
+      ? '마지막 질문이에요. 결과 카드가 바로 나옵니다 🎄'
+      : '정답은 없어요. 끌리는 쪽으로 눌러주세요.';
+
+    var box = $('options');
+    box.innerHTML = '';
+    q.options.forEach(function (o, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'opt';
+      b.style.animationDelay = (i * 45) + 'ms';
+      b.innerHTML = '<span class="num">' + (i + 1) + '</span><span>' + escapeHtml(o.text) + '</span>';
+      b.addEventListener('click', function () { pick(i, b); });
+      box.appendChild(b);
+    });
+    state.locked = false;
+  }
+
+  function pick(i, btn) {
+    if (state.locked) { return; }
+    state.locked = true;
+    state.answers[state.idx] = i;
+    btn.classList.add('picked');
+    Array.prototype.forEach.call($('options').children, function (el) { el.disabled = true; });
+
+    setTimeout(function () {
+      if (state.idx < QUESTIONS.length - 1) {
+        state.idx += 1;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    }, 220);
+  }
+
+  function computeType(answers) {
+    var x = 0, y = 0, z = 0, i, v;
+    for (i = 0; i < QUESTIONS.length; i += 1) {
+      if (answers[i] === undefined) { continue; }
+      v = QUESTIONS[i].options[answers[i]].v;
+      x += v[0]; y += v[1]; z += v[2];
+    }
+    var key = (x >= 0 ? 1 : -1) + ',' + (y >= 0 ? 1 : -1) + ',' + (z >= 0 ? 1 : -1);
+    return AXIS_MAP[key] || 'HOME';
+  }
+
+  function finishQuiz() {
+    var id = computeType(state.answers);
+    state.typeId = id;
+    renderResult(id, true);
+    show('result');
+  }
+
+  /* =======================================================================
+     6) 결과 렌더
+     ======================================================================= */
+
+  function giftCardHtml(item) {
+    var tags = '<span class="tag">' + BUCKET_LABEL[item.b] + '</span>';
+    if (item.t.length < 3) {
+      tags += '<span class="tag grey">' + item.t.map(function (t) { return TARGET_LABEL[t]; }).join(' · ') + '</span>';
+    }
+    return '' +
+      '<article class="gift">' +
+        '<div class="gift-emoji" aria-hidden="true">' + item.e + '</div>' +
+        '<div class="gift-body">' +
+          '<div class="gift-top">' +
+            '<p class="gift-name">' + escapeHtml(item.n) + '</p>' +
+            '<span class="gift-price">' + item.p + '</span>' +
+          '</div>' +
+          '<p class="gift-why">' + escapeHtml(item.why) + '</p>' +
+          '<div class="gift-bottom">' +
+            '<div class="gift-tags">' + tags + '</div>' +
+            '<span class="gift-act">' +
+              '<button class="gift-wish" type="button" data-wish="' + item.id + '" ' +
+                'aria-label="' + escapeHtml(item.n) + ' 선물 펀딩 링크 만들기">조르기 🎁</button>' +
+              '<a class="gift-cta" href="' + coupangUrl(item) + '" target="_blank" rel="noopener sponsored nofollow" ' +
+                'aria-label="' + escapeHtml(item.n) + ' 쿠팡에서 보기">쿠팡에서 보기 →</a>' +
+            '</span>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+  }
+
+  function shortGiftName(item) {
+    return String(item.n).replace(/\s*\([^)]*\)/g, '');
+  }
+
+  /* --- 쿠팡 파트너스 링크 생성 -------------------------------------------
+     모든 상품 링크는 이 두 함수를 지나갑니다. 딥링크가 없으면 검색 링크로,
+     그 링크에도 lptag(파트너스 ID)와 tracking을 붙여 내 귀속을 잃지 않게 합니다. */
+  function addQuery(url, key, value) {
+    if (!value) { return url; }
+    var out = String(url);
+    var hash = '';
+    var i = out.indexOf('#');
+    if (i !== -1) { hash = out.slice(i); out = out.slice(0, i); }
+    var re = new RegExp('[?&]' + String(key).replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '=');
+    if (re.test(out)) { return out + hash; }
+    return out + (out.indexOf('?') === -1 ? '?' : '&') + key + '=' + encodeURIComponent(value) + hash;
+  }
+
+  function affUrl(raw) {
+    var out = String(raw || '').trim();
+    if (!out) { return out; }
+    var isCoupang = /^https?:\/\/([a-z0-9-]+\.)*coupang\.com(\/|$)/i.test(out);
+    var isShort = /^https?:\/\/link\.coupang\.com\/a\//i.test(out);
+    // 쿠팡 주소(단축 링크 제외)에는 파트너스 ID를 붙여 귀속을 남깁니다.
+    if (isCoupang && !isShort) { out = addQuery(out, 'lptag', PARTNERS_LINKS.lptag); }
+    var tr = String(PARTNERS_LINKS.tracking || '').trim().replace(/^[?&]/, '');
+    if (tr && !(/lptag=/.test(tr) && /lptag=/.test(out))) {
+      var hashIdx = out.indexOf('#');
+      var tail = hashIdx === -1 ? '' : out.slice(hashIdx);
+      if (hashIdx !== -1) { out = out.slice(0, hashIdx); }
+      out += (out.indexOf('?') === -1 ? '?' : '&') + tr + tail;
+    }
+    return out;
+  }
+
+  function searchUrl(keyword) {
+    return affUrl(PARTNERS_LINKS.searchBase + encodeURIComponent(String(keyword || '')));
+  }
+
+  // 펀딩 창조자가 붙여넣는 상품 링크는 쿠팡 주소만 받습니다(임의 링크 유포 방지).
+  function isCoupangLink(url) {
+    return /^https?:\/\/([a-z0-9-]+\.)*(coupang\.com|coupa\.ng)(\/|$)/i.test(String(url || ''));
+  }
+
+  function coupangUrl(item) {
+    if (!item) { return shareUrl(null); }
+    var deep = PARTNERS_LINKS.deepLinks[item.id];
+    if (deep) { return affUrl(deep); }
+    return searchUrl(item.kw);
+  }
+
+  function picksForType(typeId, limit) {
+    var pools = { u20: [], mid: [], high: [] };
+    GIFTS.forEach(function (g) {
+      if (g.y.indexOf(typeId) !== -1) { pools[g.b].push(g); }
+    });
+    var out = [];
+    ['u20', 'mid', 'high'].forEach(function (b) {
+      if (pools[b][0]) { out.push(pools[b][0]); }
+    });
+    // 남는 자리는 중간 가격대에서 채움
+    ['mid', 'u20', 'high'].forEach(function (b) {
+      pools[b].forEach(function (g) {
+        if (out.length < limit && out.indexOf(g) === -1) { out.push(g); }
+      });
+    });
+    return out.slice(0, limit);
+  }
+
+  function renderResult(typeId, isMine) {
+    var t = TYPES[typeId];
+    if (!t) { return; }
+    state.typeId = typeId;
+
+    $('rEyebrow').textContent = isMine ? '당신의 크리스마스 선물 타입' : '이 타입의 결과 카드';
+    $('rEmoji').textContent = t.emoji;
+    $('rName').textContent = t.name;
+    $('rTagline').textContent = t.tagline;
+    $('rDesc').textContent = t.desc;
+
+    var ul = $('rTraits');
+    ul.innerHTML = '';
+    t.traits.forEach(function (s) {
+      var li = document.createElement('li');
+      li.textContent = s;
+      ul.appendChild(li);
+    });
+
+    $('rQuote').innerHTML = '<b>SANTA\u2019S NOTE</b>' + escapeHtml(t.quote);
+
+    var best = TYPES[t.best], worst = TYPES[t.worst];
+    $('bestEmoji').textContent = best.emoji;
+    $('bestName').textContent = best.name;
+    $('bestWhy').textContent = t.bestWhy;
+    $('worstEmoji').textContent = worst.emoji;
+    $('worstName').textContent = worst.name;
+    $('worstWhy').textContent = t.worstWhy;
+
+    var strip = $('resultGifts');
+    strip.innerHTML = picksForType(typeId, 4).map(giftCardHtml).join('');
+
+    // 1번 결과 상단 쿠팡 CTA (결과는 항상 바로 보이고, 클릭 게이트 없음 — 쿠팡 파트너스 정책 준수)
+    var cta = $('coupangCta');
+    var topGift = picksForType(typeId, 4)[0];
+    if (cta) {
+      if (topGift) {
+        cta.style.display = '';
+        cta.href = coupangUrl(topGift);
+        cta.setAttribute('aria-label', topGift.n + ' 쿠팡 최저가 확인하기');
+        $('coupangCtaLabel').textContent = '[' + shortGiftName(topGift) + '] 쿠팡 최저가 확인하기 →';
+      } else {
+        cta.style.display = 'none';
+      }
+    }
+
+    renderTypeGrid();
+  }
+
+  function renderTypeGrid() {
+    var grid = $('typeGrid');
+    grid.innerHTML = '';
+    TYPE_ORDER.forEach(function (id) {
+      var t = TYPES[id];
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'type-chip';
+      b.setAttribute('aria-current', String(id === state.typeId));
+      b.innerHTML = '<span aria-hidden="true">' + t.emoji + '</span><span>' + t.name + '</span>';
+      b.addEventListener('click', function () {
+        renderResult(id, false);
+        try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
+      });
+      grid.appendChild(b);
+    });
+  }
+
+  function renderHomeTeaser() {
+    var box = $('homeTeaser');
+    box.innerHTML = TYPE_ORDER.slice(0, 6).map(function (id) {
+      var t = TYPES[id];
+      return '<div class="teaser-card"><span class="e" aria-hidden="true">' + t.emoji + '</span><span>' + t.name + '</span></div>';
+    }).join('');
+  }
+
+  /* =======================================================================
+     7) 선물 화면
+     ======================================================================= */
+
+  function chip(label, pressed, onClick) {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chip';
+    b.textContent = label;
+    b.setAttribute('aria-pressed', String(pressed));
+    b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function renderFilters() {
+    var bc = $('budgetChips');
+    bc.innerHTML = '';
+    BUCKETS.forEach(function (b) {
+      bc.appendChild(chip(b.label, state.budget === b.id, function () {
+        state.budget = b.id; renderFilters(); renderGifts();
+      }));
+    });
+    var tc = $('targetChips');
+    tc.innerHTML = '';
+    TARGETS.forEach(function (t) {
+      tc.appendChild(chip(t.label, state.target === t.id, function () {
+        state.target = t.id; renderFilters(); renderGifts();
+      }));
+    });
+  }
+
+  function filteredGifts() {
+    return GIFTS.filter(function (g) {
+      var okB = state.budget === 'all' || g.b === state.budget;
+      var okT = state.target === 'all' || g.t.indexOf(state.target) !== -1;
+      return okB && okT;
+    });
+  }
+
+  function renderGifts() {
+    renderFilters();
+    var list = filteredGifts();
+    var label = (state.budget === 'all' ? '전체 예산' : BUCKET_LABEL[state.budget]);
+    if (state.target !== 'all') { label += ' · ' + TARGET_LABEL[state.target]; }
+    $('giftCount').textContent = list.length + '개 상품 · ' + label;
+
+    var box = $('giftList');
+    if (!list.length) {
+      box.innerHTML = '<p class="empty">이 조합에는 상품이 없어요.<br />다른 예산이나 대상을 골라보세요 🎄</p>';
+      return;
+    }
+    box.innerHTML = list.map(giftCardHtml).join('');
+  }
+
+  /* =======================================================================
+     8) 결과 카드 (canvas 1080×1920)
+     ======================================================================= */
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function setFont(ctx, weight, size, family) {
+    ctx.font = weight + ' ' + size + 'px ' + family;
+  }
+
+  function drawSpaced(ctx, text, x, y, font, color, spacing) {
+    ctx.font = font;
+    ctx.fillStyle = color;
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'alphabetic';
+    var chars = text.split('');
+    var total = 0, i, w;
+    for (i = 0; i < chars.length; i += 1) { total += ctx.measureText(chars[i]).width + spacing; }
+    total -= spacing;
+    var cx = x - total / 2;
+    for (i = 0; i < chars.length; i += 1) {
+      ctx.fillText(chars[i], cx, y);
+      cx += ctx.measureText(chars[i]).width + spacing;
+    }
+    return total;
+  }
+
+  function wrapLines(ctx, text, maxWidth) {
+    var words = text.split(' ');
+    var lines = [];
+    var line = '';
+    words.forEach(function (w) {
+      var test = line ? line + ' ' + w : w;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = w;
+      } else {
+        line = test;
+      }
+    });
+    if (line) { lines.push(line); }
+    return lines;
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  function buildCard(typeId) {
+    var W = 1080, H = 1920;
+    var canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    var t = TYPES[typeId] || TYPES.HOME;
+
+    // 배경
+    var bg = ctx.createLinearGradient(0, 0, W * 0.6, H);
+    bg.addColorStop(0, '#15382A');
+    bg.addColorStop(0.45, '#0F291E');
+    bg.addColorStop(1, '#08190F');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    var glow = ctx.createRadialGradient(W / 2, H * 0.24, 20, W / 2, H * 0.24, W * 0.95);
+    glow.addColorStop(0, 'rgba(212,175,55,0.20)');
+    glow.addColorStop(0.45, 'rgba(212,175,55,0.06)');
+    glow.addColorStop(1, 'rgba(212,175,55,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    var glow2 = ctx.createRadialGradient(W * 0.9, H * 0.95, 10, W * 0.9, H * 0.95, W * 0.6);
+    glow2.addColorStop(0, 'rgba(185,28,28,0.16)');
+    glow2.addColorStop(1, 'rgba(185,28,28,0)');
+    ctx.fillStyle = glow2;
+    ctx.fillRect(0, 0, W, H);
+
+    // 눈
+    var rand = mulberry32(typeId.length * 7919 + typeId.charCodeAt(0) * 31);
+    var i;
+    for (i = 0; i < 90; i += 1) {
+      var sx = rand() * W;
+      var sy = rand() * H;
+      var r = 1 + rand() * 3.4;
+      ctx.beginPath();
+      ctx.arc(sx, sy, r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.08 + rand() * 0.5).toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    // 프레임
+    ctx.strokeStyle = 'rgba(212,175,55,0.55)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(46, 46, W - 92, H - 92);
+    ctx.strokeStyle = 'rgba(212,175,55,0.18)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(64, 64, W - 128, H - 128);
+
+    // 모서리 장식
+    function corner(cx, cy, dx, dy) {
+      ctx.strokeStyle = 'rgba(212,175,55,0.8)';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy + dy * 34);
+      ctx.lineTo(cx, cy);
+      ctx.lineTo(cx + dx * 34, cy);
+      ctx.stroke();
+    }
+    corner(78, 78, 1, 1);
+    corner(W - 78, 78, -1, 1);
+    corner(78, H - 78, 1, -1);
+    corner(W - 78, H - 78, -1, -1);
+
+    // 헤더
+    drawSpaced(ctx, '2026 CHRISTMAS GIFT TEST', W / 2, 176, '700 27px ' + SANS, 'rgba(212,175,55,0.95)', 7);
+    ctx.textAlign = 'center';
+    setFont(ctx, '600', 24, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.5)';
+    ctx.fillText('\uD06C\uB9AC\uC2A4\uB9C8\uC2A4 \uC120\uBB3C \uD0C0\uC785 \uD14C\uC2A4\uD2B8', W / 2, 224);
+
+    // 이모지 링
+    var cy = 402, r2 = 112;
+    var ring = ctx.createRadialGradient(W / 2, cy - 30, 8, W / 2, cy, r2);
+    ring.addColorStop(0, 'rgba(212,175,55,0.28)');
+    ring.addColorStop(1, 'rgba(212,175,55,0.04)');
+    ctx.beginPath();
+    ctx.arc(W / 2, cy, r2, 0, Math.PI * 2);
+    ctx.fillStyle = ring;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(212,175,55,0.5)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(W / 2, cy, r2 + 14, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(212,175,55,0.16)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = '112px ' + SANS;
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(t.emoji, W / 2, cy + 6);
+    ctx.textBaseline = 'alphabetic';
+
+    // 타입 이름
+    var nameSize = 82;
+    setFont(ctx, '700', nameSize, SERIF);
+    while (ctx.measureText(t.name).width > W - 220 && nameSize > 52) {
+      nameSize -= 4;
+      setFont(ctx, '700', nameSize, SERIF);
+    }
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FFF9EE';
+    ctx.fillText(t.name, W / 2, 600);
+
+    // 태그라인
+    setFont(ctx, '600', 34, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.74)';
+    var tagLines = wrapLines(ctx, t.tagline, W - 300);
+    var y = 656;
+    tagLines.forEach(function (ln) {
+      ctx.fillText(ln, W / 2, y);
+      y += 46;
+    });
+
+    // 구분선
+    y += 22;
+    ctx.strokeStyle = 'rgba(212,175,55,0.45)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(W / 2 - 210, y);
+    ctx.lineTo(W / 2 - 30, y);
+    ctx.moveTo(W / 2 + 30, y);
+    ctx.lineTo(W / 2 + 210, y);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(212,175,55,0.85)';
+    ctx.beginPath();
+    ctx.moveTo(W / 2, y - 8);
+    ctx.lineTo(W / 2 + 8, y);
+    ctx.lineTo(W / 2, y + 8);
+    ctx.lineTo(W / 2 - 8, y);
+    ctx.closePath();
+    ctx.fill();
+
+    // 특징
+    y += 74;
+    drawSpaced(ctx, 'MY CHRISTMAS DNA', W / 2, y, '700 21px ' + SANS, 'rgba(212,175,55,0.8)', 5);
+    y += 54;
+
+    ctx.textAlign = 'left';
+    setFont(ctx, '600', 33, SANS);
+    t.traits.forEach(function (tr) {
+      var lines = wrapLines(ctx, tr, W - 300);
+      ctx.fillStyle = 'rgba(212,175,55,0.9)';
+      ctx.font = '26px ' + SANS;
+      ctx.fillText('\u2726', 132, y);
+      setFont(ctx, '600', 33, SANS);
+      lines.forEach(function (ln, li) {
+        ctx.fillStyle = 'rgba(250,245,235,0.93)';
+        ctx.fillText(ln, 172, y + li * 44);
+      });
+      y += lines.length * 44 + 22;
+    });
+
+    // 산타의 한마디
+    y += 16;
+    setFont(ctx, '400', 33, SERIF);
+    var quoteLines = wrapLines(ctx, '\u201C' + t.quote + '\u201D', W - 340);
+    var boxH = quoteLines.length * 48 + 52;
+    roundRect(ctx, 120, y, W - 240, boxH, 18);
+    ctx.fillStyle = 'rgba(250,245,235,0.055)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(250,245,235,0.14)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.textAlign = 'center';
+    ctx.fillStyle = 'rgba(250,245,235,0.9)';
+    quoteLines.forEach(function (ln, li) {
+      ctx.fillText(ln, W / 2, y + 46 + li * 48);
+    });
+    y += boxH + 44;
+
+    // 궁합 박스
+    var bw = (W - 240 - 20) / 2;
+    var bh = 170;
+    var best = TYPES[t.best], worst = TYPES[t.worst];
+    function matchBox(bx, label, labelColor, type) {
+      roundRect(ctx, bx, y, bw, bh, 16);
+      ctx.fillStyle = 'rgba(250,245,235,0.05)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(250,245,235,0.12)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.textAlign = 'left';
+      setFont(ctx, '700', 19, SANS);
+      ctx.fillStyle = labelColor;
+      ctx.fillText(label, bx + 26, y + 44);
+      setFont(ctx, '600', 27, SANS);
+      ctx.fillStyle = '#FFF9EE';
+      ctx.fillText(type.emoji + '  ', bx + 24, y + 96);
+      var nx = bx + 24 + ctx.measureText(type.emoji + '  ').width;
+      var shortName = type.name.length > 9 ? type.name.slice(0, 9) + '\u2026' : type.name;
+      setFont(ctx, '600', 27, SANS);
+      ctx.fillText(shortName, nx, y + 96);
+      setFont(ctx, '400', 20, SANS);
+      ctx.fillStyle = 'rgba(250,245,235,0.55)';
+      ctx.fillText(type.tagline.length > 16 ? type.tagline.slice(0, 16) + '\u2026' : type.tagline, bx + 26, y + 138);
+    }
+    matchBox(120, '\uCC30\uB5A1 \uC0C1\uB300', 'rgba(212,175,55,0.95)', best);
+    matchBox(120 + bw + 20, '\uC0C1\uADF9', 'rgba(230,140,140,0.95)', worst);
+
+    // 푸터
+    ctx.textAlign = 'center';
+    setFont(ctx, '700', 30, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.9)';
+    ctx.fillText('\uB098\uC758 \uD06C\uB9AC\uC2A4\uB9C8\uC2A4 \uC120\uBB3C \uD0C0\uC785\uB3C4 \uAD81\uAE08\uD558\uB2E4\uBA74?', W / 2, H - 212);
+    setFont(ctx, '700', 28, SANS);
+    ctx.fillStyle = 'rgba(212,175,55,0.95)';
+    ctx.fillText('santa-gift-lab \u00B7 \uD14C\uC2A4\uD2B8 \uD574\uBCF4\uAE30', W / 2, H - 166);
+    setFont(ctx, '600', 20, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.35)';
+    ctx.fillText('2026 CHRISTMAS GIFT TEST', W / 2, H - 112);
+
+    return canvas;
+  }
+
+  function cardFileName(typeId) {
+    return '\uD06C\uB9AC\uC2A4\uB9C8\uC2A4-\uC120\uBB3C\uD0C0\uC785-' + (TYPES[typeId] ? TYPES[typeId].name.replace(/\s+/g, '') : typeId) + '.png';
+  }
+
+  function downloadCard() {
+    if (!state.typeId) { return; }
+    var canvas;
+    try {
+      canvas = buildCard(state.typeId);
+    } catch (e) {
+      toast('카드를 만들지 못했어요. 잠시 후 다시 시도해 주세요.');
+      return;
+    }
+    state.lastCard = canvas;
+    saveCanvas(canvas, cardFileName(state.typeId), '결과 카드를 저장했어요 🎄 인스타 스토리에 올려보세요!');
+  }
+
+  function saveCanvas(canvas, filename, okMsg) {
+    if (!canvas || !canvas.toBlob) { toast('이미지 저장에 실패했어요. 미리보기에서 길게 눌러 저장해 주세요.'); return; }
+    canvas.toBlob(function (blob) {
+      if (!blob) { toast('이미지 저장에 실패했어요. 미리보기에서 길게 눌러 저장해 주세요.'); return; }
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function () { URL.revokeObjectURL(url); }, 5000);
+      toast(okMsg || '이미지를 저장했어요 🎄');
+    }, 'image/png');
+  }
+
+  /* 위시 카드 (1080×1920) — 링크 공유를 1순위로 두고, 이미지가 필요한 사람만 */
+  function buildWishCard(data) {
+    var W = 1080, H = 1920;
+    var canvas = document.createElement('canvas');
+    canvas.width = W;
+    canvas.height = H;
+    var ctx = canvas.getContext('2d');
+    var nick = (data && data.n) || '익명';
+    var title = wishGiftTitle(data);
+    var gift = data && data.g ? giftById(data.g) : null;
+    var goal = Number((data && data.a) || 0);
+
+    var bg = ctx.createLinearGradient(0, 0, W * 0.6, H);
+    bg.addColorStop(0, '#15382A');
+    bg.addColorStop(0.45, '#0F291E');
+    bg.addColorStop(1, '#08190F');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    var glow = ctx.createRadialGradient(W / 2, H * 0.26, 20, W / 2, H * 0.26, W * 0.95);
+    glow.addColorStop(0, 'rgba(212,175,55,0.20)');
+    glow.addColorStop(0.45, 'rgba(212,175,55,0.06)');
+    glow.addColorStop(1, 'rgba(212,175,55,0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    var rand = mulberry32(4099);
+    for (var i = 0; i < 80; i += 1) {
+      var sx = rand() * W;
+      var sy = rand() * H;
+      var r = 1 + rand() * 3.2;
+      ctx.beginPath();
+      ctx.arc(sx, sy, r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.08 + rand() * 0.45).toFixed(3) + ')';
+      ctx.fill();
+    }
+
+    ctx.strokeStyle = 'rgba(212,175,55,0.55)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(46, 46, W - 92, H - 92);
+    ctx.strokeStyle = 'rgba(212,175,55,0.18)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(64, 64, W - 128, H - 128);
+
+    drawSpaced(ctx, '2026 CHRISTMAS WISH', W / 2, 178, '700 27px ' + SANS, 'rgba(212,175,55,0.95)', 7);
+    ctx.textAlign = 'center';
+    setFont(ctx, '600', 24, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.5)';
+    ctx.fillText('선물 펀딩 초대장', W / 2, 226);
+
+    // 닉네임
+    var nickSize = 58;
+    setFont(ctx, '700', nickSize, SERIF);
+    while (ctx.measureText(nick + ' 님의').width > W - 220 && nickSize > 34) {
+      nickSize -= 2;
+      setFont(ctx, '700', nickSize, SERIF);
+    }
+    ctx.fillStyle = '#FFF9EE';
+    ctx.fillText(nick + ' 님의', W / 2, 392);
+    ctx.fillStyle = 'rgba(212,175,55,0.95)';
+    ctx.fillText('크리스마스 위시', W / 2, 468);
+
+    // 선물 카드
+    var bx = 110, by = 552, bw = W - 220, bh = 250;
+    roundRect(ctx, bx, by, bw, bh, 26);
+    ctx.fillStyle = 'rgba(250,245,235,0.06)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(212,175,55,0.45)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.textAlign = 'left';
+    setFont(ctx, '800', 22, SANS);
+    ctx.fillStyle = 'rgba(212,175,55,0.9)';
+    ctx.fillText('받고 싶은 선물', bx + 34, by + 58);
+
+    var nameSize = 44;
+    setFont(ctx, '700', nameSize, SANS);
+    var nameLines = wrapLines(ctx, title, bw - 68);
+    while (nameLines.length > 2 && nameSize > 26) {
+      nameSize -= 4;
+      setFont(ctx, '700', nameSize, SANS);
+      nameLines = wrapLines(ctx, title, bw - 68);
+    }
+    ctx.fillStyle = '#FFF9EE';
+    var ny = by + 118;
+    nameLines.forEach(function (ln) {
+      ctx.fillText(ln, bx + 34, ny);
+      ny += nameSize + 12;
+    });
+
+    setFont(ctx, '600', 22, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.55)';
+    ctx.fillText((gift && !(data && data.cn)) ? gift.p : '가격은 쿠팡에서 확인', bx + 34, by + bh - 30);
+
+    // 한마디
+    if (data && data.m) {
+      var qx = 110, qy = 856, qw = W - 220;
+      setFont(ctx, '700', 34, SANS);
+      var mLines = wrapLines(ctx, data.m, qw - 64).slice(0, 4);
+      var qh = 100 + mLines.length * 48;
+      roundRect(ctx, qx, qy, qw, qh, 22);
+      ctx.fillStyle = 'rgba(250,245,235,0.04)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(250,245,235,0.14)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.textAlign = 'left';
+      setFont(ctx, '800', 19, SANS);
+      ctx.fillStyle = 'rgba(212,175,55,0.85)';
+      ctx.fillText('MY WISH', qx + 34, qy + 50);
+      setFont(ctx, '700', 34, SANS);
+      ctx.fillStyle = 'rgba(250,245,235,0.92)';
+      var ly = qy + 104;
+      mLines.forEach(function (ln) {
+        ctx.fillText(ln, qx + 34, ly);
+        ly += 48;
+      });
+    }
+
+    // 목표 금액
+    ctx.textAlign = 'center';
+    var gy = (data && data.m) ? qy + qh + 100 : 1010;
+    if (goal > 0) {
+      setFont(ctx, '700', 30, SANS);
+      ctx.fillStyle = 'rgba(212,175,55,0.95)';
+      ctx.fillText('목표 금액 ' + goal.toLocaleString('ko-KR') + '원', W / 2, gy);
+      gy += 66;
+    }
+
+    setFont(ctx, '800', 40, SANS);
+    ctx.fillStyle = '#FFF9EE';
+    ctx.fillText('5천원부터 보태줄 수 있어요', W / 2, gy + 20);
+
+    // 주소 · 고지 (해시에 담긴 위시 데이터는 빼고 사이트 주소만)
+    var link = currentWishUrl().replace(/^https?:\/\//, '').split('#')[0];
+    if (link.length > 46) { link = link.slice(0, 44) + '…'; }
+    setFont(ctx, '700', 22, SANS);
+    ctx.fillStyle = 'rgba(212,175,55,0.9)';
+    ctx.fillText(link + '  ·  위시 링크에서 확인', W / 2, H - 300);
+
+    setFont(ctx, '700', 26, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.85)';
+    ctx.fillText("SANTA'S GIFT LAB · 2026", W / 2, H - 226);
+
+    setFont(ctx, '500', 17, SANS);
+    ctx.fillStyle = 'rgba(250,245,235,0.42)';
+    ctx.fillText('쿠팡 파트너스 활동의 일환으로 일정액의 수수료를 받을 수 있습니다.', W / 2, H - 160);
+
+    return canvas;
+  }
+
+  function openWishCard() {
+    var data = state.viewWishData || state.lastWishData;
+    if (!data) { return; }
+    var canvas;
+    try {
+      canvas = buildWishCard(data);
+    } catch (e) {
+      toast('카드를 만들지 못했어요. 잠시 후 다시 시도해 주세요.');
+      return;
+    }
+    state.pendingCard = { canvas: canvas, name: '크리스마스-위시-' + String(data.n || '친구').replace(/[\\/:*?"<>|]/g, '') + '.png' };
+    $('modalImg').src = canvas.toDataURL('image/png');
+    $('modal').classList.add('open');
+  }
+
+  function openPreview() {
+    if (!state.typeId) { return; }
+    var canvas = buildCard(state.typeId);
+    state.lastCard = canvas;
+    $('modalImg').src = canvas.toDataURL('image/png');
+    $('modal').classList.add('open');
+  }
+
+  /* =======================================================================
+     9) 공유
+     ======================================================================= */
+
+  function shareUrl(typeId) {
+    var base = SITE_URL;
+    if (!base) {
+      if (location.protocol === 'http:' || location.protocol === 'https:') {
+        base = location.origin + location.pathname;
+      } else {
+        base = 'https://santa-gift-lab.example/';
+      }
+    }
+    if (base.indexOf('#') !== -1) { base = base.split('#')[0]; }
+    return base + (typeId ? '#r=' + typeId : '');
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.top = '-1000px';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copyText(text) {
+    return new Promise(function (resolve) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { resolve(true); }, function () {
+          resolve(legacyCopy(text));
+        });
+      } else {
+        resolve(legacyCopy(text));
+      }
+    });
+  }
+
+  function shareResult() {
+    var t = TYPES[state.typeId] || TYPES.HOME;
+    doShare({
+      title: '2026 크리스마스, 산타가 내게 줄 선물 타입은?',
+      text: '내 크리스마스 선물 타입은 "' + t.name + '" ' + t.emoji + '\n너는 뭐야? 5문항이면 끝 🎄',
+      url: shareUrl(state.typeId)
+    });
+  }
+
+  // 웹 공유 시트(인스타·카톡이 그대로 뜸) → 안 되면 링크 복사
+  function doShare(payload, copyToast) {
+    var fallbackText = payload.text + '\n' + payload.url;
+    var copyFallback = function () {
+      copyText(fallbackText).then(function (ok) {
+        toast(ok ? (copyToast || '링크 복사 완료! 인스타 스토리 링크 스티커나 단톡방에 바로 붙여넣으세요 🎄')
+                 : '링크 복사가 안 됐어요. 주소창을 복사해 주세요.');
+      });
+    };
+    if (navigator.share) {
+      var p;
+      try {
+        p = navigator.share({ title: payload.title, text: payload.text, url: payload.url });
+      } catch (e) {
+        copyFallback();
+        return;
+      }
+      if (p && typeof p.then === 'function') {
+        p.then(function () { /* 공유 완료 */ }, function (err) {
+          if (err && err.name === 'AbortError') { return; }
+          copyFallback();
+        });
+      }
+      return;
+    }
+    copyFallback();
+  }
+
+  /* =======================================================================
+     9.5) 위시 펀딩 (URL 해시 #wish=… 로 서버 없이 공유)
+     ======================================================================= */
+
+  function b64UrlEncode(str) {
+    return btoa(unescape(encodeURIComponent(str)))
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  }
+
+  function b64UrlDecode(str) {
+    var s = String(str).replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) { s += '='; }
+    return decodeURIComponent(escape(atob(s)));
+  }
+
+  function giftById(id) {
+    if (!id) { return null; }
+    var hit = GIFTS.filter(function (g) { return g.id === id; })[0];
+    return hit || null;
+  }
+
+  function wishGiftTitle(data) {
+    if (!data) { return '크리스마스 선물'; }
+    if (data.cn) { return data.cn; }
+    var g = giftById(data.g);
+    return g ? g.n : '크리스마스 선물';
+  }
+
+  // 친구 화면의 메인 상품 버튼은 항상 PARTNERS_LINKS를 거칩니다(내 파트너스 귀속 유지).
+  function wishPartnerUrl(data) {
+    var g = data && data.g ? giftById(data.g) : null;
+    if (g) { return coupangUrl(g); }
+    return searchUrl(wishGiftTitle(data));
+  }
+
+  function wishPageUrl(data) {
+    return shareUrl(null).replace(/#.*$/, '') + '#wish=' + b64UrlEncode(JSON.stringify(data));
+  }
+
+  function currentWishUrl() {
+    if (state.lastWishUrl) { return state.lastWishUrl; }
+    if ((location.hash || '').indexOf('#wish=') === 0) {
+      return location.origin + location.pathname + location.hash;
+    }
+    if (state.viewWishData) { return wishPageUrl(state.viewWishData); }
+    return shareUrl(null);
+  }
+
+  function wishShareText(data) {
+    var nick = (data && data.n) || '친구';
+    var goal = Number((data && data.a) || 0);
+    var t = nick + ' 님이 크리스마스 선물 펀딩을 열었어요 🎁\n"' + wishGiftTitle(data) + '"';
+    if (goal > 0) { t += ' · 목표 ' + goal.toLocaleString('ko-KR') + '원'; }
+    t += '\n5천원부터 보태줄 수 있어요. 링크 눌러서 확인해줘!';
+    return t;
+  }
+
+  function setWishMode(mode) {
+    state.wishMode = mode === 'custom' ? 'custom' : 'curated';
+    var chips = $('giftModeChips');
+    if (chips) {
+      chips.innerHTML = '';
+      chips.appendChild(chip('🎄 추천 선물 그대로', state.wishMode === 'curated', function () { setWishMode('curated'); }));
+      chips.appendChild(chip('✍️ 직접 입력', state.wishMode === 'custom', function () { setWishMode('custom'); }));
+    }
+    var curated = $('paneCurated');
+    if (curated) { curated.hidden = state.wishMode !== 'curated'; curated.style.display = state.wishMode === 'curated' ? '' : 'none'; }
+    var custom = $('paneCustom');
+    if (custom) { custom.hidden = state.wishMode !== 'custom'; custom.style.display = state.wishMode === 'custom' ? '' : 'none'; }
+    var line = $('wishmakeGiftLine');
+    if (line && state.wishGift) {
+      line.textContent = state.wishMode === 'custom'
+        ? '직접 입력한 선물 이름으로 펀딩 링크를 만들어요. 쿠팡 링크는 넣어도 되고 안 넣어도 돼요.'
+        : state.wishGift.e + ' ' + shortGiftName(state.wishGift) + ' · ' + state.wishGift.p;
+    }
+  }
+
+  function openWishMake(gift) {
+    if (!gift) { return; }
+    state.wishGift = gift;
+    $('wishmakeGiftLine').textContent = gift.e + ' ' + shortGiftName(gift) + ' · ' + gift.p;
+    $('curatedEmoji').textContent = gift.e;
+    $('curatedName').textContent = gift.n;
+    $('curatedPrice').textContent = gift.p;
+    if (!parseInt($('wishGoal').value, 10)) { $('wishGoal').value = String(gift.pv); }
+    setWishMode('curated');
+    show('wishmake');
+    try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
+  }
+
+  function wishDataFromForm() {
+    var gift = state.wishGift;
+    var mode = state.wishMode === 'custom' ? 'custom' : 'curated';
+    if (mode === 'curated' && !gift) { toast('받고 싶은 선물을 먼저 골라주세요.'); return null; }
+
+    var nick = ($('wishNick').value || '').trim().slice(0, 12);
+    if (!nick) { toast('닉네임을 한 글자만 적어주세요!'); $('wishNick').focus(); return null; }
+
+    var customName = '';
+    var customUrl = '';
+    if (mode === 'custom') {
+      customName = ($('customGiftName').value || '').trim().replace(/\s+/g, ' ').slice(0, 40);
+      if (!customName) { toast('받고 싶은 선물 이름을 적어주세요!'); $('customGiftName').focus(); return null; }
+      customUrl = ($('customCoupangUrl').value || '').trim().slice(0, 500);
+      if (customUrl && !/^https?:\/\//i.test(customUrl)) {
+        toast('상품 링크는 https:// 로 시작해야 해요.'); $('customCoupangUrl').focus(); return null;
+      }
+      if (customUrl && !isCoupangLink(customUrl)) {
+        toast('쿠팡 상품 링크(coupang.com)만 붙여넣을 수 있어요. 다른 상품은 이름만 적어주세요.'); $('customCoupangUrl').focus(); return null;
+      }
+    }
+
+    var link = ($('wishLink').value || '').trim();
+    if (link && !/^https:\/\//i.test(link)) { toast('송금 링크는 https:// 로 시작해야 해요.'); $('wishLink').focus(); return null; }
+
+    var goal = parseInt($('wishGoal').value, 10);
+    if (!isFinite(goal) || goal < 0) { goal = 0; }
+    if (!goal && mode === 'curated' && gift) { goal = gift.pv; }
+
+    var data = { v: 2, n: nick, m: ($('wishMsg').value || '').trim().slice(0, 80), a: goal };
+    if (mode === 'custom') {
+      data.cn = customName;
+      if (customUrl) { data.cu = customUrl; }
+    } else {
+      data.g = gift.id;
+    }
+    if (link) { data.l = link; }
+    return data;
+  }
+
+  function buildWishLink() {
+    var data = wishDataFromForm();
+    if (!data) { return; }
+    var url = wishPageUrl(data);
+    state.lastWishUrl = url;
+    state.lastWishData = data;
+    renderWish(data);
+    doShare({
+      title: (data.n || '친구') + ' 님의 2026 크리스마스 위시 🎁',
+      text: wishShareText(data),
+      url: url
+    }, '펀딩 링크가 복사됐어요! 인스타 스토리 링크 스티커나 단톡방에 붙여넣으세요 🎄');
+  }
+
+  function shareWish() {
+    var data = state.viewWishData || state.lastWishData;
+    if (!data) { return; }
+    doShare({
+      title: (data.n || '친구') + ' 님의 2026 크리스마스 위시 🎁',
+      text: wishShareText(data),
+      url: currentWishUrl()
+    });
+  }
+
+  function renderWish(data) {
+    var gift = data.g ? giftById(data.g) : null;
+    var nick = data.n || '익명';
+    var title = wishGiftTitle(data);
+    state.viewWishData = data;
+
+    $('wGiftEmoji').textContent = gift ? gift.e : '🎁';
+    $('wTitle').textContent = nick + ' 님의 2026 크리스마스 위시 🎁';
+    $('wGiftName').textContent = title;
+    $('wGiftPrice').textContent = (gift && !data.cn) ? gift.p : '가격은 쿠팡에서 확인';
+    $('wMsg').innerHTML = '<b>MY WISH</b>' + escapeHtml(data.m || '');
+
+    var goal = Number(data.a || 0);
+    $('wGoal').textContent = goal > 0 ? '목표 금액 ' + goal.toLocaleString('ko-KR') + '원' : '';
+
+    // 1) 메인 상품 버튼 — 항상 파트너스 링크(딥링크 → 검색 폴백)
+    var giftBtn = $('wBtnGift');
+    giftBtn.href = wishPartnerUrl(data);
+    giftBtn.setAttribute('aria-label', title + ' 쿠팡에서 선물 가격·상세 확인하기');
+
+    // 2) 올린 사람이 붙여넣은 상품 링크가 있으면 보조 버튼으로 그대로 살립니다.
+    var customBtn = $('wBtnCustom');
+    if (data.cu && isCoupangLink(data.cu)) {
+      customBtn.href = affUrl(data.cu);
+      customBtn.style.display = '';
+      customBtn.hidden = false;
+    } else {
+      customBtn.style.display = 'none';
+      customBtn.hidden = true;
+    }
+
+    var pay = $('wBtnPay');
+    if (data.l) {
+      pay.style.display = '';
+      pay.href = data.l;
+      pay.textContent = '💸 ' + nick + '에게 선물 보태주기';
+    } else {
+      pay.style.display = 'none';
+    }
+
+    show('wish');
+    // 지금 보고 있는 위시를 주소에도 남깁니다(새로고침·주소창 복사해도 그대로).
+    var hash = '#wish=' + b64UrlEncode(JSON.stringify(data));
+    if (location.hash !== hash) {
+      try { history.replaceState(null, '', location.pathname + location.search + hash); } catch (e) { /* noop */ }
+    }
+    try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
+  }
+
+  /* =======================================================================
+     10) 친구가 보낸 결과 (#r=TYPE) · 위시 (#wish=…)
+     ======================================================================= */
+
+  function renderFriend(typeId) {
+    var t = TYPES[typeId];
+    if (!t) { return false; }
+    $('fEmoji').textContent = t.emoji;
+    $('fName').textContent = t.name;
+    $('fTagline').textContent = t.tagline;
+    $('fDesc').textContent = t.desc;
+    var best = TYPES[t.best], worst = TYPES[t.worst];
+    $('fBestEmoji').textContent = best.emoji;
+    $('fBestName').textContent = best.name;
+    $('fWorstEmoji').textContent = worst.emoji;
+    $('fWorstName').textContent = worst.name;
+    $('friendGifts').innerHTML = picksForType(typeId, 3).map(giftCardHtml).join('');
+    show('friend');
+    return true;
+  }
+
+  function handleHash() {
+    var w = (location.hash || '').match(/^#wish=([A-Za-z0-9\-_]+)$/);
+    if (w) {
+      try {
+        var data = JSON.parse(b64UrlDecode(w[1]));
+        if (data && (data.g || data.cn)) { renderWish(data); return true; }
+      } catch (e) { /* 잘못된 링크면 홈으로 */ }
+    }
+    var m = (location.hash || '').match(/^#r=([A-Z]+)$/);
+    if (m && TYPES[m[1]]) {
+      renderFriend(m[1]);
+      return true;
+    }
+    return false;
+  }
+
+  /* =======================================================================
+     11) 기타: 눈, D-day, 광고, 이벤트 연결
+     ======================================================================= */
+
+  function initSnow() {
+    var layer = $('snowLayer');
+    if (!layer) { return; }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { return; }
+    var count = 30;
+    for (var i = 0; i < count; i += 1) {
+      var s = document.createElement('span');
+      var size = (1.6 + Math.random() * 3.6).toFixed(1);
+      s.className = 'flake';
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = (Math.random() * 100).toFixed(2) + '%';
+      s.style.setProperty('--drift', ((Math.random() * 90) - 45).toFixed(0) + 'px');
+      s.style.setProperty('--o', (0.18 + Math.random() * 0.45).toFixed(2));
+      s.style.animationDuration = (9 + Math.random() * 13).toFixed(1) + 's';
+      s.style.animationDelay = (-Math.random() * 20).toFixed(1) + 's';
+      layer.appendChild(s);
+    }
+  }
+
+  function initDday() {
+    var el = $('dday');
+    if (!el) { return; }
+    var now = new Date();
+    var xmas = new Date(now.getFullYear(), 11, 25, 0, 0, 0);
+    var diff = Math.ceil((xmas - now) / 86400000);
+    if (diff > 0) {
+      el.textContent = 'D-' + diff;
+    } else if (diff === 0) {
+      el.textContent = 'D-DAY';
+    } else {
+      var next = new Date(now.getFullYear() + 1, 11, 25);
+      el.textContent = 'D-' + Math.ceil((next - now) / 86400000);
+    }
+  }
+
+  function initAds() {
+    var slots = document.querySelectorAll('[data-ad]');
+    Array.prototype.forEach.call(slots, function (el) {
+      if (AD_CONFIG.adfit && AD_CONFIG.adfit.unitId) {
+        el.innerHTML = '';
+        var ins = document.createElement('ins');
+        ins.className = 'kakao_ad_area';
+        ins.style.display = 'none';
+        ins.setAttribute('data-ad-unit', AD_CONFIG.adfit.unitId);
+        ins.setAttribute('data-ad-width', '320');
+        ins.setAttribute('data-ad-height', '100');
+        var sc = document.createElement('script');
+        sc.async = true;
+        sc.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+        el.appendChild(ins);
+        el.appendChild(sc);
+      } else if (AD_CONFIG.adsense && AD_CONFIG.adsense.client && AD_CONFIG.adsense.slot) {
+        el.innerHTML = '';
+        var ins2 = document.createElement('ins');
+        ins2.className = 'adsbygoogle';
+        ins2.style.display = 'block';
+        ins2.setAttribute('data-ad-client', AD_CONFIG.adsense.client);
+        ins2.setAttribute('data-ad-slot', AD_CONFIG.adsense.slot);
+        ins2.setAttribute('data-ad-format', 'auto');
+        ins2.setAttribute('data-full-width-responsive', 'true');
+        el.appendChild(ins2);
+        var sc2 = document.createElement('script');
+        sc2.async = true;
+        sc2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(AD_CONFIG.adsense.client);
+        sc2.crossOrigin = 'anonymous';
+        el.appendChild(sc2);
+        if (window.adsbygoogle && window.adsbygoogle.push) {
+          window.adsbygoogle.push({});
+        }
+      }
+    });
+  }
+
+  function bind() {
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest ? e.target.closest('[data-go]') : null;
+      if (el) {
+        e.preventDefault();
+        go(el.getAttribute('data-go'));
+        return;
+      }
+      var wb = e.target.closest ? e.target.closest('[data-wish]') : null;
+      if (wb) {
+        var gid = wb.getAttribute('data-wish');
+        var wg = GIFTS.filter(function (g) { return g.id === gid; })[0];
+        openWishMake(wg);
+        return;
+      }
+      if (e.target.closest && e.target.closest('[data-close-modal]')) {
+        $('modal').classList.remove('open');
+        state.pendingCard = null;
+      }
+    });
+
+    $('btnBack').addEventListener('click', function () {
+      if (state.idx > 0) {
+        state.idx -= 1;
+        renderQuestion();
+      } else {
+        show('home');
+      }
+    });
+    $('btnStory').addEventListener('click', downloadCard);
+    $('btnShare').addEventListener('click', shareResult);
+    $('btnRestart').addEventListener('click', startQuiz);
+    $('btnWishTop').addEventListener('click', function () {
+      openWishMake(picksForType(state.typeId, 4)[0]);
+    });
+    $('btnWishCreate').addEventListener('click', buildWishLink);
+    $('wBtnCopy').addEventListener('click', shareWish);
+    $('wBtnCard').addEventListener('click', openWishCard);
+    $('wBtnStart').addEventListener('click', function () {
+      try { history.replaceState(null, '', location.pathname + location.search); } catch (err) { location.hash = ''; }
+      show('home');
+    });
+    $('btnMine').addEventListener('click', function () {
+      if (location.hash) {
+        try { history.replaceState(null, '', location.pathname + location.search); } catch (err) { location.hash = ''; }
+      }
+      startQuiz();
+    });
+    $('btnModalSave').addEventListener('click', function () {
+      if (state.pendingCard) { saveCanvas(state.pendingCard.canvas, state.pendingCard.name); return; }
+      downloadCard();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { $('modal').classList.remove('open'); }
+    });
+
+    window.addEventListener('hashchange', function () {
+      if (!handleHash()) { show('home'); }
+    });
+  }
+
+  function init() {
+    initSnow();
+    initDday();
+    initAds();
+    renderHomeTeaser();
+    renderFilters();
+    renderGifts();
+    bind();
+    if (!handleHash()) { show('home'); }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // 테스트/디버그용 (페이지에는 영향 없음)
+  window.__CHRISTMAS_TEST__ = {
+    types: TYPES, questions: QUESTIONS, gifts: GIFTS, axisMap: AXIS_MAP, partners: PARTNERS_LINKS,
+    computeType: computeType, buildCard: buildCard, buildWishCard: buildWishCard, state: state,
+    b64UrlEncode: b64UrlEncode, b64UrlDecode: b64UrlDecode,
+    coupangUrl: coupangUrl, searchUrl: searchUrl, affUrl: affUrl,
+    wishPageUrl: wishPageUrl, wishPartnerUrl: wishPartnerUrl, wishGiftTitle: wishGiftTitle
+  };
+})();
+</script>
+</body>
+</html>

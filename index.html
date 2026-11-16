@@ -527,6 +527,15 @@
     .opt{ animation:none; }
   }
 </style>
+
+<!-- Google 애널리틱스(GA4) — santa-2026 웹 스트림 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WHKZ3YFJY9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-WHKZ3YFJY9');
+</script>
 </head>
 <body>
 <div class="snow" id="snowLayer" aria-hidden="true"></div>
@@ -1068,6 +1077,15 @@
      ======================================================================= */
 
   var state = { idx: 0, answers: [], locked: false, typeId: null, budget: 'all', target: 'all', lastCard: null, wishMode: 'curated', viewWishData: null, pendingCard: null };
+
+  /* --- GA4 이벤트 헬퍼 ---------------------------------------------------
+     애널리틱스가 차단/미설치된 환경에서도 사이트 동작에는 영향이 없도록
+     gtag 존재 여부를 확인한 뒤에만 이벤트를 보냅니다. */
+  function track(name, params) {
+    try {
+      if (typeof window.gtag === 'function') { window.gtag('event', name, params || {}); }
+    } catch (e) { /* noop */ }
+  }
   var SANS = "'Pretendard Variable', Pretendard, 'Noto Sans KR', 'Noto Sans CJK KR', sans-serif";
   var SERIF = "'Gowun Batang', 'Noto Serif CJK KR', 'Apple SD Gothic Neo', serif";
 
@@ -1181,6 +1199,11 @@
   function finishQuiz() {
     var id = computeType(state.answers);
     state.typeId = id;
+    track('quiz_complete', {
+      gift_type: id,
+      gift_type_name: (TYPES[id] || {}).name || id,
+      question_count: QUESTIONS.length
+    });
     renderResult(id, true);
     show('result');
   }
@@ -1209,6 +1232,7 @@
               '<button class="gift-wish" type="button" data-wish="' + item.id + '" ' +
                 'aria-label="' + escapeHtml(item.n) + ' 선물 펀딩 링크 만들기">조르기 🎁</button>' +
               '<a class="gift-cta" href="' + coupangUrl(item) + '" target="_blank" rel="noopener sponsored nofollow" ' +
+                'data-gift-id="' + escapeHtml(item.id) + '" data-gift-name="' + escapeHtml(item.n) + '" ' +
                 'aria-label="' + escapeHtml(item.n) + ' 선물 보러가기">선물 보러가기 →</a>' +
             '</span>' +
           '</div>' +
@@ -1324,6 +1348,8 @@
       if (topGift) {
         cta.style.display = '';
         cta.href = coupangUrl(topGift);
+        cta.setAttribute('data-gift-id', topGift.id);
+        cta.setAttribute('data-gift-name', topGift.n);
         cta.setAttribute('aria-label', topGift.n + ' 내 선물 확인하기');
         $('coupangCtaLabel').textContent = '🎁 내 선물 확인하기 →';
       } else {
@@ -2155,6 +2181,8 @@
     // 1) 메인 상품 버튼 — 항상 파트너스 링크(딥링크 → 검색 폴백)
     var giftBtn = $('wBtnGift');
     giftBtn.href = wishPartnerUrl(data);
+    giftBtn.setAttribute('data-gift-id', gift ? gift.id : '');
+    giftBtn.setAttribute('data-gift-name', title);
     giftBtn.setAttribute('aria-label', title + ' 위시 선물 확인하기');
 
     // 2) 올린 사람이 붙여넣은 상품 링크가 있으면 보조 버튼으로 그대로 살립니다.
@@ -2302,6 +2330,21 @@
   }
 
   function bind() {
+    // GA4: 쿠팡 파트너스 링크 클릭 추적 (결과 카드·상단 CTA·위시 화면 모두 커버)
+    document.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a) { return; }
+      var href = a.getAttribute('href') || '';
+      if (!/coupang\.com|coupa\.ng/i.test(href)) { return; }
+      var active = document.querySelector('.screen.active');
+      track('coupang_click', {
+        link_url: href,
+        gift_id: a.getAttribute('data-gift-id') || '',
+        gift_name: a.getAttribute('data-gift-name') || '',
+        screen_id: active ? active.id.replace('screen-', '') : ''
+      });
+    });
+
     document.addEventListener('click', function (e) {
       var el = e.target.closest ? e.target.closest('[data-go]') : null;
       if (el) {

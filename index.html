@@ -27,6 +27,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://thumbnail.coupangcdn.com" />
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 
@@ -139,10 +140,17 @@
   .topbar .top-actions{ display:flex; align-items:center; gap:7px; }
   .topbar .mini-btn{
     font-size:11.5px; font-weight:700; color:var(--forest);
-    border:1px solid rgba(15,41,30,.16); border-radius:999px; padding:7px 12px;
+    border:1px solid rgba(15,41,30,.16); border-radius:999px; padding:12px 12px;
     background:rgba(255,255,255,.6); cursor:pointer; transition:.2s;
   }
   .topbar .mini-btn:hover{ background:#fff; border-color:rgba(15,41,30,.3); }
+  /* 360px 이하 소형폰: 상단바가 넘치지 않게 패딩을 줄이고 '홈' 글자는 화살표만 남깁니다. */
+  @media (max-width:360px){
+    .topbar{ padding:14px 12px 10px; }
+    .topbar .top-actions{ gap:5px; }
+    .topbar .mini-btn{ padding:12px 9px; font-size:11px; }
+    .topbar .mini-btn .lbl{ display:none; }
+  }
 
   /* ---------- typography ---------- */
   .eyebrow{
@@ -246,8 +254,10 @@
   .teaser-card{
     display:flex; align-items:center; gap:9px; padding:11px 12px; border-radius:14px;
     background:rgba(255,255,255,.55); border:1px solid rgba(15,41,30,.07);
-    font-size:12px; color:#33473C; font-weight:600;
+    font-size:12px; color:#33473C; font-weight:600; cursor:pointer;
   }
+  .teaser-card:hover{ border-color:rgba(185,28,28,.32); }
+  .teaser-card:focus-visible{ outline:2px solid rgba(212,175,55,.6); outline-offset:2px; }
   .teaser-card span.e{ font-size:15px; }
 
   /* ---------- quiz ---------- */
@@ -381,7 +391,7 @@
   .chips{ display:flex; flex-wrap:wrap; gap:7px; }
   .chip{
     border:1px solid rgba(15,41,30,.12); background:rgba(255,255,255,.7); color:#3C5146;
-    padding:8px 13px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer;
+    padding:12px 15px; border-radius:999px; font-size:12px; font-weight:700; cursor:pointer;
     font-family:var(--sans); transition:.18s; letter-spacing:-.01em;
   }
   .chip:hover{ background:#fff; border-color:rgba(15,41,30,.28); }
@@ -424,7 +434,7 @@
   .tag.grey{ color:#75857A; background:rgba(15,41,30,.05); border-color:rgba(15,41,30,.08); }
   .gift-cta{
     flex:0 0 auto; font-size:11px; font-weight:800; color:#FFF6E8; text-decoration:none;
-    background:linear-gradient(180deg,#C42323,#A91717); padding:7px 11px; border-radius:999px;
+    background:linear-gradient(180deg,#C42323,#A91717); padding:12px 14px; border-radius:999px;
     transition:.18s; white-space:nowrap;
   }
   .gift-cta:hover{ filter:brightness(1.06); }
@@ -495,7 +505,7 @@
   .gift-act{ display:flex; align-items:center; gap:6px; flex:0 0 auto; }
   .gift-wish{
     font-size:11px; font-weight:800; color:#8A6A12; background:rgba(212,175,55,.14);
-    border:1px solid rgba(212,175,55,.3); padding:7px 11px; border-radius:999px; cursor:pointer;
+    border:1px solid rgba(212,175,55,.3); padding:12px 14px; border-radius:999px; cursor:pointer;
     white-space:nowrap; font-family:var(--sans); transition:.18s;
   }
   .gift-wish:hover{ background:rgba(212,175,55,.26); }
@@ -505,7 +515,7 @@
   .field .opt-label{ font-weight:600; color:#93A296; font-size:10px; }
   .field input, .field textarea{
     width:100%; box-sizing:border-box; border:1px solid rgba(15,41,30,.16); border-radius:12px;
-    background:#fff; padding:12px 13px; font-size:13px; font-family:var(--sans); color:#1D2F25;
+    background:#fff; padding:12px 13px; font-size:16px; font-family:var(--sans); color:#1D2F25;
   }
   .field textarea{ resize:vertical; }
   .field input:focus, .field textarea:focus{ outline:2px solid rgba(212,175,55,.5); outline-offset:1px; border-color:rgba(212,175,55,.6); }
@@ -560,7 +570,7 @@
   }
   .curated-card .cz-name{ margin:0; font-size:13px; font-weight:800; color:#1D2F25; line-height:1.45; }
   .curated-card .cz-note{ margin:4px 0 0; font-size:10.5px; line-height:1.55; color:#7C8C81; }
-  .mode-chips .chip{ font-size:11.5px; padding:8px 12px; }
+  .mode-chips .chip{ font-size:11.5px; padding:12px 14px; }
   .w-disclosure{
     margin:12px 0 0; padding:9px 11px; border-radius:10px; text-align:left;
     font-size:10px; line-height:1.6; color:rgba(250,245,235,.62);
@@ -594,6 +604,11 @@
   @keyframes bob{ from{ transform:translateY(0) } to{ transform:translateY(-9px) } }
   .an-text{ font-family:var(--serif); font-size:17px; font-weight:700; color:var(--forest); margin:0; line-height:1.5; }
   .an-sub{ font-size:12px; color:#98A79D; margin:0; }
+  .an-skip{
+    margin-top:2px; background:none; border:0; color:#98A79D; font-size:12px; font-weight:700;
+    cursor:pointer; font-family:var(--sans); padding:10px 14px;
+  }
+  .an-skip:hover{ color:var(--forest); }
   .an-dots span{ width:7px; height:7px; border-radius:50%; background:var(--gold); display:inline-block; margin:0 3px; animation:blink 1s infinite; }
   .an-dots span:nth-child(2){ animation-delay:.2s; }
   .an-dots span:nth-child(3){ animation-delay:.4s; }
@@ -607,6 +622,15 @@
 
   /* 타입 픽 배지 */
   .tag.pick{ color:#FFF6E8; background:var(--crimson); border-color:var(--crimson); }
+
+  /* 인앱 브라우저 안내 (카톡·인스타 앱 안에서만 표시) */
+  .inapp-note{
+    margin:12px 0 0; padding:10px 12px; border-radius:10px; text-align:left;
+    font-size:11.5px; line-height:1.6; color:#5C4A10;
+    background:rgba(212,175,55,.14); border:1px solid rgba(212,175,55,.35);
+  }
+  /* 선물 목록 맨 위로 버튼 */
+  .to-top-wrap{ padding:18px 22px 0; text-align:center; }
 
   @media (prefers-reduced-motion: reduce){
     .snow{ display:none; }
@@ -690,7 +714,7 @@
   <header class="topbar" id="topbar">
     <button class="brand" type="button" data-go="home" aria-label="홈으로 가기"><span class="dot"></span>SANTA'S GIFT LAB</button>
     <span class="top-actions">
-      <button class="mini-btn" type="button" data-go="home">← 홈</button>
+      <button class="mini-btn" type="button" data-go="home"><span aria-hidden="true">←</span> <span class="lbl">홈</span></button>
       <button class="mini-btn" type="button" data-go="gift">선물 고르기 🎁</button>
     </span>
   </header>
@@ -720,6 +744,7 @@
           </button>
           <p class="micro">가입 없이 1분 · 결과는 스토리·단톡방 링크로 바로 공유</p>
           <button class="btn btn-ghost" type="button" data-go="gift">선물만 바로 고르기 🎁</button>
+          <button class="btn btn-ghost" type="button" id="btnLastType" hidden>🎄 내 타입 다시 보기</button>
         </div>
 
         <div class="ad-slot" data-ad="home">
@@ -805,6 +830,7 @@
         <p class="an-text" id="analyzingText">답변을 모으는 중…</p>
         <p class="an-sub">산타가 당신의 12월을 들여다보고 있어요</p>
         <div class="an-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button class="an-skip" type="button" id="btnSkipAnalyzing">건너뛰기 →</button>
       </div>
     </div>
   </section>
@@ -813,6 +839,7 @@
   <section id="screen-result" class="screen">
     <div class="result-hero">
       <div class="result-inner">
+        <p class="inapp-note" id="inappNoteResult" hidden>💡 카톡·인스타 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
         <p class="r-eyebrow" id="rEyebrow">당신의 크리스마스 선물 타입</p>
         <div class="r-emoji" id="rEmoji">🎄</div>
         <h2 class="r-name" id="rName">타입</h2>
@@ -854,7 +881,7 @@
     <section class="gift-strip">
       <h3>이 타입이 좋아할 선물 <span class="hint">예산대별로 골랐어요</span></h3>
       <div class="result-gifts" id="resultGifts"></div>
-      <button class="btn btn-ghost" type="button" data-go="gift">선물 전체 보기 →</button>
+      <button class="btn btn-ghost" type="button" id="btnAllGifts">선물 전체 보기 →</button>
     </section>
 
     <div class="ad-slot" data-ad="result">
@@ -889,10 +916,20 @@
         <span class="filter-label">받는 사람</span>
         <div class="chips" id="targetChips" role="group" aria-label="대상 필터"></div>
       </div>
+      <div class="filter-row">
+        <span class="filter-label">타입</span>
+        <div class="chips" id="typeChips" role="group" aria-label="타입 필터"></div>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">정렬</span>
+        <div class="chips" id="sortChips" role="group" aria-label="정렬"></div>
+      </div>
     </div>
 
     <p class="count" id="giftCount"></p>
     <div class="gift-list" id="giftList"></div>
+
+    <div class="to-top-wrap"><button class="btn btn-ghost btn-sm" type="button" id="btnToTop">맨 위로 ↑</button></div>
 
     <div class="ad-slot" data-ad="gift">
       <span class="ad-label">ADVERTISEMENT</span>
@@ -915,7 +952,7 @@
     </div>
     <div class="wish-form">
       <div class="field">
-        <label for="wishNick">내 닉네임</label>
+        <label for="wishNick">내 닉네임 <span class="opt-label">선택 · 비워두면 '친구'로 표시돼요</span></label>
         <input id="wishNick" type="text" maxlength="12" placeholder="예) 우렬" />
       </div>
       <div class="field">
@@ -973,6 +1010,7 @@
   <section id="screen-wish" class="screen">
     <div class="result-hero">
       <div class="result-inner">
+        <p class="inapp-note" id="inappNoteWish" hidden>💡 카톡·인스타 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
         <p class="r-eyebrow">2026 크리스마스 위시 🎁</p>
         <div class="r-emoji" id="wGiftEmoji">🎁</div>
         <h2 class="r-name" id="wTitle">크리스마스 위시</h2>
@@ -989,7 +1027,7 @@
             <input id="receivedInput" type="number" inputmode="numeric" min="0" step="1000" placeholder="0" style="flex:1;min-width:0;" />
             <button class="btn btn-gold" type="button" id="wBtnReceived" style="flex:0 0 auto;padding:10px 14px;">저장</button>
           </div>
-          <p class="field-note" style="color:rgba(250,245,235,.55);">이 기기에만 저장돼요. 친구가 보탠 뒤 받은 금액을 직접 적어두면 위시 페이지에 표시돼요.</p>
+          <p class="field-note" style="color:rgba(250,245,235,.55);">이 기기에만 저장돼요. 친구가 보탠 뒤 받은 금액을 직접 적어두면 위시 페이지에 표시돼요. 이 칸은 위시를 만든 사람만 쓰는 거예요.</p>
         </div>
         <div class="r-actions">
           <a class="btn btn-gold" id="wBtnGift" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">🎁 위시 선물 확인하기</a>
@@ -1041,7 +1079,7 @@
     <section class="gift-strip">
       <h3>이 타입에게 줄 만한 선물</h3>
       <div class="result-gifts" id="friendGifts"></div>
-      <button class="btn btn-ghost" type="button" data-go="gift">선물 전체 보기 →</button>
+      <button class="btn btn-ghost" type="button" id="btnAllGiftsFriend">선물 전체 보기 →</button>
     </section>
   </section>
 
@@ -1300,48 +1338,54 @@
   ];
   var TARGET_LABEL = { me: '나에게', lover: '연인', friend: '친구/동료', parents: '부모님' };
 
+  var SORTS = [
+    { id: 'default', label: '기본 순서' },
+    { id: 'asc', label: '낮은 가격순' },
+    { id: 'desc', label: '높은 가격순' }
+  ];
+
   // 선물 큐레이션 (b: 예산대, t: 대상, y: 어울리는 타입, kw: 쿠팡 검색어, img: 검증된 상품 이미지 URL — 비워두면 이모지 표시)
   var GIFTS = [
-    { id: 'bangsho', e: '🍷', n: '더진한BE 뱅쇼', p: '17,100원~', pv: 17100, b: 'u20', t: ['me', 'friend', 'lover'], y: ['HOME', 'SMALL'], why: '테이블에 올리면 그 자리가 바로 12월', kw: '더진한BE 뱅쇼', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/images/7a2e0064-567c-4599-ba4a-c132d6cad75f16712655928476424383.png' },
-    { id: 'candle', e: '🕯️', n: '우드윅 라지 향초 + 호른 캔들워머 세트', p: '71,900원~', pv: 71900, b: 'midhigh', t: ['me', 'lover'], y: ['HOME', 'LUXE'], why: '불 끄고 켜면 방이 크리스마스', kw: '우드윅 라지 향초 캔들워머 세트', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/5d4f59e251fe7b0633c799e6ab3ca10b0f29b5c51f504a71b61304b5b2a4_1782894727467.jpg' },
-    { id: 'blanket', e: '🛏️', n: '더자리 마이블랭킷 극세사 담요', p: '3,990원~', pv: 3990, b: 'u20', t: ['me', 'friend', 'lover', 'parents'], y: ['HOME', 'SMART'], why: '한 번 쓰면 못 버티는 겨울 필수템', kw: '더자리 극세사 담요' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/43339569452138-1d0cac65-917c-4658-896b-2c78139f7ecf.jpg' },
-    { id: 'minitree', e: '🎄', n: '연필트리 크리스마스트리 + LED 전구 장식', p: '24,430원~', pv: 24430, b: 'mid', t: ['friend', 'lover'], y: ['SMALL', 'SURPRISE'], why: '작은 공간에도 트리 분위기 제대로', kw: '연필트리 크리스마스트리', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/rs_quotation_api/6lxlq4r1/01c753c4edca460ea16b1c5f17575fdb.jpg' },
-    { id: 'tea', e: '🍵', n: '카렐차펙 홍차 틴케이스 세트', p: '33,800원~', pv: 33800, b: 'mid', t: ['friend', 'lover', 'parents'], y: ['SMALL', 'HOME'], why: '매일 다른 향으로 12월 보내기', kw: '카렐차펙 홍차 틴케이스' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/e281/c903-4eb7-4d9c-8eb6-a4a1ad3bd5ee.jpg' },
-    { id: 'handcream', e: '🧴', n: '카밀 미니 핸드크림 3종 세트', p: '11,800원~', pv: 11800, b: 'u20', t: ['me', 'friend', 'parents'], y: ['SMALL', 'SMART'], why: '겨울 손에는 언제나 정답', kw: '카밀 미니 핸드크림 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/11/07/14/7/3ba6c25f-e0b3-47cf-b3d3-a2b9d9ee7fa6.jpg' },
-    { id: 'diary', e: '📔', n: '러빗띵스 다이어리 스티커 세트', p: '9,690원~', pv: 9690, b: 'u20', t: ['friend', 'me'], y: ['SMALL', 'SMART'], why: '다이어리를 꾸미는 재미', kw: '러빗띵스 다이어리' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/35e4/1b3e-2c9f-400e-9d4e-5a4f5f9d2c7a.jpg' },
-    { id: 'filmprint', e: '🖼️', n: '벨라민 미니 포토앨범', p: '8,890원~', pv: 8890, b: 'u20', t: ['lover', 'friend'], y: ['FILM', 'SMALL'], why: '돈보다 마음이 크게 보이는 선물', kw: '벨라민 미니 포토앨범' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/11/14/10/8/6afb3fd2-7d15-49dc-955d-6f2f10f4eec3.jpg' },
-    { id: 'ornament', e: '✨', n: '루시아이 크리스마스 오너먼트 50p 세트', p: '33,560원~', pv: 33560, b: 'mid', t: ['friend', 'lover'], y: ['LUXE', 'SURPRISE', 'PARTY'], why: '트리 없어도 분위기 완성', kw: '루시아이 크리스마스 오너먼트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/0b4e/2a5d-e4bc-4424-b3ad-63bb5f0c5fb2.jpg' },
-    { id: 'projector', e: '🌌', n: 'SUNMUSK 별하늘 프로젝터', p: '39,800원~', pv: 39800, b: 'mid', t: ['me', 'lover'], y: ['HOME', 'FILM'], why: '불 끄고 누우면 천장이 은하수', kw: 'SUNMUSK 별 프로젝터' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/4ba0/9e50-9daa-4f1a-8e04-b4a1da3c39ec.jpg' },
-    { id: 'socks', e: '🧦', n: '크리스마스 양말 5종 선물세트', p: '13,900원~', pv: 13900, b: 'u20', t: ['friend'], y: ['PARTY', 'SURPRISE'], why: '실패 없는 단체 선물의 정답', kw: '크리스마스 양말 선물세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/37e5/2ab7-4d1a-43ee-9ac2-0bdfc6fcdd6f.jpg' },
+    { id: 'bangsho', e: '🍷', n: '더진한BE 뱅쇼', p: '17,100원~', pv: 17100, b: 'u20', t: ['me', 'friend', 'lover'], y: ['HOME', 'SMALL'], why: '테이블에 올리면 그 자리가 바로 12월', kw: '더진한BE 뱅쇼', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/images/7a2e0064-567c-4599-ba4a-c132d6cad75f16712655928476424383.png' },
+    { id: 'candle', e: '🕯️', n: '우드윅 라지 향초 + 호른 캔들워머 세트', p: '71,900원~', pv: 71900, b: 'midhigh', t: ['me', 'lover'], y: ['HOME', 'LUXE'], why: '불 끄고 켜면 방이 크리스마스', kw: '우드윅 라지 향초 캔들워머 세트', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/image_audit/stage/manual/5d4f59e251fe7b0633c799e6ab3ca10b0f29b5c51f504a71b61304b5b2a4_1782894727467.jpg' },
+    { id: 'blanket', e: '🛏️', n: '더자리 마이블랭킷 극세사 담요', p: '3,990원~', pv: 3990, b: 'u20', t: ['me', 'friend', 'lover', 'parents'], y: ['HOME', 'SMART'], why: '한 번 쓰면 못 버티는 겨울 필수템', kw: '더자리 극세사 담요' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/43339569452138-1d0cac65-917c-4658-896b-2c78139f7ecf.jpg' },
+    { id: 'minitree', e: '🎄', n: '연필트리 크리스마스트리 + LED 전구 장식', p: '24,430원~', pv: 24430, b: 'mid', t: ['friend', 'lover'], y: ['SMALL', 'SURPRISE'], why: '작은 공간에도 트리 분위기 제대로', kw: '연필트리 크리스마스트리', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/rs_quotation_api/6lxlq4r1/01c753c4edca460ea16b1c5f17575fdb.jpg' },
+    { id: 'tea', e: '🍵', n: '카렐차펙 홍차 틴케이스 세트', p: '33,800원~', pv: 33800, b: 'mid', t: ['friend', 'lover', 'parents'], y: ['SMALL', 'HOME'], why: '매일 다른 향으로 12월 보내기', kw: '카렐차펙 홍차 틴케이스' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/image_audit/stage/manual/e281/c903-4eb7-4d9c-8eb6-a4a1ad3bd5ee.jpg' },
+    { id: 'handcream', e: '🧴', n: '카밀 미니 핸드크림 3종 세트', p: '11,800원~', pv: 11800, b: 'u20', t: ['me', 'friend', 'parents'], y: ['SMALL', 'SMART'], why: '겨울 손에는 언제나 정답', kw: '카밀 미니 핸드크림 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2025/11/07/14/7/3ba6c25f-e0b3-47cf-b3d3-a2b9d9ee7fa6.jpg' },
+    { id: 'diary', e: '📔', n: '러빗띵스 다이어리 스티커 세트', p: '9,690원~', pv: 9690, b: 'u20', t: ['friend', 'me'], y: ['SMALL', 'SMART'], why: '다이어리를 꾸미는 재미', kw: '러빗띵스 다이어리' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/35e4/1b3e-2c9f-400e-9d4e-5a4f5f9d2c7a.jpg' },
+    { id: 'filmprint', e: '🖼️', n: '벨라민 미니 포토앨범', p: '8,890원~', pv: 8890, b: 'u20', t: ['lover', 'friend'], y: ['FILM', 'SMALL'], why: '돈보다 마음이 크게 보이는 선물', kw: '벨라민 미니 포토앨범' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2025/11/14/10/8/6afb3fd2-7d15-49dc-955d-6f2f10f4eec3.jpg' },
+    { id: 'ornament', e: '✨', n: '루시아이 크리스마스 오너먼트 50p 세트', p: '33,560원~', pv: 33560, b: 'mid', t: ['friend', 'lover'], y: ['LUXE', 'SURPRISE', 'PARTY'], why: '트리 없어도 분위기 완성', kw: '루시아이 크리스마스 오너먼트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/0b4e/2a5d-e4bc-4424-b3ad-63bb5f0c5fb2.jpg' },
+    { id: 'projector', e: '🌌', n: 'SUNMUSK 별하늘 프로젝터', p: '39,800원~', pv: 39800, b: 'mid', t: ['me', 'lover'], y: ['HOME', 'FILM'], why: '불 끄고 누우면 천장이 은하수', kw: 'SUNMUSK 별 프로젝터' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/4ba0/9e50-9daa-4f1a-8e04-b4a1da3c39ec.jpg' },
+    { id: 'socks', e: '🧦', n: '크리스마스 양말 5종 선물세트', p: '13,900원~', pv: 13900, b: 'u20', t: ['friend'], y: ['PARTY', 'SURPRISE'], why: '실패 없는 단체 선물의 정답', kw: '크리스마스 양말 선물세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/37e5/2ab7-4d1a-43ee-9ac2-0bdfc6fcdd6f.jpg' },
 
-    { id: 'tumbler', e: '☕', n: '스탠리 퀜처 프로투어 플립스트로 텀블러', p: '38,400원~', pv: 38400, b: 'mid', t: ['lover', 'friend'], y: ['SMART', 'HOME'], why: '출근길이 5분은 따뜻해집니다', kw: '스탠리 퀜처 텀블러', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/975050457425344-62af8b2b-ba08-46f7-8a91-a7c86f8ac5f9.jpg' },
-    { id: 'perfume5', e: '🌸', n: '오르덴 향수 디스커버리 5종 세트', p: '12,900원~', pv: 12900, b: 'u20', t: ['me', 'lover'], y: ['LUXE', 'FILM'], why: '취향 테스트 겸 선물', kw: '오르덴 향수 디스커버리 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/07/28/14/6/3e6e2dd4-7b1a-4e3e-bf2b-ee0f40b4aea2.jpg' },
-    { id: 'cake', e: '🎂', n: '돌체이탈리아 티라미수 케이크 (냉동)', p: '9,990원~', pv: 9990, b: 'u20', t: ['lover', 'friend'], y: ['PARTY', 'HOME', 'SURPRISE'], why: '사진 잘 나오는 케이크가 반', kw: '티라미수 케이크', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/144464254117042-c724de3b-3356-475f-b125-0be81c28a705.jpg' },
-    { id: 'speaker', e: '🔊', n: 'PIUJJA 미니 블루투스 스피커', p: '20,800원~', pv: 20800, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'FLEX'], why: '캐럴 틀면 분위기 담당', kw: 'PIUJJA 미니 스피커' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/5fa0/06b9-42f0-4883-ae1e-bbe1a9a36c10.jpg' },
-    { id: 'muffler', e: '🧣', n: '알파픽 캐시미어 머플러', p: '24,900원~', pv: 24900, b: 'mid', t: ['lover', 'me', 'parents'], y: ['LUXE', 'SMART'], why: '목도리 하나로 겨울이 달라짐', kw: '알파픽 캐시미어 머플러' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/d6a9/8f04-7f5d-48bb-9ef7-6bdcccbad7a9.jpg' },
-    { id: 'instaxfilm', e: '📸', n: '후지 인스탁스 미니필름 5팩', p: '64,500원~', pv: 64500, b: 'midhigh', t: ['lover', 'friend'], y: ['FILM'], why: '찍는 사람에겐 필름이 제일 실용적', kw: '인스탁스 미니필름 5팩' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/05/14/14/6/2e2d9b45-0f0e-44e9-a4b3-bf8aa04d4e3d.jpg' },
-    { id: 'beauty', e: '💄', n: '록시땅 핸드크림·립밤 선물 세트', p: '32,400원~', pv: 32400, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'SMALL'], why: '포장만 봐도 기분 좋아지는 세트', kw: '록시땅 핸드크림 립밤 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/11/19/09/0/7ac7cfd3-8c66-42d5-8a08-4f2d3cb6dc25.jpg' },
-    { id: 'wineglass', e: '🥂', n: '벨레노 크리스탈 와인잔 2P 세트', p: '44,900원~', pv: 44900, b: 'mid', t: ['lover', 'friend'], y: ['HOME', 'PARTY'], why: '집 데이트가 바로 바(bar)', kw: '벨레노 와인잔 2P' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/6a3e/f0ec-3a6e-421f-81db-6ddb6f0f0eef.jpg' },
-    { id: 'lego', e: '🧱', n: '레고 프렌즈 크리스마스 캘린더', p: '3,900원~', pv: 3900, b: 'u20', t: ['friend', 'lover'], y: ['SURPRISE', 'FILM'], why: '매일 하나씩 여는 12월의 재미', kw: '레고 프렌즈 크리스마스 캘린더' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2022/08/29/10/3/4d1bb2a7-0a52-4f3c-bd9c-0b6e1b3f2ee4.jpg' },
-    { id: 'cushion', e: '🛋️', n: '인룸 쿠션 마카롱 매트세트', p: '26,200원~', pv: 26200, b: 'mid', t: ['me', 'lover', 'parents'], y: ['HOME', 'SMALL'], why: '집이 호텔이 되는 마법', kw: '인룸 쿠션 매트세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/dcba/2c85-46c2-4b6d-bbb6-94ba2b6c4e3f.jpg' },
-    { id: 'puzzle', e: '🧩', n: '비엔퍼즐 겨울 풍경 1000피스 퍼즐', p: '19,000원~', pv: 19000, b: 'u20', t: ['friend', 'me'], y: ['SMART', 'SMALL'], why: '12월 밤을 조용히 채우는 취미', kw: '비엔퍼즐 겨울 풍경 퍼즐' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2023/02/06/10/5/8d7a5c31-80c0-4e5f-a8c2-1ac5e4ac8b1e.jpg' },
+    { id: 'tumbler', e: '☕', n: '스탠리 퀜처 프로투어 플립스트로 텀블러', p: '38,400원~', pv: 38400, b: 'mid', t: ['lover', 'friend'], y: ['SMART', 'HOME'], why: '출근길이 5분은 따뜻해집니다', kw: '스탠리 퀜처 텀블러', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/975050457425344-62af8b2b-ba08-46f7-8a91-a7c86f8ac5f9.jpg' },
+    { id: 'perfume5', e: '🌸', n: '오르덴 향수 디스커버리 5종 세트', p: '12,900원~', pv: 12900, b: 'u20', t: ['me', 'lover'], y: ['LUXE', 'FILM'], why: '취향 테스트 겸 선물', kw: '오르덴 향수 디스커버리 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2025/07/28/14/6/3e6e2dd4-7b1a-4e3e-bf2b-ee0f40b4aea2.jpg' },
+    { id: 'cake', e: '🎂', n: '돌체이탈리아 티라미수 케이크 (냉동)', p: '9,990원~', pv: 9990, b: 'u20', t: ['lover', 'friend'], y: ['PARTY', 'HOME', 'SURPRISE'], why: '사진 잘 나오는 케이크가 반', kw: '티라미수 케이크', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/144464254117042-c724de3b-3356-475f-b125-0be81c28a705.jpg' },
+    { id: 'speaker', e: '🔊', n: 'PIUJJA 미니 블루투스 스피커', p: '20,800원~', pv: 20800, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'FLEX'], why: '캐럴 틀면 분위기 담당', kw: 'PIUJJA 미니 스피커' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/5fa0/06b9-42f0-4883-ae1e-bbe1a9a36c10.jpg' },
+    { id: 'muffler', e: '🧣', n: '알파픽 캐시미어 머플러', p: '24,900원~', pv: 24900, b: 'mid', t: ['lover', 'me', 'parents'], y: ['LUXE', 'SMART'], why: '목도리 하나로 겨울이 달라짐', kw: '알파픽 캐시미어 머플러' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/d6a9/8f04-7f5d-48bb-9ef7-6bdcccbad7a9.jpg' },
+    { id: 'instaxfilm', e: '📸', n: '후지 인스탁스 미니필름 5팩', p: '64,500원~', pv: 64500, b: 'midhigh', t: ['lover', 'friend'], y: ['FILM'], why: '찍는 사람에겐 필름이 제일 실용적', kw: '인스탁스 미니필름 5팩' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2025/05/14/14/6/2e2d9b45-0f0e-44e9-a4b3-bf8aa04d4e3d.jpg' },
+    { id: 'beauty', e: '💄', n: '록시땅 핸드크림·립밤 선물 세트', p: '32,400원~', pv: 32400, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'SMALL'], why: '포장만 봐도 기분 좋아지는 세트', kw: '록시땅 핸드크림 립밤 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2025/11/19/09/0/7ac7cfd3-8c66-42d5-8a08-4f2d3cb6dc25.jpg' },
+    { id: 'wineglass', e: '🥂', n: '벨레노 크리스탈 와인잔 2P 세트', p: '44,900원~', pv: 44900, b: 'mid', t: ['lover', 'friend'], y: ['HOME', 'PARTY'], why: '집 데이트가 바로 바(bar)', kw: '벨레노 와인잔 2P' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/6a3e/f0ec-3a6e-421f-81db-6ddb6f0f0eef.jpg' },
+    { id: 'lego', e: '🧱', n: '레고 프렌즈 크리스마스 캘린더', p: '3,900원~', pv: 3900, b: 'u20', t: ['friend', 'lover'], y: ['SURPRISE', 'FILM'], why: '매일 하나씩 여는 12월의 재미', kw: '레고 프렌즈 크리스마스 캘린더' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2022/08/29/10/3/4d1bb2a7-0a52-4f3c-bd9c-0b6e1b3f2ee4.jpg' },
+    { id: 'cushion', e: '🛋️', n: '인룸 쿠션 마카롱 매트세트', p: '26,200원~', pv: 26200, b: 'mid', t: ['me', 'lover', 'parents'], y: ['HOME', 'SMALL'], why: '집이 호텔이 되는 마법', kw: '인룸 쿠션 매트세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/dcba/2c85-46c2-4b6d-bbb6-94ba2b6c4e3f.jpg' },
+    { id: 'puzzle', e: '🧩', n: '비엔퍼즐 겨울 풍경 1000피스 퍼즐', p: '19,000원~', pv: 19000, b: 'u20', t: ['friend', 'me'], y: ['SMART', 'SMALL'], why: '12월 밤을 조용히 채우는 취미', kw: '비엔퍼즐 겨울 풍경 퍼즐' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2023/02/06/10/5/8d7a5c31-80c0-4e5f-a8c2-1ac5e4ac8b1e.jpg' },
 
-    { id: 'headphones', e: '🎧', n: 'Apple 2026 에어팟 맥스 2 노이즈 캔슬링 블루투스 헤드폰', p: '691,490원~', pv: 691490, b: 'high', t: ['me', 'lover', 'friend'], y: ['FLEX', 'PARTY'], why: '한 번 쓰면 못 돌아가는 선물', kw: '에어팟 맥스 2', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2026/03/17/11/8/1eacf92b-8a1f-445a-9e18-7bdb666cbb89.jpg' },
-    { id: 'instax', e: '📷', n: '폴라로이드 고 3세대', p: '152,170원~', pv: 152170, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '찍어서 바로 주는 재미', kw: '폴라로이드 고 3세대', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2026/08/12/10/6/b99ebe3e-721d-4cfd-b575-ae19ca9328b4.jpg' },
-    { id: 'perfume50', e: '🌹', n: '캘빈클라인뷰티 CK BE 오드뚜왈렛 100ml', p: '22,950원~', pv: 22950, b: 'mid', t: ['lover', 'me'], y: ['LUXE'], why: '클래식한 향을 부담 없는 가격에 — 첫 향수 선물에 딱', kw: 'CK BE 오드뚜왈렛', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/09/23/14/7/96d9da47-c5cf-4de3-8155-92c872593d66.jpg' },
-    { id: 'smartwatch', e: '⌚', n: '샤오미 레드미 스마트워치 6', p: '139,600원~', pv: 139600, b: 'high', t: ['me', 'friend'], y: ['SMART', 'FLEX'], why: '"건강 챙겨"라는 말보다 낫습니다', kw: '샤오미 레드미 스마트워치 6' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/40a1/8d18-58cb-43e5-b5f6-79a6b9ddf1d1.jpg' },
+    { id: 'headphones', e: '🎧', n: 'Apple 2026 에어팟 맥스 2 노이즈 캔슬링 블루투스 헤드폰', p: '691,490원~', pv: 691490, b: 'high', t: ['me', 'lover', 'friend'], y: ['FLEX', 'PARTY'], why: '한 번 쓰면 못 돌아가는 선물', kw: '에어팟 맥스 2', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2026/03/17/11/8/1eacf92b-8a1f-445a-9e18-7bdb666cbb89.jpg' },
+    { id: 'instax', e: '📷', n: '폴라로이드 고 3세대', p: '152,170원~', pv: 152170, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '찍어서 바로 주는 재미', kw: '폴라로이드 고 3세대', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2026/08/12/10/6/b99ebe3e-721d-4cfd-b575-ae19ca9328b4.jpg' },
+    { id: 'perfume50', e: '🌹', n: '캘빈클라인뷰티 CK BE 오드뚜왈렛 100ml', p: '22,950원~', pv: 22950, b: 'mid', t: ['lover', 'me'], y: ['LUXE'], why: '클래식한 향을 부담 없는 가격에 — 첫 향수 선물에 딱', kw: 'CK BE 오드뚜왈렛', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2025/09/23/14/7/96d9da47-c5cf-4de3-8155-92c872593d66.jpg' },
+    { id: 'smartwatch', e: '⌚', n: '샤오미 레드미 스마트워치 6', p: '139,600원~', pv: 139600, b: 'high', t: ['me', 'friend'], y: ['SMART', 'FLEX'], why: '"건강 챙겨"라는 말보다 낫습니다', kw: '샤오미 레드미 스마트워치 6' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/40a1/8d18-58cb-43e5-b5f6-79a6b9ddf1d1.jpg' },
     { id: 'hotel', e: '🏨', n: '노보텔 동대문 뷔페 1인 식사권', p: '108,000원~', pv: 108000, b: 'high', t: ['lover'], y: ['LUXE', 'PARTY'], why: '물건이 아니라 하루를 주는 선물', kw: '노보텔 동대문 뷔페 식사권' , img: '' },
-    { id: 'cashmere', e: '🧥', n: '아티드 캐시미어 100 니트', p: '158,770원~', pv: 158770, b: 'high', t: ['lover', 'me', 'parents'], y: ['LUXE', 'HOME'], why: '입는 순간 온도가 다릅니다', kw: '아티드 캐시미어 니트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/9dc8/34f6-4cb3-4d3b-ae9e-25b3ca6ba1f8.jpg' },
-    { id: 'airfryer', e: '🍳', n: '쿠첸 에어프라이어 5L', p: '55,190원~', pv: 55190, b: 'midhigh', t: ['friend', 'me', 'parents'], y: ['SMART', 'HOME'], why: '실용템의 끝판왕', kw: '쿠첸 에어프라이어 5L' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2023/04/25/12/8/5d5d8cde-7d94-47a5-98f1-97a9d8ddad22.jpg' },
-    { id: 'padding', e: '🧥', n: '마인드브릿지 경량 다운점퍼', p: '129,000원~', pv: 129000, b: 'high', t: ['me', 'lover'], y: ['SMART', 'FLEX'], why: '겨울 외투는 선물로 제일 실용적', kw: '마인드브릿지 경량 다운점퍼' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/8e1a/b31c-83e1-44bd-802c-9b8faa8f5a3b.jpg' },
-    { id: 'filmcam', e: '🎞️', n: '코닥 하프 필름카메라 H35 세트', p: '93,450원~', pv: 93450, b: 'midhigh', t: ['lover', 'friend'], y: ['FILM'], why: '감성의 정석', kw: '코닥 하프 필름카메라 H35', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/1dbf2368be00f724cad0e8386498d6b08bc6a25ad36d930686591cc64e9f_1767061034094.jpg' }
+    { id: 'cashmere', e: '🧥', n: '아티드 캐시미어 100 니트', p: '158,770원~', pv: 158770, b: 'high', t: ['lover', 'me', 'parents'], y: ['LUXE', 'HOME'], why: '입는 순간 온도가 다릅니다', kw: '아티드 캐시미어 니트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/image_audit/stage/manual/9dc8/34f6-4cb3-4d3b-ae9e-25b3ca6ba1f8.jpg' },
+    { id: 'airfryer', e: '🍳', n: '쿠첸 에어프라이어 5L', p: '55,190원~', pv: 55190, b: 'midhigh', t: ['friend', 'me', 'parents'], y: ['SMART', 'HOME'], why: '실용템의 끝판왕', kw: '쿠첸 에어프라이어 5L' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/retail/images/2023/04/25/12/8/5d5d8cde-7d94-47a5-98f1-97a9d8ddad22.jpg' },
+    { id: 'padding', e: '🧥', n: '마인드브릿지 경량 다운점퍼', p: '129,000원~', pv: 129000, b: 'high', t: ['me', 'lover'], y: ['SMART', 'FLEX'], why: '겨울 외투는 선물로 제일 실용적', kw: '마인드브릿지 경량 다운점퍼' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/8e1a/b31c-83e1-44bd-802c-9b8faa8f5a3b.jpg' },
+    { id: 'filmcam', e: '🎞️', n: '코닥 하프 필름카메라 H35 세트', p: '93,450원~', pv: 93450, b: 'midhigh', t: ['lover', 'friend'], y: ['FILM'], why: '감성의 정석', kw: '코닥 하프 필름카메라 H35', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/200x200ex/image/vendor_inventory/image_audit/stage/manual/1dbf2368be00f724cad0e8386498d6b08bc6a25ad36d930686591cc64e9f_1767061034094.jpg' }
   ];
 
   /* =======================================================================
      3) 상태 · 유틸
      ======================================================================= */
 
-  var state = { idx: 0, answers: [], locked: false, typeId: null, budget: 'all', target: 'all', lastCard: null, wishMode: 'curated', viewWishData: null, pendingCard: null };
+  var state = { idx: 0, answers: [], locked: false, typeId: null, budget: 'all', target: 'all', type: 'all', sort: 'default', lastCard: null, wishMode: 'curated', viewWishData: null, pendingCard: null };
 
   /* --- GA4 이벤트 헬퍼 ---------------------------------------------------
      애널리틱스가 차단/미설치된 환경에서도 사이트 동작에는 영향이 없도록
@@ -1385,13 +1429,73 @@
     });
     var bar = $('topbar');
     if (bar) { bar.style.display = (name === 'quiz') ? 'none' : 'flex'; }
+    if (name === 'home') { refreshLastTypeBtn(); }
     try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
   }
 
   function go(name) {
     if (name === 'quiz') { startQuiz(); return; }
-    if (name === 'gift') { state.budget = 'all'; state.target = 'all'; renderGifts(); show('gift'); return; }
+    if (name === 'gift') {
+      // 이미 선물 화면에 있으면 골라둔 필터를 유지하고, 다른 화면에서 들어올 때만 초기화합니다.
+      var active = document.querySelector('.screen.active');
+      var onGift = active && active.id === 'screen-gift';
+      if (!onGift) { state.budget = 'all'; state.target = 'all'; state.type = 'all'; state.sort = 'default'; }
+      renderGifts(); show('gift'); return;
+    }
     show(name);
+  }
+
+  // 결과·친구 화면의 "선물 전체 보기": 해당 타입으로 필터된 선물 화면으로 갑니다.
+  function goGiftWithType(typeId) {
+    state.budget = 'all'; state.target = 'all';
+    state.type = (typeId && TYPES[typeId]) ? typeId : 'all';
+    state.sort = 'default';
+    renderGifts(); show('gift');
+  }
+
+  /* 선물 필터 상태: 새로고침 후에도 이어볼 수 있게 세션 스토리지에 남깁니다. */
+  var GIFT_FILTER_KEY = 'santa-gift-filters';
+  function saveGiftFilterState() {
+    try {
+      sessionStorage.setItem(GIFT_FILTER_KEY, JSON.stringify({ budget: state.budget, target: state.target, type: state.type, sort: state.sort }));
+    } catch (e) { /* noop */ }
+  }
+  function restoreGiftFilterState() {
+    var raw = null, d = null;
+    try { raw = sessionStorage.getItem(GIFT_FILTER_KEY); } catch (e) { raw = null; }
+    if (!raw) { return; }
+    try { d = JSON.parse(raw); } catch (e) { d = null; }
+    if (!d) { return; }
+    if (d.budget && (d.budget === 'all' || BUCKET_LABEL[d.budget])) { state.budget = d.budget; }
+    if (d.target && (d.target === 'all' || TARGET_LABEL[d.target])) { state.target = d.target; }
+    if (d.type && (d.type === 'all' || TYPES[d.type])) { state.type = d.type; }
+    if (d.sort === 'asc' || d.sort === 'desc' || d.sort === 'default') { state.sort = d.sort; }
+  }
+
+  /* 인앱 브라우저 감지: 카톡·인스타 앱 안에서 열었을 때만 안내를 보여줍니다. */
+  function isInAppBrowser() {
+    try { return /KAKAOTALK|Instagram/i.test(navigator.userAgent || ''); } catch (e) { return false; }
+  }
+  function refreshInAppNotes() {
+    if (!isInAppBrowser()) { return; }
+    ['inappNoteResult', 'inappNoteWish'].forEach(function (id) {
+      var el = $(id);
+      if (el) { el.hidden = false; }
+    });
+  }
+
+  /* 저장된 내 테스트 결과: 있으면 홈에 "내 타입 다시 보기" 버튼을 보여줍니다. */
+  function refreshLastTypeBtn() {
+    var btn = $('btnLastType');
+    if (!btn) { return; }
+    var id = null;
+    try { id = localStorage.getItem('santa-last-type'); } catch (e) { id = null; }
+    if (id && TYPES[id]) {
+      btn.hidden = false;
+      btn.textContent = '🎄 내 타입 다시 보기 · ' + TYPES[id].name;
+    } else {
+      btn.hidden = true;
+    }
   }
 
   /* =======================================================================
@@ -1477,6 +1581,8 @@
   function finishQuiz() {
     var id = computeType(state.answers);
     state.typeId = id;
+    // 내 결과를 이 기기에 저장해, 다음 방문 때 다시 풀지 않고 볼 수 있게 합니다.
+    try { localStorage.setItem('santa-last-type', id); } catch (e) { /* noop */ }
     track('quiz_complete', {
       gift_type: id,
       gift_type_name: (TYPES[id] || {}).name || id,
@@ -1486,7 +1592,7 @@
       gift_type: id,
       gift_type_name: (TYPES[id] || {}).name || id
     });
-    // 분석 연출: 잠깐 분석 화면을 보여준 뒤 결과로 넘어갑니다.
+    // 분석 연출: 잠깐 분석 화면을 보여준 뒤 결과로 넘어갑니다. 화면을 누르면 바로 건너뜁니다.
     var an = $('analyzing');
     if (an) {
       var qb = document.querySelector('.quiz-body');
@@ -1494,17 +1600,25 @@
       if (qb) { qb.style.display = 'none'; }
       if (foot) { foot.style.display = 'none'; }
       an.hidden = false;
-      setTimeout(function () {
-        an.hidden = true;
-        if (qb) { qb.style.display = ''; }
-        if (foot) { foot.style.display = ''; }
-        renderResult(id, true);
-        show('result');
-      }, 1400);
+      analyzingTimer = setTimeout(finishAnalyzing, 1400);
     } else {
       renderResult(id, true);
       show('result');
     }
+  }
+
+  // 분석 화면 타이머 (클릭으로 건너뛸 때 취소합니다)
+  var analyzingTimer = null;
+  function finishAnalyzing() {
+    var an = $('analyzing');
+    if (!an || an.hidden) { return; }
+    if (analyzingTimer) { clearTimeout(analyzingTimer); analyzingTimer = null; }
+    an.hidden = true;
+    var qb = document.querySelector('.quiz-body');
+    var foot = $('quizFoot');
+    if (qb) { qb.style.display = ''; }
+    if (foot) { foot.style.display = ''; }
+    if (state.typeId) { renderResult(state.typeId, true); show('result'); }
   }
 
   /* =======================================================================
@@ -1708,7 +1822,7 @@
     var box = $('homeTeaser');
     box.innerHTML = TYPE_ORDER.map(function (id) {
       var t = TYPES[id];
-      return '<div class="teaser-card"><span class="e" aria-hidden="true">' + t.emoji + '</span><span class="t-text"><span class="t-name">' + escapeHtml(t.name) + '</span><span class="t-tag">' + escapeHtml(t.tagline) + '</span></span></div>';
+      return '<div class="teaser-card" role="button" tabindex="0" data-type="' + id + '" aria-label="' + escapeHtml(t.name) + ' 결과 보기"><span class="e" aria-hidden="true">' + t.emoji + '</span><span class="t-text"><span class="t-name">' + escapeHtml(t.name) + '</span><span class="t-tag">' + escapeHtml(t.tagline) + '</span></span></div>';
     }).join('');
   }
 
@@ -1743,22 +1857,51 @@
         state.target = t.id; renderFilters(); renderGifts();
       }));
     });
+    var yc = $('typeChips');
+    if (yc) {
+      yc.innerHTML = '';
+      yc.appendChild(chip('전체', state.type === 'all', function () {
+        state.type = 'all'; renderFilters(); renderGifts();
+      }));
+      TYPE_ORDER.forEach(function (tid) {
+        yc.appendChild(chip(TYPES[tid].name, state.type === tid, function () {
+          track('filter_use', { filter: 'type', value: tid });
+          state.type = tid; renderFilters(); renderGifts();
+        }));
+      });
+    }
+    var sc = $('sortChips');
+    if (sc) {
+      sc.innerHTML = '';
+      SORTS.forEach(function (s) {
+        sc.appendChild(chip(s.label, state.sort === s.id, function () {
+          state.sort = s.id; renderFilters(); renderGifts();
+        }));
+      });
+    }
   }
 
   function filteredGifts() {
     return GIFTS.filter(function (g) {
       var okB = state.budget === 'all' || g.b === state.budget;
       var okT = state.target === 'all' || g.t.indexOf(state.target) !== -1;
-      return okB && okT;
+      var okY = state.type === 'all' || g.y.indexOf(state.type) !== -1;
+      return okB && okT && okY;
     });
   }
 
   function renderGifts() {
     renderFilters();
     var list = filteredGifts();
+    if (state.sort === 'asc') { list = list.slice().sort(function (a, b) { return a.pv - b.pv; }); }
+    else if (state.sort === 'desc') { list = list.slice().sort(function (a, b) { return b.pv - a.pv; }); }
     var label = (state.budget === 'all' ? '전체 예산' : BUCKET_LABEL[state.budget]);
     if (state.target !== 'all') { label += ' · ' + TARGET_LABEL[state.target]; }
+    if (state.type !== 'all') { label += ' · ' + TYPES[state.type].name; }
+    if (state.sort === 'asc') { label += ' · 낮은 가격순'; }
+    else if (state.sort === 'desc') { label += ' · 높은 가격순'; }
     $('giftCount').textContent = list.length + '개 상품 · ' + label;
+    saveGiftFilterState();
 
     var box = $('giftList');
     if (!list.length) {
@@ -2078,7 +2221,38 @@
       return;
     }
     state.lastCard = canvas;
-    saveCanvas(canvas, cardFileName(state.typeId), '결과 카드를 저장했어요 🎄 인스타 스토리에 올려보세요!');
+    shareCardFile(canvas, cardFileName(state.typeId));
+  }
+
+  // 결과 카드 공유: 공유 시트에 이미지 파일을 바로 넘길 수 있으면 공유하고,
+  // 안 되면 기존처럼 파일로 다운로드합니다.
+  function shareCardFile(canvas, filename) {
+    var okMsg = '결과 카드를 저장했어요 🎄 인스타 스토리에 올려보세요!';
+    if (!canvas || !canvas.toBlob) { saveCanvas(canvas, filename, okMsg); return; }
+    try {
+      if (navigator.share && navigator.canShare) {
+        canvas.toBlob(function (blob) {
+          if (!blob) { saveCanvas(canvas, filename, okMsg); return; }
+          var file = null;
+          try { file = new File([blob], filename, { type: 'image/png' }); } catch (e) { file = null; }
+          var canShareFile = false;
+          try { canShareFile = !!file && navigator.canShare({ files: [file] }); } catch (e) { canShareFile = false; }
+          if (!canShareFile) { saveCanvas(canvas, filename, okMsg); return; }
+          var p = null;
+          try { p = navigator.share({ files: [file], text: '내 크리스마스 선물 타입은? 5문항이면 끝 🎄', url: shareUrl(state.typeId) }); } catch (e) { p = null; }
+          if (p && typeof p.then === 'function') {
+            p.then(function () { toast('공유했어요 🎄'); }, function (err) {
+              if (err && err.name === 'AbortError') { return; }
+              saveCanvas(canvas, filename, okMsg);
+            });
+          } else if (!p) {
+            saveCanvas(canvas, filename, okMsg);
+          }
+        }, 'image/png');
+        return;
+      }
+    } catch (e) { /* 폴백으로 다운로드합니다 */ }
+    saveCanvas(canvas, filename, okMsg);
   }
 
   function saveCanvas(canvas, filename, okMsg) {
@@ -2343,7 +2517,7 @@
         return;
       }
       if (p && typeof p.then === 'function') {
-        p.then(function () { /* 공유 완료 */ }, function (err) {
+        p.then(function () { toast('공유했어요 🎄'); }, function (err) {
           if (err && err.name === 'AbortError') { return; }
           copyFallback();
         });
@@ -2437,7 +2611,8 @@
     $('curatedEmoji').textContent = gift.e;
     $('curatedName').textContent = gift.n;
     $('curatedPrice').textContent = gift.p;
-    if (!parseInt($('wishGoal').value, 10)) { $('wishGoal').value = String(gift.pv); }
+    // 선물을 바꾸면 목표 금액도 새 선물 가격으로 따라갑니다.
+    $('wishGoal').value = String(gift.pv);
     setWishMode('curated');
     show('wishmake');
     try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
@@ -2448,8 +2623,8 @@
     var mode = state.wishMode === 'custom' ? 'custom' : 'curated';
     if (mode === 'curated' && !gift) { toast('받고 싶은 선물을 먼저 골라주세요.'); return null; }
 
-    var nick = ($('wishNick').value || '').trim().slice(0, 12);
-    if (!nick) { toast('닉네임을 한 글자만 적어주세요!'); $('wishNick').focus(); return null; }
+    // 닉네임은 선택 입력입니다. 비워두면 '친구'로 표시합니다.
+    var nick = ($('wishNick').value || '').trim().slice(0, 12) || '친구';
 
     var customName = '';
     var customUrl = '';
@@ -2618,6 +2793,9 @@
     $('fWorstEmoji').textContent = worst.emoji;
     $('fWorstName').textContent = worst.name;
     $('friendGifts').innerHTML = picksForType(typeId, 3).map(giftCardHtml).join('');
+    // 친구 화면의 "선물 전체 보기"가 이 타입으로 필터되게 타입을 버튼에 남깁니다.
+    var fAll = $('btnAllGiftsFriend');
+    if (fAll) { fAll.setAttribute('data-type', typeId); }
     // 친구 화면에도 결과 화면과 같은 노란 쿠팡 CTA 배너를 보여줍니다.
     var fCta = $('friendCoupangCta');
     var fTop = topGiftForType(typeId);
@@ -2777,6 +2955,13 @@
         openWishMake(wg);
         return;
       }
+      // 홈 티저 카드: 누르면 해당 타입의 결과 화면으로 갑니다.
+      var tc = e.target.closest ? e.target.closest('.teaser-card') : null;
+      if (tc) {
+        var tid = tc.getAttribute('data-type');
+        if (tid && TYPES[tid]) { renderResult(tid, false); show('result'); }
+        return;
+      }
       if (e.target.closest && e.target.closest('[data-close-modal]')) {
         $('modal').classList.remove('open');
         state.pendingCard = null;
@@ -2798,6 +2983,22 @@
       // 선물은 목록에서 직접 고르게 합니다 (제일 싼 선물로 펀딩이 고정되는 문제 방지).
       go('gift');
     });
+    $('btnLastType').addEventListener('click', function () {
+      var id = null;
+      try { id = localStorage.getItem('santa-last-type'); } catch (e) { id = null; }
+      if (id && TYPES[id]) { renderResult(id, true); show('result'); }
+    });
+    $('btnAllGifts').addEventListener('click', function () { goGiftWithType(state.typeId); });
+    $('btnAllGiftsFriend').addEventListener('click', function () {
+      var tid = this.getAttribute('data-type');
+      goGiftWithType(tid && TYPES[tid] ? tid : null);
+    });
+    $('btnToTop').addEventListener('click', function () {
+      try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { try { window.scrollTo(0, 0); } catch (e2) { /* noop */ } }
+    });
+    // 분석 화면을 누르면 1.4초를 기다리지 않고 바로 결과로 갑니다.
+    var anEl = $('analyzing');
+    if (anEl) { anEl.addEventListener('click', function () { finishAnalyzing(); }); }
     $('btnWishCreate').addEventListener('click', buildWishLink);
     $('wBtnCopy').addEventListener('click', shareWish);
     $('wBtnReceived').addEventListener('click', function () {
@@ -2829,6 +3030,12 @@
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { $('modal').classList.remove('open'); }
+      // 홈 티저 카드 키보드 접근: Enter/Space로 결과 보기
+      if ((e.key === 'Enter' || e.key === ' ') && e.target && e.target.classList && e.target.classList.contains('teaser-card')) {
+        e.preventDefault();
+        var tid = e.target.getAttribute('data-type');
+        if (tid && TYPES[tid]) { renderResult(tid, false); show('result'); }
+      }
     });
 
     window.addEventListener('hashchange', function () {
@@ -2840,10 +3047,13 @@
     initSnow();
     initDday();
     initAds();
+    restoreGiftFilterState();
     renderHomeTeaser();
     renderFilters();
     renderGifts();
     bind();
+    refreshInAppNotes();
+    refreshLastTypeBtn();
     if (!handleHash()) { show('home'); }
   }
 

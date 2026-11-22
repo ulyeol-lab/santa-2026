@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ulyeol-lab.github.io/santa-2026/sitemap.xml

@@ -22,6 +22,7 @@
 <meta name="twitter:image" content="https://ulyeol-lab.github.io/santa-2026/og-image.png" />
 <meta name="twitter:image:alt" content="산타가 내게 줄 선물 타입은? 2026 크리스마스 선물 타입 테스트" />
 <meta name="theme-color" content="#0F291E" />
+<link rel="canonical" href="https://ulyeol-lab.github.io/santa-2026/" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230F291E'/%3E%3Ctext x='50' y='68' font-size='52' text-anchor='middle'%3E%F0%9F%8E%84%3C/text%3E%3C/svg%3E" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -400,12 +401,19 @@
     width:44px; height:44px; border-radius:12px; display:grid; place-items:center; font-size:21px;
     background:linear-gradient(160deg, #FBF3E2, #F1E5CE); border:1px solid rgba(212,175,55,.28);
   }
+  /* 선물 썸네일: img가 있으면 실물 사진이 이모지 위에 겹쳐 보이고,
+     사진 로드 실패 시 img가 사라지면서 아래 이모지가 그대로 보입니다. */
+  .gift-thumb{ position:relative; width:44px; height:44px; flex:0 0 auto; }
+  .gift-img{
+    position:absolute; inset:0; width:44px; height:44px; object-fit:cover; border-radius:12px;
+    border:1px solid rgba(212,175,55,.28); background:#FBF3E2;
+  }
   .gift-body{ min-width:0; }
   .gift-top{ display:flex; align-items:baseline; gap:8px; justify-content:space-between; }
   .gift-name{ font-size:13.5px; font-weight:800; color:#1D2F25; letter-spacing:-.02em; line-height:1.45; margin:0; }
   .gift-price{ flex:0 0 auto; font-size:11.5px; font-weight:800; color:var(--crimson); font-variant-numeric:tabular-nums; }
   .gift-why{ font-size:11.5px; color:#7C8C81; margin:5px 0 0; line-height:1.55; }
-  .gift-bottom{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:9px; }
+  .gift-bottom{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:9px; flex-wrap:wrap; }
   .gift-tags{ display:flex; gap:5px; flex-wrap:wrap; }
   .tag{
     font-size:9.5px; font-weight:700; letter-spacing:-.01em; color:#7A6A33;
@@ -559,10 +567,51 @@
     word-break:keep-all; overflow-wrap:break-word;
   }
 
+  /* ---------- 2차 다듬기: 결과 깊이 · 진행 연출 · 홈 티저 ---------- */
+  .r-sec-label{
+    text-align:left; margin:18px 0 6px; font-size:9.5px; font-weight:800;
+    letter-spacing:.22em; color:rgba(212,175,55,.85);
+  }
+  .r-giftwhy, .r-avoid{
+    font-size:12.5px; line-height:1.75; color:rgba(250,245,235,.86);
+    text-align:left; margin:0; letter-spacing:-.005em;
+  }
+  .r-avoid{ color:rgba(250,245,235,.72); }
+
+  /* 질문 전환 · 진행 점 */
+  .quiz-body.swap{ animation:qIn .32s cubic-bezier(.2,.8,.3,1) both; }
+  @keyframes qIn{ from{ opacity:0; transform:translateY(10px) } to{ opacity:1; transform:none } }
+  .q-dots{ display:flex; gap:6px; justify-content:center; margin-top:12px; }
+  .q-dots span{ width:8px; height:8px; border-radius:50%; background:rgba(15,41,30,.14); transition:.25s; }
+  .q-dots span.done{ background:var(--gold); }
+  .q-dots span.on{ background:var(--crimson); transform:scale(1.25); }
+
+  /* 결과 분석 연출 */
+  .analyzing{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:60px 0 40px; text-align:center; }
+  .analyzing[hidden]{ display:none; }
+  .an-emoji{ font-size:52px; animation:bob 1s ease-in-out infinite alternate; }
+  @keyframes bob{ from{ transform:translateY(0) } to{ transform:translateY(-9px) } }
+  .an-text{ font-family:var(--serif); font-size:17px; font-weight:700; color:var(--forest); margin:0; line-height:1.5; }
+  .an-sub{ font-size:12px; color:#98A79D; margin:0; }
+  .an-dots span{ width:7px; height:7px; border-radius:50%; background:var(--gold); display:inline-block; margin:0 3px; animation:blink 1s infinite; }
+  .an-dots span:nth-child(2){ animation-delay:.2s; }
+  .an-dots span:nth-child(3){ animation-delay:.4s; }
+  @keyframes blink{ 0%,100%{ opacity:.25 } 50%{ opacity:1 } }
+
+  /* 홈 티저: 태그라인까지 보이게 */
+  .teaser-card{ align-items:flex-start; }
+  .teaser-card .t-text{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+  .teaser-card .t-name{ display:block; font-size:12px; font-weight:700; color:#33473C; }
+  .teaser-card .t-tag{ display:block; font-size:10px; font-weight:500; color:#93A296; line-height:1.45; }
+
+  /* 타입 픽 배지 */
+  .tag.pick{ color:#FFF6E8; background:var(--crimson); border-color:var(--crimson); }
+
   @media (prefers-reduced-motion: reduce){
     .snow{ display:none; }
     .screen.active{ animation:none; }
     .opt{ animation:none; }
+    .quiz-body.swap, .an-emoji, .an-dots span{ animation:none; }
   }
 </style>
 
@@ -592,6 +641,41 @@
       "description": "5문항으로 알아보는 내 크리스마스 선물 타입. 결과에 맞는 크리스마스 선물 추천을 받아보세요.",
       "about": { "@type": "Thing", "name": "크리스마스 선물 추천" },
       "inLanguage": "ko"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "크리스마스 선물 추천, 예산별로 어떻게 골라요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "위 예산 가이드에서 예산대를 고르면 그 가격대 상품만 모아볼 수 있어요. 받는 사람(나에게·연인·친구/동료·부모님) 필터와 함께 쓰면 더 빨리 골라요." }
+        },
+        {
+          "@type": "Question",
+          "name": "연인 크리스마스 선물로 뭐가 좋아요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "받는 사람 필터에서 '연인'을 고르면 연인에게 어울리는 선물만 나와요. 2만원 이하에는 향수 세트, 2~5만원대에는 머플러·와인잔 세트, 5~10만원대에는 향초 세트, 10만원대 이상에는 에어팟 맥스·캐시미어 니트가 있어요." }
+        },
+        {
+          "@type": "Question",
+          "name": "5만원대 선물 추천이 있나요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "5만원대 선물은 '5~10만원대' 예산 필터에서 볼 수 있어요. 예를 들어 쿠첸 에어프라이어 5L이 55,190원이에요." }
+        },
+        {
+          "@type": "Question",
+          "name": "부모님 크리스마스 선물은 뭘로 골라요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "받는 사람 필터에서 '부모님'을 고르면 부모님께 드리기 좋은 선물이 나와요. 담요·홍차·머플러처럼 실용적인 것부터 골라보세요." }
+        },
+        {
+          "@type": "Question",
+          "name": "테스트 결과는 어떻게 공유해요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "테스트가 끝나면 결과 화면에서 '링크 바로 공유하기'를 누르면 돼요. 인스타 스토리 링크 스티커나 단톡방에 붙여넣으면 친구가 바로 내 타입을 볼 수 있어요." }
+        },
+        {
+          "@type": "Question",
+          "name": "위시 펀딩은 어떻게 받아요?",
+          "acceptedAnswer": { "@type": "Answer", "text": "받고 싶은 선물을 골라 펀딩 링크를 만들면 돼요. 토스나 카카오페이 송금 링크를 넣어두면 친구가 위시 페이지에서 '선물 보태주기' 버튼으로 바로 보탤 수 있어요." }
+        }
+      ]
     }
   ]
 }
@@ -623,14 +707,14 @@
         </div>
         <p class="eyebrow">2026 · CHRISTMAS GIFT TEST</p>
         <h1 class="title" style="margin-top:12px;">산타가 내게 줄<br /><span class="accent">선물 타입</span>은?</h1>
-        <p class="lede">5문항이면 끝. 내 크리스마스 취향을 알아내고<br />딱 맞는 선물 추천까지 받아가세요.</p>
-        <div class="dday">🎄 크리스마스까지 <b id="dday">D-39</b></div>
+        <p class="lede">5문항이면 끝. 내 크리스마스 취향을 알아내고<br />예산별 선물 추천과 위시 펀딩까지 한 번에 받아가세요.</p>
+        <div class="dday">🎄 크리스마스까지 <b id="dday">D-32</b></div>
 
         <div class="cta-block">
           <button class="btn btn-primary" type="button" data-go="quiz">
             테스트 시작하기 <span class="arrow" aria-hidden="true">→</span>
           </button>
-          <p class="micro">1분 · 결과는 스토리·단톡방 링크로 바로 공유</p>
+          <p class="micro">가입 없이 1분 · 결과는 스토리·단톡방 링크로 바로 공유</p>
           <button class="btn btn-ghost" type="button" data-go="gift">선물만 바로 고르기 🎁</button>
         </div>
 
@@ -651,9 +735,9 @@
       <p class="guide-lede">크리스마스 선물 추천, 예산만 정하면 반은 고른 거예요. 2만원 이하부터 10만원대까지, 받는 사람에 맞춰 골라보세요.</p>
       <div class="tier-list">
         <button class="tier" type="button" data-budget-go="u20"><span><b>2만원 이하</b><span>가볍게 건네기 좋은 크리스마스 선물. 친구·동료 단체 선물에 딱이에요.</span></span><span class="go" aria-hidden="true">→</span></button>
-        <button class="tier" type="button" data-budget-go="mid"><span><b>3~5만원대</b><span>연인 크리스마스 선물로 가장 많이 고르는 구간. 5만원대 선물 추천을 찾는다면 여기부터 보세요.</span></span><span class="go" aria-hidden="true">→</span></button>
-        <button class="tier" type="button" data-budget-go="midhigh"><span><b>5~10만원대</b><span>부모님 크리스마스 선물에 많이 고르는 구간이에요. 상품을 순차적으로 추가하고 있어요.</span></span><span class="go" aria-hidden="true">→</span></button>
-        <button class="tier" type="button" data-budget-go="high"><span><b>10만원대+</b><span>1년에 한 번, 제대로 주고 싶은 선물. 헤드폰·향수·스마트워치 같은 확실한 것들로 골랐어요.</span></span><span class="go" aria-hidden="true">→</span></button>
+        <button class="tier" type="button" data-budget-go="mid"><span><b>2~5만원대</b><span>연인 크리스마스 선물로 가장 많이 고르는 구간. 2~5만원대 선물이 모여 있어요.</span></span><span class="go" aria-hidden="true">→</span></button>
+        <button class="tier" type="button" data-budget-go="midhigh"><span><b>5~10만원대</b><span>부모님 크리스마스 선물에 많이 고르는 구간이에요. 향초 세트처럼 제대로 된 선물이 있어요.</span></span><span class="go" aria-hidden="true">→</span></button>
+        <button class="tier" type="button" data-budget-go="high"><span><b>10만원대+</b><span>1년에 한 번, 제대로 주고 싶은 선물. 에어팟 맥스·스마트워치 같은 확실한 것들로 골랐어요.</span></span><span class="go" aria-hidden="true">→</span></button>
       </div>
     </section>
 
@@ -665,11 +749,11 @@
       </details>
       <details>
         <summary>연인 크리스마스 선물로 뭐가 좋아요?</summary>
-        <p>받는 사람 필터에서 '연인'을 고르면 연인에게 어울리는 선물만 나와요. 3~5만원대면 캔들·향수 세트, 10만원대 이상이면 향수·스마트워치가 많이 골라져요.</p>
+        <p>받는 사람 필터에서 '연인'을 고르면 연인에게 어울리는 선물만 나와요. 2만원 이하에는 향수 세트, 2~5만원대에는 머플러·와인잔 세트, 5~10만원대에는 향초 세트, 10만원대 이상에는 에어팟 맥스·캐시미어 니트가 있어요.</p>
       </details>
       <details>
         <summary>5만원대 선물 추천이 있나요?</summary>
-        <p>네, '3~5만원대' 예산 필터에 5만원대 선물이 모여 있어요. 5~10만원대 상품은 순차적으로 추가하고 있으니, 지금은 3~5만원대와 10만원대+를 먼저 둘러보세요.</p>
+        <p>5만원대 선물은 '5~10만원대' 예산 필터에서 볼 수 있어요. 예를 들어 쿠첸 에어프라이어 5L이 55,190원이에요.</p>
       </details>
       <details>
         <summary>부모님 크리스마스 선물은 뭘로 골라요?</summary>
@@ -702,6 +786,7 @@
         </div>
         <span class="progress-num" id="progressNum">1 / 5</span>
       </div>
+      <div class="q-dots" id="qDots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
 
       <div class="quiz-body">
         <p class="q-index" id="qIndex">Q1</p>
@@ -710,6 +795,13 @@
       </div>
 
       <p class="quiz-foot" id="quizFoot">정답은 없어요. 끌리는 쪽으로 눌러주세요.</p>
+
+      <div class="analyzing" id="analyzing" hidden>
+        <div class="an-emoji" aria-hidden="true">🎄</div>
+        <p class="an-text" id="analyzingText">답변을 모으는 중…</p>
+        <p class="an-sub">산타가 당신의 12월을 들여다보고 있어요</p>
+        <div class="an-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+      </div>
     </div>
   </section>
 
@@ -723,8 +815,13 @@
         <p class="r-tagline" id="rTagline"></p>
         <div class="r-divider"><span>2026</span></div>
         <p class="r-desc" id="rDesc"></p>
+        <p class="r-sec-label">MY CHRISTMAS DNA</p>
         <ul class="r-traits" id="rTraits"></ul>
         <p class="r-quote" id="rQuote"><b>SANTA'S NOTE</b>산타의 한마디</p>
+        <p class="r-sec-label">이런 선물이 어울려요</p>
+        <p class="r-giftwhy" id="rGiftWhy"></p>
+        <p class="r-sec-label">피해야 할 선물</p>
+        <p class="r-avoid" id="rAvoid"></p>
         <div class="r-matches">
           <div class="match best">
             <span class="m-label">찰떡 상대</span>
@@ -743,7 +840,7 @@
             <span class="cc-main" id="coupangCtaLabel">선물을 확인해보세요</span>
           </a>
           <button class="btn btn-share" type="button" id="btnShare">🔗 인스타 스토리·카톡에 링크 바로 공유하기</button>
-          <button class="btn btn-primary" type="button" id="btnWishTop">🎁 내 선물 펀딩 링크 만들기</button>
+          <button class="btn btn-primary" type="button" id="btnWishTop">🎁 펀딩할 선물 고르기</button>
           <p class="share-hint">링크 하나만 붙여넣으면 스토리·단톡방에 그대로 공유돼요.</p>
           <button class="link-quiet" type="button" id="btnStory">📸 이미지로 저장하기</button>
         </div>
@@ -859,6 +956,11 @@
         <label for="wishGoal">목표 금액 (원) <span class="opt-label">선물 가격으로 자동 입력됐어요</span></label>
         <input id="wishGoal" type="number" inputmode="numeric" min="0" step="1000" />
       </div>
+      <div class="field">
+        <label for="wishReceived">지금까지 받은 금액 (원) <span class="opt-label">선택 · 이미 받은 돈이 있으면 적어주세요</span></label>
+        <input id="wishReceived" type="number" inputmode="numeric" min="0" step="1000" placeholder="0" />
+        <p class="field-note">받은 금액을 적어두면 위시 페이지에 "지금까지 받은 금액"으로 표시돼요.</p>
+      </div>
       <button class="btn btn-primary" type="button" id="btnWishCreate">🔗 펀딩 초대 링크 만들고 바로 공유하기</button>
     </div>
   </section>
@@ -876,6 +978,15 @@
         </p>
         <p class="r-quote" id="wMsg"><b>MY WISH</b></p>
         <p class="w-goal" id="wGoal"></p>
+        <p class="w-goal" id="wReceived"></p>
+        <div class="field" id="receivedBox" style="margin-top:10px;text-align:left;">
+          <label for="receivedInput" style="color:rgba(250,245,235,.75);">받은 금액 업데이트 (원)</label>
+          <div style="display:flex;gap:8px;">
+            <input id="receivedInput" type="number" inputmode="numeric" min="0" step="1000" placeholder="0" style="flex:1;min-width:0;" />
+            <button class="btn btn-gold" type="button" id="wBtnReceived" style="flex:0 0 auto;padding:10px 14px;">저장</button>
+          </div>
+          <p class="field-note" style="color:rgba(250,245,235,.55);">이 기기에만 저장돼요. 친구가 보탠 뒤 받은 금액을 직접 적어두면 위시 페이지에 표시돼요.</p>
+        </div>
         <div class="r-actions">
           <a class="btn btn-gold" id="wBtnGift" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">🎁 위시 선물 확인하기</a>
           <a class="btn btn-outline-light" id="wBtnCustom" href="#" target="_blank" rel="noopener noreferrer nofollow" style="display:none;">🔗 올린 상품 링크 그대로 보기</a>
@@ -902,6 +1013,8 @@
         <p class="r-tagline" id="fTagline"></p>
         <div class="r-divider"><span>2026</span></div>
         <p class="r-desc" id="fDesc"></p>
+        <ul class="r-traits" id="fTraits"></ul>
+        <p class="r-quote" id="fQuote"><b>SANTA'S NOTE</b></p>
         <div class="r-matches">
           <div class="match best">
             <span class="m-label">찰떡 상대</span>
@@ -914,6 +1027,10 @@
         </div>
         <div class="r-actions">
           <button class="btn btn-primary" type="button" id="btnMine">나도 테스트하기 <span class="arrow">→</span></button>
+          <a class="coupang-cta" id="friendCoupangCta" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">
+            <span class="cc-eyebrow">🎁 이 타입의 찰떡 선물</span>
+            <span class="cc-main" id="friendCoupangCtaLabel">선물을 확인해보세요</span>
+          </a>
         </div>
       </div>
     </div>
@@ -970,7 +1087,31 @@
       'candle': 'https://link.coupang.com/a/iIwAQBlZFA',
       'tumbler': 'https://link.coupang.com/a/iIwFoHhCF2',
       'cake': 'https://link.coupang.com/a/iIwHfnsfqT',
-      'minitree': 'https://link.coupang.com/a/iIwVCf5ba0'
+      'minitree': 'https://link.coupang.com/a/iIwVCf5ba0',
+      // 2026-11-23 파트너스 링크 생성 페이지에서 발급 (23개). whisky·wine은 쿠팡에 주류 판매가 없어 상품 자체를 목록에서 뺐어요.
+      'blanket': 'https://link.coupang.com/a/iTionpzq4O',
+      'tea': 'https://link.coupang.com/a/iTiqCsbboa',
+      'handcream': 'https://link.coupang.com/a/iTissy4HwO',
+      'diary': 'https://link.coupang.com/a/iTit858whg',
+      'filmprint': 'https://link.coupang.com/a/iTiv3ggxeC',
+      'ornament': 'https://link.coupang.com/a/iTixN6yCSO',
+      'projector': 'https://link.coupang.com/a/iTizHHCKDA',
+      'socks': 'https://link.coupang.com/a/iTiBVvzi7U',
+      'perfume5': 'https://link.coupang.com/a/iTiDxdU55U',
+      'speaker': 'https://link.coupang.com/a/iTiFa8rDxc',
+      'muffler': 'https://link.coupang.com/a/iTiGRkMJMW',
+      'instaxfilm': 'https://link.coupang.com/a/iTiIIDCkFM',
+      'beauty': 'https://link.coupang.com/a/iTiKt9Qxky',
+      'wineglass': 'https://link.coupang.com/a/iTiMrkfVRc',
+      'lego': 'https://link.coupang.com/a/iTiOtosPwy',
+      'cushion': 'https://link.coupang.com/a/iTiQnL8SLk',
+      'puzzle': 'https://link.coupang.com/a/iTiTsZH6ia',
+      'smartwatch': 'https://link.coupang.com/a/iTiVdmeFgq',
+      'hotel': 'https://link.coupang.com/a/iTiYw6FZGm',
+      'cashmere': 'https://link.coupang.com/a/iTi0jd3ioK',
+      'airfryer': 'https://link.coupang.com/a/iTi3jdjnbg',
+      'padding': 'https://link.coupang.com/a/iTi5egrIGG',
+      'filmcam': 'https://link.coupang.com/a/iTi7dXtaLY'
     },
     searchBase: 'https://www.coupang.com/np/search?q=',
     lptag: 'AF7786795',
@@ -995,6 +1136,8 @@
       desc: '선물도, 트리도, 연말의 온도도 내 기준에 맞춰야 직성이 풀리는 타입. "싼 게 비지떡"보다 "좋은 걸 오래"가 좌우명이고, 12월이면 집이 작은 호텔 라운지가 됩니다. 산타에게도 리본 색까지 요구할 준비가 되어 있죠.',
       traits: ['선물도 포장도 결국 \'브랜드\'가 기준', '12월엔 집이 곧 부티크 호텔', '좋은 것엔 고민 없이 지갑을 엽니다'],
       quote: '산타, 이번엔 리본 색까지 신경 써줘.',
+      giftwhy: '좋은 걸 오래 쓰는 타입이라, 소재와 브랜드가 확실한 선물이 제일 잘 어울려요. 가격보다 "이걸 고른 안목"이 보이는 선물이면 성공이에요.',
+      avoid: '가성비만 내세운 대량 선물이나 브랜드가 안 보이는 무난한 잡화는 금방 서랍행이에요.',
       best: 'FILM', bestWhy: '화려함에 감성을 얹어주는 조합',
       worst: 'SMART', worstWhy: '가성비 얘기 나오면 분위기가 3도 내려감'
     },
@@ -1004,6 +1147,8 @@
       desc: '약속은 하나면 충분하고, 그마저 취소되면 조용히 기뻐하는 타입. 시나몬 향, 극세사 담요, 재생 버튼 하나로 크리스마스가 완성됩니다. 밖은 추우니까, 나는 안에서 따뜻하면 됩니다.',
       traits: ['뱅쇼 스파이스는 이미 장바구니에', '담요 3장 + 수면 양말 2겹이 국룰', '"집에서 보자"가 가장 설레는 초대'],
       quote: '산타, 현관에 두고 가면 조용히 가져갈게요.',
+      giftwhy: '집에서 보내는 시간이 곧 크리스마스라, 이불 속이나 테이블 위에서 바로 쓸 수 있는 선물이 최고예요. 따뜻함과 향이 있는 것부터 고르세요.',
+      avoid: '밖에 나가야 쓸 수 있는 것, 사람 많은 모임용 선물은 이 타입에겐 짐이 돼요.',
       best: 'SMALL', bestWhy: '이불 속에서도 대화가 끝나지 않는 사이',
       worst: 'PARTY', worstWhy: '홈파티도 "나가서" 해야 하는 사람'
     },
@@ -1013,6 +1158,8 @@
       desc: '선물 목록을 짜도 결국 "이거 받으면 웃겠다"는 상상으로 고르는 타입. 남 몰래 준비하고, 타이밍을 재고, 마지막에 제일 크게 웃습니다. 크리스마스는 내가 누군가에게 베푸는 이벤트입니다.',
       traits: ['깜짝 선물 계획은 100% 비밀', '받는 사람 반응은 영상으로 남김', '"이거 너한테 어울릴 것 같아서" 단골 멘트'],
       quote: '산타보다 내가 먼저 줄지도 몰라.',
+      giftwhy: '받는 순간의 표정이 선물값이라, 뜯는 재미와 깜짝 요소가 있는 선물이 잘 맞아요. 포장까지 신경 쓰면 효과가 두 배가 됩니다.',
+      avoid: '실용성만 따진 무난한 생필품은 서프라이즈의 설렘을 반감시켜요.',
       best: 'PARTY', bestWhy: '서프라이즈에 환호로 답해주는 유일한 사람',
       worst: 'LUXE', worstWhy: '서프라이즈보다 브랜드가 먼저 보이는 사이'
     },
@@ -1022,6 +1169,8 @@
       desc: '1년 열심히 살았으니 연말엔 나한테 써야 한다는 신념이 확고한 타입. 장바구니에 담아둔 것들이 12월에 결제되고, 집에서도 플렉스는 계속됩니다. 후회는 1월에, 만족은 지금.',
       traits: ['12월 카드값 알림은 읽지 않음', '"나에게 주는 선물"이 이미 3개', '플렉스 만족도 90%, 1월 후회 10%'],
       quote: '산타, 영수증은 필요 없어요.',
+      giftwhy: '나에게 주는 선물을 아끼지 않는 타입이라, 평소엔 망설이던 "위시리스트 1순위"가 정답이에요. 제대로 된 하나가 여러 개보다 낫습니다.',
+      avoid: '아껴 쓰라며 주는 실용품, 가격을 의식하게 만드는 선물은 이 타입의 12월과 안 맞아요.',
       best: 'SMART', bestWhy: '플렉스 충동을 딱 한 번만 말려주는 사람',
       worst: 'HOME', worstWhy: '약속은 잡아놓고 집에서 안 나옴'
     },
@@ -1031,6 +1180,8 @@
       desc: '누가 봐도 예쁜 순간을 발견하는 눈을 가진 타입. 필름을 챙기고, 빛 좋은 시간을 계산해서 나가고, 돌아와서 그 장면을 다시 곱씹습니다. 그래서 이 사람의 선물은 물건보다 "기억"에 가깝습니다.',
       traits: ['필름카메라 가방은 항상 대기 중', '노을 30분 전엔 이미 도착', '인화한 사진을 손편지와 함께 줌'],
       quote: '산타, 오늘 밤 눈은 꼭 찍게 해줘.',
+      giftwhy: '물건보다 기억을 모으는 타입이라, 찍고·인화하고·보관하는 과정이 있는 선물이 오래 남아요. 빛과 순간을 담는 것부터 고르세요.',
+      avoid: '디지털로 대체되는 무난한 가전, 감성 없는 대량 생산품은 금방 잊혀져요.',
       best: 'LUXE', bestWhy: '예쁜 걸 알아봐 주는 취향의 합',
       worst: 'FLEX', worstWhy: '감성값 앞에서 계산기가 먼저 튀어나옴'
     },
@@ -1040,6 +1191,8 @@
       desc: '12월의 설렘을 거창한 이벤트가 아니라 작은 것들로 채우는 타입. 문구점의 크리스마스 스티커, 따뜻한 홍차 한 잔, 손글씨 카드 한 장. 소소하지만 계획적이라, 이 사람의 12월은 늘 알차게 예쁩니다.',
       traits: ['다이어리에 크리스마스까지 D-day 적어둠', '선물엔 항상 손편지 동봉', '"작지만 오래 남는 것"을 고름'],
       quote: '산타, 작아도 되니까 오래 남는 걸로 주세요.',
+      giftwhy: '크지 않아도 매일 손이 가는 선물이 제일 잘 어울려요. 손편지 한 장을 곁들이면 작은 선물이 가장 크게 남습니다.',
+      avoid: '크기만 크고 정성이 안 보이는 선물, 일회성 이벤트용 소품은 이 타입과 안 맞아요.',
       best: 'HOME', bestWhy: '조용한 저녁을 같이 보낼 수 있는 사이',
       worst: 'FLEX', worstWhy: '소소함이 플렉스 앞에서 작아지는 순간'
     },
@@ -1049,6 +1202,8 @@
       desc: '12월이 시작되면 단톡방이 먼저 들썩이는 타입. 자리를 만들고, 사람을 모으고, 노래방 1번 타자까지 도맡습니다. 혼자 보내는 크리스마스는 상상도 못 하고, 사실 혼자 있어도 제일 시끄러운 사람.',
       traits: ['12월 단톡방 방장은 나', '"모여라" 세 글자에 3초 만에 반응', '노래방 1번 타자, 앙코르까지'],
       quote: '산타, 선물은 파티장으로 배송해줘.',
+      giftwhy: '사람이 모이는 자리가 곧 크리스마스라, 여럿이 함께 즐기거나 파티 분위기를 살리는 선물이 최고예요. 나누는 재미가 있는 것부터 고르세요.',
+      avoid: '혼자 조용히 쓰는 선물, 집에만 두게 되는 인테리어 소품은 이 타입의 12월과 거리가 멀어요.',
       best: 'SURPRISE', bestWhy: '파티에 깜짝을 더하는 최강 조합',
       worst: 'HOME', worstWhy: '초대는 하는데 한 명은 절대 안 나옴'
     },
@@ -1058,6 +1213,8 @@
       desc: '들뜬 12월 분위기 속에서도 리뷰 200개와 최저가 비교를 놓치지 않는 타입. 겨울 장비는 이미 실사용 후기로 검증했고, 세일 캘린더는 머릿속에 있습니다. 화려하진 않지만 가장 오래 쓰는 선물을 고릅니다.',
       traits: ['11월에 이미 위시리스트 완성', '"이 가격이면 이 정도는 해야"가 기준', '선물도 A/S 되는 걸로'],
       quote: '산타, 가격 비교표도 같이 주세요.',
+      giftwhy: '리뷰와 가격을 꼼꼼히 따지는 타입이라, 실용성과 A/S까지 검증된 선물이 신뢰를 얻어요. "오래 쓴다"는 확신이 있으면 성공이에요.',
+      avoid: '감성값만 비싼 선물, 실용성 설명이 안 되는 장식용 소품은 이 타입의 검증을 못 통과해요.',
       best: 'FLEX', bestWhy: '플렉스와 실속, 서로의 지갑을 맞춰주는 사이',
       worst: 'FILM', worstWhy: '"감성"에 가격표를 붙이려는 순간'
     }
@@ -1124,11 +1281,11 @@
   var BUCKETS = [
     { id: 'all', label: '전체' },
     { id: 'u20', label: '2만원 이하' },
-    { id: 'mid', label: '3~5만원대' },
+    { id: 'mid', label: '2~5만원대' },
     { id: 'midhigh', label: '5~10만원대' },
     { id: 'high', label: '10만원대+' }
   ];
-  var BUCKET_LABEL = { u20: '2만원 이하', mid: '3~5만원대', midhigh: '5~10만원대', high: '10만원대+' };
+  var BUCKET_LABEL = { u20: '2만원 이하', mid: '2~5만원대', midhigh: '5~10만원대', high: '10만원대+' };
 
   var TARGETS = [
     { id: 'all', label: '전체' },
@@ -1139,43 +1296,41 @@
   ];
   var TARGET_LABEL = { me: '나에게', lover: '연인', friend: '친구/동료', parents: '부모님' };
 
-  // 선물 큐레이션 (b: 예산대, t: 대상, y: 어울리는 타입, kw: 쿠팡 검색어)
+  // 선물 큐레이션 (b: 예산대, t: 대상, y: 어울리는 타입, kw: 쿠팡 검색어, img: 검증된 상품 이미지 URL — 비워두면 이모지 표시)
   var GIFTS = [
-    { id: 'bangsho', e: '🍷', n: '뱅쇼 스파이스 키트 (시나몬·스타아니스·오렌지)', p: '13,900원~', pv: 13900, b: 'u20', t: ['me', 'friend', 'lover'], y: ['HOME', 'SMALL'], why: '테이블에 올리면 그 자리가 바로 12월', kw: '뱅쇼 스파이스 키트' },
-    { id: 'candle', e: '🕯️', n: '캔들워머 + 소이 캔들 세트', p: '18,900원~', pv: 18900, b: 'u20', t: ['me', 'lover'], y: ['HOME', 'LUXE'], why: '불 끄고 켜면 방이 크리스마스', kw: '캔들워머 소이캔들 세트' },
-    { id: 'blanket', e: '🧣', n: '극세사 담요 + 수면 양말 세트', p: '15,900원~', pv: 15900, b: 'u20', t: ['me', 'friend', 'lover', 'parents'], y: ['HOME', 'SMART'], why: '한 번 쓰면 못 버티는 겨울 필수템', kw: '극세사 담요 양말 세트' },
-    { id: 'minitree', e: '🎄', n: '미니 트리 + 오너먼트 DIY 세트', p: '14,900원~', pv: 14900, b: 'u20', t: ['friend', 'lover'], y: ['SMALL', 'SURPRISE'], why: '같이 만드는 시간까지 선물', kw: '미니 트리 오너먼트 세트' },
-    { id: 'tea', e: '🍵', n: '홍차·밀크티 샘플러 틴케이스', p: '16,800원~', pv: 16800, b: 'u20', t: ['friend', 'lover', 'parents'], y: ['SMALL', 'HOME'], why: '매일 다른 향으로 12월 보내기', kw: '홍차 샘플러 틴케이스' },
-    { id: 'handcream', e: '🧴', n: '핸드크림 미니 3종 세트', p: '12,900원~', pv: 12900, b: 'u20', t: ['me', 'friend', 'parents'], y: ['SMALL', 'SMART'], why: '겨울 손에는 언제나 정답', kw: '핸드크림 미니 세트' },
-    { id: 'diary', e: '📔', n: '2026 다이어리 + 마스킹테이프 세트', p: '17,500원~', pv: 17500, b: 'u20', t: ['friend', 'me'], y: ['SMALL', 'SMART'], why: '1월부터 쓸 게 확실한 선물', kw: '2026 다이어리' },
-    { id: 'filmprint', e: '🖼️', n: '사진 인화 20장 + 미니 포토앨범', p: '14,000원~', pv: 14000, b: 'u20', t: ['lover', 'friend'], y: ['FILM', 'SMALL'], why: '돈보다 마음이 크게 보이는 선물', kw: '사진 인화 미니 앨범' },
-    { id: 'ornament', e: '✨', n: '크리스마스 오너먼트 6종 세트', p: '11,900원~', pv: 11900, b: 'u20', t: ['friend', 'lover'], y: ['LUXE', 'SURPRISE', 'PARTY'], why: '트리 없어도 분위기 완성', kw: '크리스마스 오너먼트 세트' },
-    { id: 'projector', e: '🌌', n: '무드등 별 프로젝터', p: '19,800원~', pv: 19800, b: 'u20', t: ['me', 'lover'], y: ['HOME', 'FILM'], why: '불 끄고 누우면 천장이 은하수', kw: '무드등 별 프로젝터' },
-    { id: 'socks', e: '🧦', n: '크리스마스 패턴 양말 5켤레', p: '12,500원~', pv: 12500, b: 'u20', t: ['friend'], y: ['PARTY', 'SURPRISE'], why: '실패 없는 단체 선물의 정답', kw: '크리스마스 양말 세트' },
+    { id: 'bangsho', e: '🍷', n: '더진한BE 뱅쇼', p: '17,100원~', pv: 17100, b: 'u20', t: ['me', 'friend', 'lover'], y: ['HOME', 'SMALL'], why: '테이블에 올리면 그 자리가 바로 12월', kw: '더진한BE 뱅쇼', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/images/7a2e0064-567c-4599-ba4a-c132d6cad75f16712655928476424383.png' },
+    { id: 'candle', e: '🕯️', n: '우드윅 라지 향초 + 호른 캔들워머 세트', p: '71,900원~', pv: 71900, b: 'midhigh', t: ['me', 'lover'], y: ['HOME', 'LUXE'], why: '불 끄고 켜면 방이 크리스마스', kw: '우드윅 라지 향초 캔들워머 세트', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/5d4f59e251fe7b0633c799e6ab3ca10b0f29b5c51f504a71b61304b5b2a4_1782894727467.jpg' },
+    { id: 'blanket', e: '🛏️', n: '더자리 마이블랭킷 극세사 담요', p: '3,990원~', pv: 3990, b: 'u20', t: ['me', 'friend', 'lover', 'parents'], y: ['HOME', 'SMART'], why: '한 번 쓰면 못 버티는 겨울 필수템', kw: '더자리 극세사 담요' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/43339569452138-1d0cac65-917c-4658-896b-2c78139f7ecf.jpg' },
+    { id: 'minitree', e: '🎄', n: '연필트리 크리스마스트리 + LED 전구 장식', p: '24,430원~', pv: 24430, b: 'mid', t: ['friend', 'lover'], y: ['SMALL', 'SURPRISE'], why: '작은 공간에도 트리 분위기 제대로', kw: '연필트리 크리스마스트리', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/rs_quotation_api/6lxlq4r1/01c753c4edca460ea16b1c5f17575fdb.jpg' },
+    { id: 'tea', e: '🍵', n: '카렐차펙 홍차 틴케이스 세트', p: '33,800원~', pv: 33800, b: 'mid', t: ['friend', 'lover', 'parents'], y: ['SMALL', 'HOME'], why: '매일 다른 향으로 12월 보내기', kw: '카렐차펙 홍차 틴케이스' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/e281/c903-4eb7-4d9c-8eb6-a4a1ad3bd5ee.jpg' },
+    { id: 'handcream', e: '🧴', n: '카밀 미니 핸드크림 3종 세트', p: '11,800원~', pv: 11800, b: 'u20', t: ['me', 'friend', 'parents'], y: ['SMALL', 'SMART'], why: '겨울 손에는 언제나 정답', kw: '카밀 미니 핸드크림 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/11/07/14/7/3ba6c25f-e0b3-47cf-b3d3-a2b9d9ee7fa6.jpg' },
+    { id: 'diary', e: '📔', n: '러빗띵스 다이어리 스티커 세트', p: '9,690원~', pv: 9690, b: 'u20', t: ['friend', 'me'], y: ['SMALL', 'SMART'], why: '다이어리를 꾸미는 재미', kw: '러빗띵스 다이어리' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/35e4/1b3e-2c9f-400e-9d4e-5a4f5f9d2c7a.jpg' },
+    { id: 'filmprint', e: '🖼️', n: '벨라민 미니 포토앨범', p: '8,890원~', pv: 8890, b: 'u20', t: ['lover', 'friend'], y: ['FILM', 'SMALL'], why: '돈보다 마음이 크게 보이는 선물', kw: '벨라민 미니 포토앨범' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/11/14/10/8/6afb3fd2-7d15-49dc-955d-6f2f10f4eec3.jpg' },
+    { id: 'ornament', e: '✨', n: '루시아이 크리스마스 오너먼트 50p 세트', p: '33,560원~', pv: 33560, b: 'mid', t: ['friend', 'lover'], y: ['LUXE', 'SURPRISE', 'PARTY'], why: '트리 없어도 분위기 완성', kw: '루시아이 크리스마스 오너먼트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/0b4e/2a5d-e4bc-4424-b3ad-63bb5f0c5fb2.jpg' },
+    { id: 'projector', e: '🌌', n: 'SUNMUSK 별하늘 프로젝터', p: '39,800원~', pv: 39800, b: 'mid', t: ['me', 'lover'], y: ['HOME', 'FILM'], why: '불 끄고 누우면 천장이 은하수', kw: 'SUNMUSK 별 프로젝터' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/4ba0/9e50-9daa-4f1a-8e04-b4a1da3c39ec.jpg' },
+    { id: 'socks', e: '🧦', n: '크리스마스 양말 5종 선물세트', p: '13,900원~', pv: 13900, b: 'u20', t: ['friend'], y: ['PARTY', 'SURPRISE'], why: '실패 없는 단체 선물의 정답', kw: '크리스마스 양말 선물세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/37e5/2ab7-4d1a-43ee-9ac2-0bdfc6fcdd6f.jpg' },
 
-    { id: 'tumbler', e: '☕', n: '보온 텀블러 + 핸드드립 세트', p: '39,000원~', pv: 39000, b: 'mid', t: ['lover', 'friend'], y: ['SMART', 'HOME'], why: '출근길이 5분은 따뜻해집니다', kw: '보온 텀블러 핸드드립 세트' },
-    { id: 'perfume5', e: '🌸', n: '향수 디스커버리 세트 (미니 5종)', p: '45,000원~', pv: 45000, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'FILM'], why: '취향 테스트 겸 선물', kw: '향수 디스커버리 세트' },
-    { id: 'cake', e: '🎂', n: '크리스마스 케이크 + 무알콜 스파클링', p: '49,000원~', pv: 49000, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'HOME', 'SURPRISE'], why: '사진 잘 나오는 케이크가 반', kw: '크리스마스 케이크' },
-    { id: 'speaker', e: '🔊', n: '블루투스 미니 스피커', p: '44,000원~', pv: 44000, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'FLEX'], why: '캐럴 틀면 분위기 담당', kw: '블루투스 미니 스피커' },
-    { id: 'muffler', e: '🧣', n: '캐시미어 블렌드 머플러', p: '38,000원~', pv: 38000, b: 'mid', t: ['lover', 'me', 'parents'], y: ['LUXE', 'SMART'], why: '목도리 하나로 겨울이 달라짐', kw: '캐시미어 머플러' },
-    { id: 'instaxfilm', e: '📸', n: '인스탁스 미니 필름 5팩 + 앨범', p: '45,000원~', pv: 45000, b: 'mid', t: ['lover', 'friend'], y: ['FILM'], why: '찍는 사람에겐 필름이 제일 실용적', kw: '인스탁스 미니 필름' },
-    { id: 'beauty', e: '💄', n: '립밤·핸드크림·페이스오일 뷰티 세트', p: '42,000원~', pv: 42000, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'SMALL'], why: '포장만 봐도 기분 좋아지는 세트', kw: '뷰티 기프트 세트' },
-    { id: 'wineglass', e: '🥂', n: '와인잔 2P + 뱅쇼 세트', p: '35,000원~', pv: 35000, b: 'mid', t: ['lover', 'friend'], y: ['HOME', 'PARTY'], why: '집 데이트가 바로 바(bar)', kw: '와인잔 세트' },
-    { id: 'lego', e: '🧱', n: '레고 크리스마스 미니 세트', p: '42,000원~', pv: 42000, b: 'mid', t: ['friend', 'lover'], y: ['SURPRISE', 'FILM'], why: '조립하는 시간까지 선물', kw: '레고 크리스마스 세트' },
-    { id: 'cushion', e: '🛋️', n: '니트 쿠션 + 소파 러그 세트', p: '39,000원~', pv: 39000, b: 'mid', t: ['me', 'lover', 'parents'], y: ['HOME', 'SMALL'], why: '집이 호텔이 되는 마법', kw: '쿠션 러그 세트' },
-    { id: 'whisky', e: '🥃', n: '미니 위스키 3종 테이스팅 세트', p: '39,000원~', pv: 39000, b: 'mid', t: ['friend', 'lover'], y: ['PARTY', 'LUXE'], why: '모임에 들고 가면 대접받습니다', kw: '위스키 미니어처 세트' },
-    { id: 'puzzle', e: '🧩', n: '겨울 풍경 1000피스 퍼즐', p: '32,000원~', pv: 32000, b: 'mid', t: ['friend', 'me'], y: ['SMART', 'SMALL'], why: '12월 밤을 조용히 채우는 취미', kw: '겨울 풍경 퍼즐 1000피스' },
+    { id: 'tumbler', e: '☕', n: '스탠리 퀜처 프로투어 플립스트로 텀블러', p: '38,400원~', pv: 38400, b: 'mid', t: ['lover', 'friend'], y: ['SMART', 'HOME'], why: '출근길이 5분은 따뜻해집니다', kw: '스탠리 퀜처 텀블러', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/975050457425344-62af8b2b-ba08-46f7-8a91-a7c86f8ac5f9.jpg' },
+    { id: 'perfume5', e: '🌸', n: '오르덴 향수 디스커버리 5종 세트', p: '12,900원~', pv: 12900, b: 'u20', t: ['me', 'lover'], y: ['LUXE', 'FILM'], why: '취향 테스트 겸 선물', kw: '오르덴 향수 디스커버리 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/07/28/14/6/3e6e2dd4-7b1a-4e3e-bf2b-ee0f40b4aea2.jpg' },
+    { id: 'cake', e: '🎂', n: '돌체이탈리아 티라미수 케이크 (냉동)', p: '9,990원~', pv: 9990, b: 'u20', t: ['lover', 'friend'], y: ['PARTY', 'HOME', 'SURPRISE'], why: '사진 잘 나오는 케이크가 반', kw: '티라미수 케이크', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/144464254117042-c724de3b-3356-475f-b125-0be81c28a705.jpg' },
+    { id: 'speaker', e: '🔊', n: 'PIUJJA 미니 블루투스 스피커', p: '20,800원~', pv: 20800, b: 'mid', t: ['lover', 'friend'], y: ['PARTY', 'FLEX'], why: '캐럴 틀면 분위기 담당', kw: 'PIUJJA 미니 스피커' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/5fa0/06b9-42f0-4883-ae1e-bbe1a9a36c10.jpg' },
+    { id: 'muffler', e: '🧣', n: '알파픽 캐시미어 머플러', p: '24,900원~', pv: 24900, b: 'mid', t: ['lover', 'me', 'parents'], y: ['LUXE', 'SMART'], why: '목도리 하나로 겨울이 달라짐', kw: '알파픽 캐시미어 머플러' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/d6a9/8f04-7f5d-48bb-9ef7-6bdcccbad7a9.jpg' },
+    { id: 'instaxfilm', e: '📸', n: '후지 인스탁스 미니필름 5팩', p: '64,500원~', pv: 64500, b: 'midhigh', t: ['lover', 'friend'], y: ['FILM'], why: '찍는 사람에겐 필름이 제일 실용적', kw: '인스탁스 미니필름 5팩' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/05/14/14/6/2e2d9b45-0f0e-44e9-a4b3-bf8aa04d4e3d.jpg' },
+    { id: 'beauty', e: '💄', n: '록시땅 핸드크림·립밤 선물 세트', p: '32,400원~', pv: 32400, b: 'mid', t: ['me', 'lover'], y: ['LUXE', 'SMALL'], why: '포장만 봐도 기분 좋아지는 세트', kw: '록시땅 핸드크림 립밤 세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/11/19/09/0/7ac7cfd3-8c66-42d5-8a08-4f2d3cb6dc25.jpg' },
+    { id: 'wineglass', e: '🥂', n: '벨레노 크리스탈 와인잔 2P 세트', p: '44,900원~', pv: 44900, b: 'mid', t: ['lover', 'friend'], y: ['HOME', 'PARTY'], why: '집 데이트가 바로 바(bar)', kw: '벨레노 와인잔 2P' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/6a3e/f0ec-3a6e-421f-81db-6ddb6f0f0eef.jpg' },
+    { id: 'lego', e: '🧱', n: '레고 프렌즈 크리스마스 캘린더', p: '3,900원~', pv: 3900, b: 'u20', t: ['friend', 'lover'], y: ['SURPRISE', 'FILM'], why: '매일 하나씩 여는 12월의 재미', kw: '레고 프렌즈 크리스마스 캘린더' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2022/08/29/10/3/4d1bb2a7-0a52-4f3c-bd9c-0b6e1b3f2ee4.jpg' },
+    { id: 'cushion', e: '🛋️', n: '인룸 쿠션 마카롱 매트세트', p: '26,200원~', pv: 26200, b: 'mid', t: ['me', 'lover', 'parents'], y: ['HOME', 'SMALL'], why: '집이 호텔이 되는 마법', kw: '인룸 쿠션 매트세트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/dcba/2c85-46c2-4b6d-bbb6-94ba2b6c4e3f.jpg' },
+    { id: 'puzzle', e: '🧩', n: '비엔퍼즐 겨울 풍경 1000피스 퍼즐', p: '19,000원~', pv: 19000, b: 'u20', t: ['friend', 'me'], y: ['SMART', 'SMALL'], why: '12월 밤을 조용히 채우는 취미', kw: '비엔퍼즐 겨울 풍경 퍼즐' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2023/02/06/10/5/8d7a5c31-80c0-4e5f-a8c2-1ac5e4ac8b1e.jpg' },
 
-    { id: 'headphones', e: '🎧', n: '노이즈캔슬링 무선 헤드폰', p: '129,000원~', pv: 129000, b: 'high', t: ['me', 'lover', 'friend'], y: ['FLEX', 'PARTY'], why: '한 번 쓰면 못 돌아가는 선물', kw: '노이즈캔슬링 헤드폰' },
-    { id: 'instax', e: '📷', n: '인스탁스 미니 12 즉석카메라', p: '119,000원~', pv: 119000, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '찍어서 바로 주는 재미', kw: '인스탁스 미니 12' },
-    { id: 'perfume50', e: '🌹', n: '베스트셀러 향수 50ml', p: '149,000원~', pv: 149000, b: 'high', t: ['lover', 'me'], y: ['LUXE'], why: '가장 무난하게, 가장 확실한 럭셔리', kw: '향수 50ml 선물' },
-    { id: 'smartwatch', e: '⌚', n: '스마트워치', p: '119,000원~', pv: 119000, b: 'high', t: ['me', 'friend'], y: ['SMART', 'FLEX'], why: '"건강 챙겨"라는 말보다 낫습니다', kw: '스마트워치' },
-    { id: 'hotel', e: '🏨', n: '호텔 뷔페 2인 식사권', p: '118,000원~', pv: 118000, b: 'high', t: ['lover'], y: ['LUXE', 'PARTY'], why: '물건이 아니라 하루를 주는 선물', kw: '호텔 뷔페 이용권' },
-    { id: 'cashmere', e: '🧥', n: '캐시미어 100% 니트', p: '139,000원~', pv: 139000, b: 'high', t: ['lover', 'me', 'parents'], y: ['LUXE', 'HOME'], why: '입는 순간 온도가 다릅니다', kw: '캐시미어 니트' },
-    { id: 'wine', e: '🍾', n: '프리미엄 와인 2병 선물 세트', p: '129,000원~', pv: 129000, b: 'high', t: ['friend', 'lover', 'parents'], y: ['PARTY', 'LUXE'], why: '모임에 들고 가면 대접받습니다', kw: '와인 선물 세트' },
-    { id: 'airfryer', e: '🍳', n: '에어프라이어 5L', p: '109,000원~', pv: 109000, b: 'high', t: ['friend', 'me', 'parents'], y: ['SMART', 'HOME'], why: '실용템의 끝판왕', kw: '에어프라이어 5L' },
-    { id: 'padding', e: '🧥', n: '경량 패딩', p: '159,000원~', pv: 159000, b: 'high', t: ['me', 'lover'], y: ['SMART', 'FLEX'], why: '겨울 외투는 선물로 제일 실용적', kw: '경량 패딩' },
-    { id: 'filmcam', e: '🎞️', n: '필름카메라 (오토 포커스)', p: '159,000원~', pv: 159000, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '감성의 정석', kw: '필름카메라' }
+    { id: 'headphones', e: '🎧', n: 'Apple 2026 에어팟 맥스 2 노이즈 캔슬링 블루투스 헤드폰', p: '691,490원~', pv: 691490, b: 'high', t: ['me', 'lover', 'friend'], y: ['FLEX', 'PARTY'], why: '한 번 쓰면 못 돌아가는 선물', kw: '에어팟 맥스 2', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2026/03/17/11/8/1eacf92b-8a1f-445a-9e18-7bdb666cbb89.jpg' },
+    { id: 'instax', e: '📷', n: '폴라로이드 고 3세대', p: '152,170원~', pv: 152170, b: 'high', t: ['lover', 'friend'], y: ['FILM'], why: '찍어서 바로 주는 재미', kw: '폴라로이드 고 3세대', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2026/08/12/10/6/b99ebe3e-721d-4cfd-b575-ae19ca9328b4.jpg' },
+    { id: 'perfume50', e: '🌹', n: '캘빈클라인뷰티 CK BE 오드뚜왈렛 100ml', p: '22,950원~', pv: 22950, b: 'mid', t: ['lover', 'me'], y: ['LUXE'], why: '클래식한 향을 부담 없는 가격에 — 첫 향수 선물에 딱', kw: 'CK BE 오드뚜왈렛', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2025/09/23/14/7/96d9da47-c5cf-4de3-8155-92c872593d66.jpg' },
+    { id: 'smartwatch', e: '⌚', n: '샤오미 레드미 스마트워치 6', p: '139,600원~', pv: 139600, b: 'high', t: ['me', 'friend'], y: ['SMART', 'FLEX'], why: '"건강 챙겨"라는 말보다 낫습니다', kw: '샤오미 레드미 스마트워치 6' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/40a1/8d18-58cb-43e5-b5f6-79a6b9ddf1d1.jpg' },
+    { id: 'hotel', e: '🏨', n: '노보텔 동대문 뷔페 1인 식사권', p: '108,000원~', pv: 108000, b: 'high', t: ['lover'], y: ['LUXE', 'PARTY'], why: '물건이 아니라 하루를 주는 선물', kw: '노보텔 동대문 뷔페 식사권' , img: '' },
+    { id: 'cashmere', e: '🧥', n: '아티드 캐시미어 100 니트', p: '158,770원~', pv: 158770, b: 'high', t: ['lover', 'me', 'parents'], y: ['LUXE', 'HOME'], why: '입는 순간 온도가 다릅니다', kw: '아티드 캐시미어 니트' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/9dc8/34f6-4cb3-4d3b-ae9e-25b3ca6ba1f8.jpg' },
+    { id: 'airfryer', e: '🍳', n: '쿠첸 에어프라이어 5L', p: '55,190원~', pv: 55190, b: 'midhigh', t: ['friend', 'me', 'parents'], y: ['SMART', 'HOME'], why: '실용템의 끝판왕', kw: '쿠첸 에어프라이어 5L' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/retail/images/2023/04/25/12/8/5d5d8cde-7d94-47a5-98f1-97a9d8ddad22.jpg' },
+    { id: 'padding', e: '🧥', n: '마인드브릿지 경량 다운점퍼', p: '129,000원~', pv: 129000, b: 'high', t: ['me', 'lover'], y: ['SMART', 'FLEX'], why: '겨울 외투는 선물로 제일 실용적', kw: '마인드브릿지 경량 다운점퍼' , img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/8e1a/b31c-83e1-44bd-802c-9b8faa8f5a3b.jpg' },
+    { id: 'filmcam', e: '🎞️', n: '코닥 하프 필름카메라 H35 세트', p: '93,450원~', pv: 93450, b: 'midhigh', t: ['lover', 'friend'], y: ['FILM'], why: '감성의 정석', kw: '코닥 하프 필름카메라 H35', img: 'https://thumbnail.coupangcdn.com/thumbnails/remote/640x640ex/image/vendor_inventory/image_audit/stage/manual/1dbf2368be00f724cad0e8386498d6b08bc6a25ad36d930686591cc64e9f_1767061034094.jpg' }
   ];
 
   /* =======================================================================
@@ -1231,7 +1386,7 @@
 
   function go(name) {
     if (name === 'quiz') { startQuiz(); return; }
-    if (name === 'gift') { renderGifts(); show('gift'); return; }
+    if (name === 'gift') { state.budget = 'all'; state.target = 'all'; renderGifts(); show('gift'); return; }
     show(name);
   }
 
@@ -1256,7 +1411,19 @@
     $('progressFill').style.width = (((state.idx + 1) / total) * 100) + '%';
     $('progressNum').textContent = (state.idx + 1) + ' / ' + total;
     $('progressBar').setAttribute('aria-valuenow', String(state.idx + 1));
-    $('btnBack').disabled = state.idx === 0;
+    // 진행 점: 지난 질문은 done, 현재 질문은 on
+    var dots = $('qDots');
+    if (dots) {
+      Array.prototype.forEach.call(dots.children, function (el, i) {
+        el.className = i < state.idx ? 'done' : (i === state.idx ? 'on' : '');
+      });
+    }
+    // 질문 전환 애니메이션 재시작
+    var qb = document.querySelector('.quiz-body');
+    if (qb) { qb.classList.remove('swap'); void qb.offsetWidth; qb.classList.add('swap'); }
+    // Q1에서도 뒤로가기를 눌러 홈으로 나갈 수 있게 비활성화하지 않습니다.
+    $('btnBack').disabled = false;
+    $('btnBack').setAttribute('aria-label', state.idx === 0 ? '홈으로' : '이전 질문으로');
     $('quizFoot').textContent = state.idx === total - 1
       ? '마지막 질문이에요. 결과 카드가 바로 나옵니다 🎄'
       : '정답은 없어요. 끌리는 쪽으로 눌러주세요.';
@@ -1315,13 +1482,41 @@
       gift_type: id,
       gift_type_name: (TYPES[id] || {}).name || id
     });
-    renderResult(id, true);
-    show('result');
+    // 분석 연출: 잠깐 분석 화면을 보여준 뒤 결과로 넘어갑니다.
+    var an = $('analyzing');
+    if (an) {
+      var qb = document.querySelector('.quiz-body');
+      var foot = $('quizFoot');
+      if (qb) { qb.style.display = 'none'; }
+      if (foot) { foot.style.display = 'none'; }
+      an.hidden = false;
+      setTimeout(function () {
+        an.hidden = true;
+        if (qb) { qb.style.display = ''; }
+        if (foot) { foot.style.display = ''; }
+        renderResult(id, true);
+        show('result');
+      }, 1400);
+    } else {
+      renderResult(id, true);
+      show('result');
+    }
   }
 
   /* =======================================================================
      6) 결과 렌더
      ======================================================================= */
+
+  function giftThumbHtml(item) {
+    // img가 있으면 실물 사진을 보여주고, 없거나 로드 실패 시 이모지로 폴백합니다.
+    // img에는 검증된 상품 이미지 URL만 채우세요. 비워두면 이모지가 그대로 보입니다.
+    var emoji = '<div class="gift-emoji" aria-hidden="true">' + item.e + '</div>';
+    if (item.img) {
+      return '<div class="gift-thumb">' + emoji +
+        '<img class="gift-img" src="' + escapeHtml(item.img) + '" alt="" loading="lazy" decoding="async" onerror="this.remove()" /></div>';
+    }
+    return emoji;
+  }
 
   function giftCardHtml(item) {
     var tags = '<span class="tag">' + BUCKET_LABEL[item.b] + '</span>';
@@ -1329,7 +1524,7 @@
     tags += '<span class="tag grey">' + item.t.map(function (t) { return TARGET_LABEL[t]; }).join(' · ') + '</span>';
     return '' +
       '<article class="gift">' +
-        '<div class="gift-emoji" aria-hidden="true">' + item.e + '</div>' +
+        giftThumbHtml(item) +
         '<div class="gift-body">' +
           '<div class="gift-top">' +
             '<p class="gift-name">' + escapeHtml(item.n) + '</p>' +
@@ -1402,21 +1597,35 @@
   }
 
   function picksForType(typeId, limit) {
-    var pools = { u20: [], mid: [], high: [] };
+    // 예산대별 풀: midhigh(5~10만원대)도 포함합니다. 빠지면 해당 예산대 선물을
+    // pools[예산대] 접근에서 오류가 납니다.
+    var pools = { u20: [], mid: [], midhigh: [], high: [] };
     GIFTS.forEach(function (g) {
       if (g.y.indexOf(typeId) !== -1) { pools[g.b].push(g); }
     });
     var out = [];
-    ['u20', 'mid', 'high'].forEach(function (b) {
+    ['u20', 'mid', 'midhigh', 'high'].forEach(function (b) {
       if (pools[b][0]) { out.push(pools[b][0]); }
     });
     // 남는 자리는 중간 가격대에서 채움
-    ['mid', 'u20', 'high'].forEach(function (b) {
+    ['mid', 'midhigh', 'u20', 'high'].forEach(function (b) {
       pools[b].forEach(function (g) {
         if (out.length < limit && out.indexOf(g) === -1) { out.push(g); }
       });
     });
     return out.slice(0, limit);
+  }
+
+  // 타입별 대표 선물: 결과 상단 쿠팡 CTA와 공유 카드에 씁니다.
+  // 각 타입 정체성에 맞는 중간 가격대 위주로 골랐습니다.
+  var TYPE_TOP_GIFT = {
+    LUXE: 'candle', HOME: 'projector', SURPRISE: 'minitree', FLEX: 'headphones',
+    FILM: 'filmcam', SMALL: 'tea', PARTY: 'speaker', SMART: 'airfryer'
+  };
+  function topGiftForType(typeId) {
+    var g = giftById(TYPE_TOP_GIFT[typeId]);
+    if (g) { return g; }
+    return picksForType(typeId, 4)[0];
   }
 
   function renderResult(typeId, isMine) {
@@ -1440,6 +1649,9 @@
 
     $('rQuote').innerHTML = '<b>SANTA\u2019S NOTE</b>' + escapeHtml(t.quote);
 
+    $('rGiftWhy').textContent = t.giftwhy || '';
+    $('rAvoid').textContent = t.avoid || '';
+
     var best = TYPES[t.best], worst = TYPES[t.worst];
     $('bestEmoji').textContent = best.emoji;
     $('bestName').textContent = best.name;
@@ -1453,7 +1665,7 @@
 
     // 1번 결과 상단 쿠팡 CTA (결과는 항상 바로 보이고, 클릭 게이트 없음 — 쿠팡 파트너스 정책 준수)
     var cta = $('coupangCta');
-    var topGift = picksForType(typeId, 4)[0];
+    var topGift = topGiftForType(typeId);
     if (cta) {
       if (topGift) {
         cta.style.display = '';
@@ -1461,7 +1673,7 @@
         cta.setAttribute('data-gift-id', topGift.id);
         cta.setAttribute('data-gift-name', topGift.n);
         cta.setAttribute('aria-label', topGift.n + ' 내 선물 확인하기');
-        $('coupangCtaLabel').textContent = '🎁 내 선물 확인하기 →';
+        $('coupangCtaLabel').textContent = '🎁 내 찰떡 선물: ' + shortGiftName(topGift) + ' ' + topGift.p.replace(/~$/, '');
       } else {
         cta.style.display = 'none';
       }
@@ -1492,7 +1704,7 @@
     var box = $('homeTeaser');
     box.innerHTML = TYPE_ORDER.map(function (id) {
       var t = TYPES[id];
-      return '<div class="teaser-card"><span class="e" aria-hidden="true">' + t.emoji + '</span><span>' + t.name + '</span></div>';
+      return '<div class="teaser-card"><span class="e" aria-hidden="true">' + t.emoji + '</span><span class="t-text"><span class="t-name">' + escapeHtml(t.name) + '</span><span class="t-tag">' + escapeHtml(t.tagline) + '</span></span></div>';
     }).join('');
   }
 
@@ -1817,6 +2029,21 @@
     matchBox(120, '\uCC30\uB5A1 \uC0C1\uB300', 'rgba(212,175,55,0.95)', best);
     matchBox(120 + bw + 20, '\uC0C1\uADF9', 'rgba(230,140,140,0.95)', worst);
 
+    // 타입별 대표 선물 한 줄 (카드만 봐도 어떤 선물이 찰떡인지 보이게)
+    var cardTop = giftById(TYPE_TOP_GIFT[typeId]);
+    if (cardTop) {
+      var giftLine = '내 찰떡 선물: ' + shortGiftName(cardTop) + ' · ' + cardTop.p.replace(/~$/, '');
+      var giftSize = 30;
+      setFont(ctx, '700', giftSize, SANS);
+      while (ctx.measureText(giftLine).width > W - 220 && giftSize > 20) {
+        giftSize -= 2;
+        setFont(ctx, '700', giftSize, SANS);
+      }
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(212,175,55,0.95)';
+      ctx.fillText(giftLine, W / 2, H - 262);
+    }
+
     // 푸터
     ctx.textAlign = 'center';
     setFont(ctx, '700', 30, SANS);
@@ -2050,7 +2277,7 @@
       if (location.protocol === 'http:' || location.protocol === 'https:') {
         base = location.origin + location.pathname;
       } else {
-        base = 'https://santa-gift-lab.example/';
+        base = 'https://ulyeol-lab.github.io/santa-2026/';
       }
     }
     if (base.indexOf('#') !== -1) { base = base.split('#')[0]; }
@@ -2241,6 +2468,9 @@
     if (!isFinite(goal) || goal < 0) { goal = 0; }
     if (!goal && mode === 'curated' && gift) { goal = gift.pv; }
 
+    var received = parseInt($('wishReceived').value, 10);
+    if (!isFinite(received) || received < 0) { received = 0; }
+
     var data = { v: 2, n: nick, m: ($('wishMsg').value || '').trim().slice(0, 80), a: goal };
     if (mode === 'custom') {
       data.cn = customName;
@@ -2249,12 +2479,17 @@
       data.g = gift.id;
     }
     if (link) { data.l = link; }
+    if (received > 0) { data.r = received; }
     return data;
   }
 
   function buildWishLink() {
     var data = wishDataFromForm();
     if (!data) { return; }
+    // 송금 링크가 없으면 친구가 보탤 방법이 없어 펀딩이 무용지물이 될 수 있어 한 번 더 확인합니다.
+    if (!data.l && !window.confirm('송금 링크를 입력하지 않았어요. 친구가 보탤 방법이 없어 펀딩이 무용지물이 될 수 있어요.\n그래도 펀딩 링크를 만들까요?')) {
+      return;
+    }
     var url = wishPageUrl(data);
     track('wish_create', {
       gift_id: data.g || 'custom',
@@ -2282,6 +2517,12 @@
     });
   }
 
+  // 받은 금액을 이 기기에 저장할 때 쓰는 키 (위시 링크별로 구분합니다)
+  function receivedKey(data) {
+    try { return 'santa-wish-received:' + b64UrlEncode(JSON.stringify(data)); }
+    catch (e) { return 'santa-wish-received:'; }
+  }
+
   function renderWish(data) {
     var gift = data.g ? giftById(data.g) : null;
     var nick = data.n || '익명';
@@ -2296,6 +2537,18 @@
 
     var goal = Number(data.a || 0);
     $('wGoal').textContent = goal > 0 ? '목표 금액 ' + goal.toLocaleString('ko-KR') + '원' : '';
+
+    // 지금까지 받은 금액: 링크에 들어간 값(data.r) + 이 기기에서 직접 업데이트한 값(localStorage)
+    var received = Number(data.r || 0);
+    var stored = 0;
+    try { stored = parseInt(localStorage.getItem(receivedKey(data)) || '0', 10) || 0; } catch (e) { stored = 0; }
+    if (stored > 0) { received = stored; }
+    var wRec = $('wReceived');
+    if (wRec) {
+      wRec.textContent = received > 0 ? '지금까지 받은 금액 ' + received.toLocaleString('ko-KR') + '원' : '';
+    }
+    var recInput = $('receivedInput');
+    if (recInput) { recInput.value = received > 0 ? String(received) : ''; }
 
     // 1) 메인 상품 버튼 — 항상 파트너스 링크(딥링크 → 검색 폴백)
     var giftBtn = $('wBtnGift');
@@ -2344,12 +2597,38 @@
     $('fName').textContent = t.name;
     $('fTagline').textContent = t.tagline;
     $('fDesc').textContent = t.desc;
+    var ful = $('fTraits');
+    if (ful) {
+      ful.innerHTML = '';
+      t.traits.forEach(function (s) {
+        var li = document.createElement('li');
+        li.textContent = s;
+        ful.appendChild(li);
+      });
+    }
+    var fq = $('fQuote');
+    if (fq) { fq.innerHTML = '<b>SANTA\u2019S NOTE</b>' + escapeHtml(t.quote); }
     var best = TYPES[t.best], worst = TYPES[t.worst];
     $('fBestEmoji').textContent = best.emoji;
     $('fBestName').textContent = best.name;
     $('fWorstEmoji').textContent = worst.emoji;
     $('fWorstName').textContent = worst.name;
     $('friendGifts').innerHTML = picksForType(typeId, 3).map(giftCardHtml).join('');
+    // 친구 화면에도 결과 화면과 같은 노란 쿠팡 CTA 배너를 보여줍니다.
+    var fCta = $('friendCoupangCta');
+    var fTop = topGiftForType(typeId);
+    if (fCta) {
+      if (fTop) {
+        fCta.style.display = '';
+        fCta.href = coupangUrl(fTop);
+        fCta.setAttribute('data-gift-id', fTop.id);
+        fCta.setAttribute('data-gift-name', fTop.n);
+        fCta.setAttribute('aria-label', fTop.n + ' 이 타입의 찰떡 선물 확인하기');
+        $('friendCoupangCtaLabel').textContent = '🎁 이 타입의 찰떡 선물: ' + shortGiftName(fTop) + ' ' + fTop.p.replace(/~$/, '');
+      } else {
+        fCta.style.display = 'none';
+      }
+    }
     show('friend');
     return true;
   }
@@ -2405,8 +2684,10 @@
     } else if (diff === 0) {
       el.textContent = 'D-DAY';
     } else {
-      var next = new Date(now.getFullYear() + 1, 11, 25);
-      el.textContent = 'D-' + Math.ceil((next - now) / 86400000);
+      // 크리스마스가 지나면 내년 D-day 대신 시즌 종료 문구를 보여줍니다.
+      var parent = el.parentNode;
+      if (parent) { parent.textContent = '🎄 메리 크리스마스! 내년에 또 만나요'; }
+      else { el.textContent = '메리 크리스마스!'; }
     }
   }
 
@@ -2441,9 +2722,12 @@
         sc2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(AD_CONFIG.adsense.client);
         sc2.crossOrigin = 'anonymous';
         el.appendChild(sc2);
-        if (window.adsbygoogle && window.adsbygoogle.push) {
-          window.adsbygoogle.push({});
-        }
+        // 스크립트가 async라 로드 전에 push하면 광고가 안 뜰 수 있어, 로드 완료 후에 push합니다.
+        sc2.onload = function () {
+          if (window.adsbygoogle && window.adsbygoogle.push) {
+            window.adsbygoogle.push({});
+          }
+        };
       } else {
         // 광고 ID가 없으면 빈 '광고 영역' 박스를 방문자에게 보이지 않게 숨깁니다.
         el.style.display = 'none';
@@ -2507,10 +2791,20 @@
     $('btnShare').addEventListener('click', shareResult);
     $('btnRestart').addEventListener('click', startQuiz);
     $('btnWishTop').addEventListener('click', function () {
-      openWishMake(picksForType(state.typeId, 4)[0]);
+      // 선물은 목록에서 직접 고르게 합니다 (제일 싼 선물로 펀딩이 고정되는 문제 방지).
+      go('gift');
     });
     $('btnWishCreate').addEventListener('click', buildWishLink);
     $('wBtnCopy').addEventListener('click', shareWish);
+    $('wBtnReceived').addEventListener('click', function () {
+      var data = state.viewWishData || state.lastWishData;
+      if (!data) { return; }
+      var v = parseInt($('receivedInput').value, 10);
+      if (!isFinite(v) || v < 0) { v = 0; }
+      try { localStorage.setItem(receivedKey(data), String(v)); } catch (e) { /* noop */ }
+      renderWish(data);
+      toast(v > 0 ? '받은 금액을 저장했어요 🎄' : '받은 금액을 지웠어요.');
+    });
     $('wBtnCard').addEventListener('click', openWishCard);
     $('wBtnStart').addEventListener('click', function () {
       try { history.replaceState(null, '', location.pathname + location.search); } catch (err) { location.hash = ''; }

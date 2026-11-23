@@ -952,6 +952,7 @@
       </div>
       <div class="filter-row">
         <button class="btn btn-ghost btn-sm" type="button" id="btnResetFilters">필터 초기화</button>
+        <button class="btn btn-primary btn-sm" type="button" id="btnWishCustom">✍️ 목록에 없는 선물 직접 입력하기</button>
       </div>
     </div>
 
@@ -2757,6 +2758,20 @@
     try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
   }
 
+  // 선물 목록에 없는 선물을 직접 입력해서 펀딩을 만들 때 씁니다.
+  function openWishCustom() {
+    state.wishGift = null;
+    $('wishNick').value = '';
+    $('wishMsg').value = '얘들아 나 올해 이거 진짜 필요해 🎄';
+    $('wishReceived').value = '';
+    $('customGiftName').value = '';
+    $('customCoupangUrl').value = '';
+    $('wishmakeGiftLine').textContent = '직접 입력한 선물 이름으로 펀딩 링크를 만들어요. 쿠팡 링크는 넣어도 되고 안 넣어도 돼요.';
+    setWishMode('custom');
+    show('wishmake');
+    try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
+  }
+
   function wishDataFromForm() {
     var gift = state.wishGift;
     var mode = state.wishMode === 'custom' ? 'custom' : 'curated';
@@ -3216,6 +3231,7 @@
       renderGifts();
       toast('필터를 초기화했어요 🎄');
     });
+    $('btnWishCustom').addEventListener('click', function () { openWishCustom(); });
     $('btnToTop').addEventListener('click', function () {
       try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { try { window.scrollTo(0, 0); } catch (e2) { /* noop */ } }
     });

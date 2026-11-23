@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ulyeol-lab.github.io/santa-2026/sitemap.xml
+Sitemap: https://lab5037.github.io/santa-2026/sitemap.xml

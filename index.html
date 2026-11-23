@@ -31,27 +31,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  window.tailwind = window.tailwind || {};
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          forest: '#0F291E',
-          cream: '#FAF5EB',
-          crimson: '#B91C1C',
-          gold: '#D4AF37'
-        },
-        fontFamily: {
-          display: ['Gowun Batang', 'Noto Serif CJK KR', 'serif'],
-          sans: ['Pretendard Variable', 'Pretendard', 'Noto Sans KR', 'sans-serif']
-        }
-      }
-    }
-  };
-</script>
-
 <style>
   :root{
     --forest:#0F291E;
@@ -382,12 +361,15 @@
   }
   .type-chip:hover{ border-color:rgba(185,28,28,.32); transform:translateY(-1px); }
   .type-chip[aria-current="true"]{ background:#FFF6EF; border-color:rgba(185,28,28,.45); }
-  .result-foot{ padding:10px 22px 34px; text-align:center; }
+  .result-foot{ padding:10px 22px 96px; text-align:center; }
 
   /* ---------- gifts ---------- */
   .gift-head{ padding:22px 22px 4px; }
   .filters{ padding:20px 22px 0; display:flex; flex-direction:column; gap:14px; }
   .filter-label{ display:block; font-size:10px; font-weight:800; letter-spacing:.16em; color:#8B9B90; margin-bottom:8px; text-transform:uppercase; }
+  /* 타입 필터는 접어둡니다 (기본 접힘, 누르면 펼침) */
+  .filter-details summary{ cursor:pointer; list-style:none; }
+  .filter-details summary::-webkit-details-marker{ display:none; }
   .chips{ display:flex; flex-wrap:wrap; gap:7px; }
   .chip{
     border:1px solid rgba(15,41,30,.12); background:rgba(255,255,255,.7); color:#3C5146;
@@ -421,7 +403,9 @@
   }
   .gift-body{ min-width:0; }
   .gift-top{ display:flex; align-items:baseline; gap:8px; justify-content:space-between; }
-  .gift-name{ font-size:13.5px; font-weight:800; color:#1D2F25; letter-spacing:-.02em; line-height:1.45; margin:0; }
+  .gift-name{ font-size:13.5px; font-weight:800; color:#1D2F25; letter-spacing:-.02em; line-height:1.45; margin:0; text-decoration:none; }
+  .gift-name:hover{ text-decoration:underline; }
+  .gift-thumb-link{ display:block; }
   .gift-price{ flex:0 0 auto; font-size:11.5px; font-weight:800; color:var(--crimson); font-variant-numeric:tabular-nums; }
   .gift-why{ font-size:11.5px; color:#7C8C81; margin:5px 0 0; line-height:1.55; }
   .gift-bottom{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:9px; flex-wrap:wrap; }
@@ -433,8 +417,9 @@
   }
   .tag.grey{ color:#75857A; background:rgba(15,41,30,.05); border-color:rgba(15,41,30,.08); }
   .gift-cta{
-    flex:0 0 auto; font-size:11px; font-weight:800; color:#FFF6E8; text-decoration:none;
-    background:linear-gradient(180deg,#C42323,#A91717); padding:12px 14px; border-radius:999px;
+    flex:0 0 auto; font-size:12.5px; font-weight:800; color:#FFF6E8; text-decoration:none;
+    background:linear-gradient(180deg,#C42323,#A91717); padding:13px 18px; border-radius:999px;
+    box-shadow:0 8px 16px -8px rgba(185,28,28,.8);
     transition:.18s; white-space:nowrap;
   }
   .gift-cta:hover{ filter:brightness(1.06); }
@@ -492,20 +477,48 @@
   /* ---------- coupang result cta ---------- */
   a.btn{ text-decoration:none; }
   .coupang-cta{
-    display:block; margin:20px 0 0; padding:14px 16px; border-radius:14px; text-decoration:none;
+    display:flex; align-items:center; gap:12px; margin:20px 0 0; padding:14px 16px; border-radius:14px; text-decoration:none;
     background:linear-gradient(180deg,#FFE096 0%, #F5B93C 100%); color:#3A2503; text-align:left;
     box-shadow:0 14px 30px -14px rgba(212,175,55,.95), inset 0 1px 0 rgba(255,255,255,.55);
     transition:transform .16s ease, filter .2s ease;
   }
+  .coupang-cta .cc-photo{
+    flex:0 0 auto; width:56px; height:56px; border-radius:12px; overflow:hidden;
+    background:rgba(255,255,255,.3); display:grid; place-items:center; font-size:26px;
+  }
+  .coupang-cta .cc-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .coupang-cta .cc-text{ flex:1; min-width:0; }
   .coupang-cta:hover{ filter:brightness(1.04); transform:translateY(-1px); }
   .coupang-cta .cc-eyebrow{ display:block; font-size:10px; font-weight:800; letter-spacing:.12em; color:#7A5A10; }
   .coupang-cta .cc-main{ display:block; margin-top:4px; font-size:13.5px; font-weight:800; letter-spacing:-.02em; line-height:1.4; }
 
+  /* 결과 화면 하단 고정 바: 스크롤을 내려도 찰떡 선물 쿠팡 버튼이 보입니다 */
+  .result-sticky{
+    position:fixed; left:50%; transform:translateX(-50%); bottom:12px; z-index:50;
+    width:min(404px, calc(100% - 24px)); box-sizing:border-box;
+    display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:16px;
+    background:rgba(15,41,30,.97); border:1px solid rgba(212,175,55,.4);
+    box-shadow:0 18px 36px -12px rgba(0,0,0,.7);
+  }
+  .result-sticky[hidden]{ display:none; }
+  .rs-photo{
+    flex:0 0 auto; width:40px; height:40px; border-radius:10px; overflow:hidden;
+    background:rgba(250,245,235,.12); display:grid; place-items:center; font-size:20px;
+  }
+  .rs-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .rs-info{ flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+  .rs-name{ font-size:12px; font-weight:800; color:#FFF9EE; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .rs-price{ font-size:11px; font-weight:800; color:#E6CB7A; }
+  .rs-cta{
+    flex:0 0 auto; font-size:12px; font-weight:800; color:#FFF6E8; text-decoration:none;
+    background:linear-gradient(180deg,#C42323,#A91717); padding:11px 14px; border-radius:999px; white-space:nowrap;
+  }
+
   /* ---------- wish funding ---------- */
   .gift-act{ display:flex; align-items:center; gap:6px; flex:0 0 auto; }
   .gift-wish{
-    font-size:11px; font-weight:800; color:#8A6A12; background:rgba(212,175,55,.14);
-    border:1px solid rgba(212,175,55,.3); padding:12px 14px; border-radius:999px; cursor:pointer;
+    font-size:10.5px; font-weight:800; color:#8A6A12; background:rgba(212,175,55,.14);
+    border:1px solid rgba(212,175,55,.3); padding:10px 12px; border-radius:999px; cursor:pointer;
     white-space:nowrap; font-family:var(--sans); transition:.18s;
   }
   .gift-wish:hover{ background:rgba(212,175,55,.26); }
@@ -526,6 +539,11 @@
   .w-gift-name{ font-size:13.5px; font-weight:800; color:#FFF9EE; line-height:1.45; }
   .w-gift-price{ font-size:11.5px; font-weight:800; color:var(--gold); }
   .w-goal{ font-size:11px; color:rgba(250,245,235,.65); margin:10px 0 0; }
+  .w-progress{ margin:12px 0 0; text-align:left; }
+  .w-progress-bar{ height:8px; border-radius:999px; background:rgba(250,245,235,.15); overflow:hidden; }
+  .w-progress-bar span{ display:block; height:100%; width:0; border-radius:999px; background:linear-gradient(90deg,#D4AF37,#E6CB7A); transition:width .4s ease; }
+  .w-progress-text{ margin:8px 0 0; font-size:11.5px; color:rgba(250,245,235,.8); }
+  .w-nopay{ margin:10px 0 0; font-size:11.5px; line-height:1.6; color:rgba(250,245,235,.65); }
   .field-note{ margin:6px 0 0; font-size:10.5px; line-height:1.6; color:#93A296; }
   .field-note.is-warn{
     background:rgba(212,175,55,.12); border:1px solid rgba(212,175,55,.35);
@@ -707,6 +725,7 @@
 </script>
 </head>
 <body>
+<noscript><p style="padding:24px 22px;text-align:center;font-size:14px;line-height:1.7;color:#16261E;background:#FAF5EB;">이 테스트는 자바스크립트가 필요해요. 브라우저 설정에서 자바스크립트를 켜 주세요.</p></noscript>
 <div class="snow" id="snowLayer" aria-hidden="true"></div>
 
 <main class="app" id="app">
@@ -839,7 +858,7 @@
   <section id="screen-result" class="screen">
     <div class="result-hero">
       <div class="result-inner">
-        <p class="inapp-note" id="inappNoteResult" hidden>💡 카톡·인스타 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
+        <p class="inapp-note" id="inappNoteResult" hidden>💡 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
         <p class="r-eyebrow" id="rEyebrow">당신의 크리스마스 선물 타입</p>
         <div class="r-emoji" id="rEmoji">🎄</div>
         <h2 class="r-name" id="rName">타입</h2>
@@ -867,13 +886,16 @@
         </div>
         <div class="r-actions">
           <a class="coupang-cta" id="coupangCta" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">
-            <span class="cc-eyebrow">🎁 산타가 고른 내 찰떡 선물</span>
-            <span class="cc-main" id="coupangCtaLabel">선물을 확인해보세요</span>
+            <span class="cc-photo" id="coupangCtaPhoto" aria-hidden="true"></span>
+            <span class="cc-text">
+              <span class="cc-eyebrow">🎁 산타가 고른 내 찰떡 선물</span>
+              <span class="cc-main" id="coupangCtaLabel">선물을 확인해보세요</span>
+            </span>
           </a>
           <button class="btn btn-share" type="button" id="btnShare">🔗 인스타 스토리·카톡에 링크 바로 공유하기</button>
           <button class="btn btn-primary" type="button" id="btnWishTop">🎁 펀딩할 선물 고르기</button>
           <p class="share-hint">링크 하나만 붙여넣으면 스토리·단톡방에 그대로 공유돼요.</p>
-          <button class="link-quiet" type="button" id="btnStory">📸 이미지로 저장하기</button>
+          <button class="link-quiet" type="button" id="btnStory">📸 이미지로 공유·저장하기</button>
         </div>
       </div>
     </div>
@@ -907,6 +929,10 @@
       <p class="lede">가격대와 받는 사람만 정하면, 나머지는 저희가.</p>
     </div>
 
+    <div class="pad" id="backToResultWrap" hidden style="padding-top:16px;">
+      <button class="btn btn-ghost btn-sm" type="button" id="btnBackToResult">← 내 결과로 돌아가기</button>
+    </div>
+
     <div class="filters">
       <div class="filter-row">
         <span class="filter-label">예산</span>
@@ -916,13 +942,16 @@
         <span class="filter-label">받는 사람</span>
         <div class="chips" id="targetChips" role="group" aria-label="대상 필터"></div>
       </div>
-      <div class="filter-row">
-        <span class="filter-label">타입</span>
+      <details class="filter-details">
+        <summary class="filter-label">타입 ▾</summary>
         <div class="chips" id="typeChips" role="group" aria-label="타입 필터"></div>
-      </div>
+      </details>
       <div class="filter-row">
         <span class="filter-label">정렬</span>
         <div class="chips" id="sortChips" role="group" aria-label="정렬"></div>
+      </div>
+      <div class="filter-row">
+        <button class="btn btn-ghost btn-sm" type="button" id="btnResetFilters">필터 초기화</button>
       </div>
     </div>
 
@@ -956,7 +985,7 @@
         <input id="wishNick" type="text" maxlength="12" placeholder="예) 우렬" />
       </div>
       <div class="field">
-        <label for="wishMsg">받고 싶은 한마디</label>
+        <label for="wishMsg">받고 싶은 한마디 <span class="opt-label">기본 문구가 들어 있어요 · 바꿔도 돼요</span></label>
         <textarea id="wishMsg" maxlength="80" rows="3">얘들아 나 올해 이거 진짜 필요해 🎄</textarea>
       </div>
 
@@ -991,10 +1020,10 @@
       <div class="field">
         <label for="wishLink">송금 링크 <span class="opt-label">(펀딩 받으려면 입력 · 카카오페이 송금 요청 링크)</span></label>
         <input id="wishLink" type="url" placeholder="카카오페이 송금 요청 링크를 붙여넣어 주세요" />
-        <p class="field-note is-warn">송금 링크를 넣지 않으면 친구가 보탤 방법이 없어요. 카카오페이 송금 요청 링크를 넣으면 보태기 버튼이 생겨요.</p>
+        <p class="field-note is-warn">송금 링크를 넣지 않으면 친구가 보탤 방법이 없어요. 카카오페이 송금 요청 링크(qr.kakaopay.com)를 넣으면 보태기 버튼이 생겨요.</p>
       </div>
       <div class="field">
-        <label for="wishGoal">목표 금액 (원) <span class="opt-label">선물 가격으로 자동 입력됐어요</span></label>
+        <label for="wishGoal">목표 금액 (원) <span class="opt-label" id="wishGoalHint">선물 가격으로 자동 입력됐어요</span></label>
         <input id="wishGoal" type="number" inputmode="numeric" min="0" step="1000" />
       </div>
       <div class="field">
@@ -1010,7 +1039,7 @@
   <section id="screen-wish" class="screen">
     <div class="result-hero">
       <div class="result-inner">
-        <p class="inapp-note" id="inappNoteWish" hidden>💡 카톡·인스타 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
+        <p class="inapp-note" id="inappNoteWish" hidden>💡 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
         <p class="r-eyebrow">2026 크리스마스 위시 🎁</p>
         <div class="r-emoji" id="wGiftEmoji">🎁</div>
         <h2 class="r-name" id="wTitle">크리스마스 위시</h2>
@@ -1021,6 +1050,10 @@
         <p class="r-quote" id="wMsg"><b>MY WISH</b></p>
         <p class="w-goal" id="wGoal"></p>
         <p class="w-goal" id="wReceived"></p>
+        <div class="w-progress" id="wProgress" hidden>
+          <div class="w-progress-bar"><span id="wProgressFill"></span></div>
+          <p class="w-progress-text" id="wProgressText"></p>
+        </div>
         <div class="field" id="receivedBox" style="margin-top:10px;text-align:left;">
           <label for="receivedInput" style="color:rgba(250,245,235,.75);">받은 금액 업데이트 (원)</label>
           <div style="display:flex;gap:8px;">
@@ -1033,6 +1066,7 @@
           <a class="btn btn-gold" id="wBtnGift" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">🎁 위시 선물 확인하기</a>
           <a class="btn btn-outline-light" id="wBtnCustom" href="#" target="_blank" rel="noopener noreferrer nofollow" style="display:none;">🔗 올린 상품 링크 그대로 보기</a>
           <a class="btn btn-primary" id="wBtnPay" href="#" target="_blank" rel="noopener noreferrer nofollow">💸 선물 보태주기</a>
+          <p class="w-nopay" id="wNoPay" hidden>이 위시는 아직 보태기 링크가 없어요. 만든 사람에게 알려주세요.</p>
           <button class="btn btn-share" type="button" id="wBtnCopy">🔗 인스타 스토리·카톡에 링크 바로 공유하기</button>
           <button class="btn btn-outline-light" type="button" id="wBtnStart">나도 내 크리스마스 선물 펀딩 만들기 →</button>
           <button class="link-quiet" type="button" id="wBtnCard">📸 위시 카드 이미지로 저장하기</button>
@@ -1049,6 +1083,7 @@
   <section id="screen-friend" class="screen">
     <div class="result-hero">
       <div class="result-inner">
+        <p class="inapp-note" id="inappNoteFriend" hidden>💡 앱 안에서 보고 있어요. 이미지 저장이 안 되면 외부 브라우저(사파리/크롬)로 열어주세요.</p>
         <p class="r-eyebrow">친구가 보낸 크리스마스 타입</p>
         <div class="r-emoji" id="fEmoji">🎄</div>
         <h2 class="r-name" id="fName">타입</h2>
@@ -1061,10 +1096,12 @@
           <div class="match best">
             <span class="m-label">찰떡 상대</span>
             <span class="m-name"><span id="fBestEmoji">🎁</span><span id="fBestName">-</span></span>
+            <span class="m-why" id="fBestWhy"></span>
           </div>
           <div class="match worst">
             <span class="m-label">상극</span>
             <span class="m-name"><span id="fWorstEmoji">🎁</span><span id="fWorstName">-</span></span>
+            <span class="m-why" id="fWorstWhy"></span>
           </div>
         </div>
         <div class="r-actions">
@@ -1095,6 +1132,15 @@
       <button class="btn btn-gold" type="button" id="btnModalSave" style="padding:13px 18px;font-size:13.5px;">이미지 저장</button>
     </div>
   </div>
+</div>
+
+<div class="result-sticky" id="resultSticky" hidden>
+  <span class="rs-photo" id="rsPhoto" aria-hidden="true"></span>
+  <span class="rs-info">
+    <span class="rs-name" id="rsName"></span>
+    <span class="rs-price" id="rsPrice"></span>
+  </span>
+  <a class="rs-cta" id="rsCta" href="#" target="_blank" rel="noopener noreferrer nofollow sponsored">쿠팡에서 보기 →</a>
 </div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1385,7 +1431,7 @@
      3) 상태 · 유틸
      ======================================================================= */
 
-  var state = { idx: 0, answers: [], locked: false, typeId: null, budget: 'all', target: 'all', type: 'all', sort: 'default', lastCard: null, wishMode: 'curated', viewWishData: null, pendingCard: null };
+  var state = { idx: 0, answers: [], locked: false, typeId: null, budget: 'all', target: 'all', type: 'all', sort: 'default', lastCard: null, wishMode: 'curated', viewWishData: null, pendingCard: null, fromResult: false, fromResultType: null, fromFriend: false };
 
   /* --- GA4 이벤트 헬퍼 ---------------------------------------------------
      애널리틱스가 차단/미설치된 환경에서도 사이트 동작에는 영향이 없도록
@@ -1422,7 +1468,11 @@
 
   var SCREENS = ['home', 'quiz', 'result', 'wishmake', 'wish', 'gift', 'friend'];
 
-  function show(name) {
+  // 브라우저 뒤로가기: 첫 화면은 replaceState, 이후 화면 전환은 pushState로 쌓아
+  // 뒤로가기가 이전 화면으로 돌아가게 합니다. 해시 진입(#r=/#wish=)은 해시 라우팅에 맡깁니다.
+  var navFirst = true;
+  var hashFromPop = false;
+  function show(name, opts) {
     SCREENS.forEach(function (n) {
       var el = $('screen-' + n);
       if (el) { toggleClass(el, 'active', n === name); }
@@ -1430,6 +1480,18 @@
     var bar = $('topbar');
     if (bar) { bar.style.display = (name === 'quiz') ? 'none' : 'flex'; }
     if (name === 'home') { refreshLastTypeBtn(); }
+    var rs = $('resultSticky');
+    if (rs) { rs.hidden = (name !== 'result'); }
+    var push = !opts || opts.push !== false;
+    if (push) {
+      try {
+        var h = location.hash || '';
+        if (!/^#(r|wish)=/.test(h)) {
+          if (navFirst) { history.replaceState({ screen: name }, '', location.href); navFirst = false; }
+          else if (!history.state || history.state.screen !== name) { history.pushState({ screen: name }, '', location.href); }
+        }
+      } catch (e) { /* noop */ }
+    }
     try { window.scrollTo(0, 0); } catch (e) { /* noop */ }
   }
 
@@ -1439,17 +1501,20 @@
       // 이미 선물 화면에 있으면 골라둔 필터를 유지하고, 다른 화면에서 들어올 때만 초기화합니다.
       var active = document.querySelector('.screen.active');
       var onGift = active && active.id === 'screen-gift';
-      if (!onGift) { state.budget = 'all'; state.target = 'all'; state.type = 'all'; state.sort = 'default'; }
+      if (!onGift) { state.budget = 'all'; state.target = 'all'; state.type = 'all'; state.sort = 'default'; state.fromResult = false; }
       renderGifts(); show('gift'); return;
     }
     show(name);
   }
 
   // 결과·친구 화면의 "선물 전체 보기": 해당 타입으로 필터된 선물 화면으로 갑니다.
-  function goGiftWithType(typeId) {
+  function goGiftWithType(typeId, fromFriend) {
     state.budget = 'all'; state.target = 'all';
     state.type = (typeId && TYPES[typeId]) ? typeId : 'all';
     state.sort = 'default';
+    state.fromResult = true;
+    state.fromResultType = (typeId && TYPES[typeId]) ? typeId : null;
+    state.fromFriend = !!fromFriend;
     renderGifts(); show('gift');
   }
 
@@ -1472,13 +1537,13 @@
     if (d.sort === 'asc' || d.sort === 'desc' || d.sort === 'default') { state.sort = d.sort; }
   }
 
-  /* 인앱 브라우저 감지: 카톡·인스타 앱 안에서 열었을 때만 안내를 보여줍니다. */
+  /* 인앱 브라우저 감지: 카톡·인스타·라인·페이스북 앱 안에서 열었을 때만 안내를 보여줍니다. */
   function isInAppBrowser() {
-    try { return /KAKAOTALK|Instagram/i.test(navigator.userAgent || ''); } catch (e) { return false; }
+    try { return /KAKAOTALK|Instagram|Line|FBAN|FBAV/i.test(navigator.userAgent || ''); } catch (e) { return false; }
   }
   function refreshInAppNotes() {
     if (!isInAppBrowser()) { return; }
-    ['inappNoteResult', 'inappNoteWish'].forEach(function (id) {
+    ['inappNoteResult', 'inappNoteWish', 'inappNoteFriend'].forEach(function (id) {
       var el = $(id);
       if (el) { el.hidden = false; }
     });
@@ -1550,6 +1615,8 @@
     state.locked = false;
   }
 
+  // 선택지 클릭 후 220ms 대기 타이머 (이 사이에 뒤로가기를 누르면 취소합니다)
+  var pickTimer = null;
   function pick(i, btn) {
     if (state.locked) { return; }
     state.locked = true;
@@ -1557,7 +1624,8 @@
     btn.classList.add('picked');
     Array.prototype.forEach.call($('options').children, function (el) { el.disabled = true; });
 
-    setTimeout(function () {
+    pickTimer = setTimeout(function () {
+      pickTimer = null;
       if (state.idx < QUESTIONS.length - 1) {
         state.idx += 1;
         renderQuestion();
@@ -1600,6 +1668,8 @@
       if (qb) { qb.style.display = 'none'; }
       if (foot) { foot.style.display = 'none'; }
       an.hidden = false;
+      // 분석 연출 중에는 뒤로가기 버튼을 막아, 보이지 않는 질문으로 돌아가는 경합을 없앱니다.
+      $('btnBack').disabled = true;
       analyzingTimer = setTimeout(finishAnalyzing, 1400);
     } else {
       renderResult(id, true);
@@ -1614,6 +1684,7 @@
     if (!an || an.hidden) { return; }
     if (analyzingTimer) { clearTimeout(analyzingTimer); analyzingTimer = null; }
     an.hidden = true;
+    $('btnBack').disabled = false;
     var qb = document.querySelector('.quiz-body');
     var foot = $('quizFoot');
     if (qb) { qb.style.display = ''; }
@@ -1642,10 +1713,13 @@
     tags += '<span class="tag grey">' + item.t.map(function (t) { return TARGET_LABEL[t]; }).join(' · ') + '</span>';
     return '' +
       '<article class="gift">' +
-        giftThumbHtml(item) +
+        '<a class="gift-thumb-link" href="' + coupangUrl(item) + '" target="_blank" rel="noopener sponsored nofollow" ' +
+          'data-gift-id="' + escapeHtml(item.id) + '" data-gift-name="' + escapeHtml(item.n) + '" ' +
+          'aria-label="' + escapeHtml(item.n) + ' 선물 보러가기">' + giftThumbHtml(item) + '</a>' +
         '<div class="gift-body">' +
           '<div class="gift-top">' +
-            '<p class="gift-name">' + escapeHtml(item.n) + '</p>' +
+            '<a class="gift-name" href="' + coupangUrl(item) + '" target="_blank" rel="noopener sponsored nofollow" ' +
+              'data-gift-id="' + escapeHtml(item.id) + '" data-gift-name="' + escapeHtml(item.n) + '">' + escapeHtml(item.n) + '</a>' +
             '<span class="gift-price">' + item.p + '</span>' +
           '</div>' +
           '<p class="gift-why">' + escapeHtml(item.why) + '</p>' +
@@ -1792,6 +1866,28 @@
         cta.setAttribute('data-gift-name', topGift.n);
         cta.setAttribute('aria-label', topGift.n + ' 내 선물 확인하기');
         $('coupangCtaLabel').textContent = '🎁 내 찰떡 선물: ' + shortGiftName(topGift) + ' ' + topGift.p.replace(/~$/, '');
+        var ctaPhoto = $('coupangCtaPhoto');
+        if (ctaPhoto) {
+          if (topGift.img) { ctaPhoto.innerHTML = '<img src="' + escapeHtml(topGift.img) + '" alt="" loading="lazy" decoding="async" onerror="this.remove()" />'; }
+          else { ctaPhoto.textContent = topGift.e; }
+        }
+        // 하단 고정 바에도 같은 찰떡 선물을 채웁니다.
+        var rsPhoto = $('rsPhoto');
+        if (rsPhoto) {
+          if (topGift.img) { rsPhoto.innerHTML = '<img src="' + escapeHtml(topGift.img) + '" alt="" loading="lazy" decoding="async" onerror="this.remove()" />'; }
+          else { rsPhoto.textContent = topGift.e; }
+        }
+        var rsName = $('rsName');
+        if (rsName) { rsName.textContent = shortGiftName(topGift); }
+        var rsPrice = $('rsPrice');
+        if (rsPrice) { rsPrice.textContent = topGift.p.replace(/~$/, ''); }
+        var rsCta = $('rsCta');
+        if (rsCta) {
+          rsCta.href = coupangUrl(topGift);
+          rsCta.setAttribute('data-gift-id', topGift.id);
+          rsCta.setAttribute('data-gift-name', topGift.n);
+          rsCta.setAttribute('aria-label', topGift.n + ' 쿠팡에서 보기');
+        }
       } else {
         cta.style.display = 'none';
       }
@@ -1841,6 +1937,14 @@
   }
 
   function renderFilters() {
+    // 칩을 다시 그리면 포커스가 날아가므로, 누른 칩의 위치를 기억해 다시 돌려줍니다.
+    var focusBack = null;
+    try {
+      var ae = document.activeElement;
+      if (ae && ae.classList && ae.classList.contains('chip') && ae.parentNode && ae.parentNode.id) {
+        focusBack = { box: ae.parentNode.id, label: ae.textContent };
+      }
+    } catch (e) { focusBack = null; }
     var bc = $('budgetChips');
     bc.innerHTML = '';
     BUCKETS.forEach(function (b) {
@@ -1861,6 +1965,7 @@
     if (yc) {
       yc.innerHTML = '';
       yc.appendChild(chip('전체', state.type === 'all', function () {
+        track('filter_use', { filter: 'type', value: 'all' });
         state.type = 'all'; renderFilters(); renderGifts();
       }));
       TYPE_ORDER.forEach(function (tid) {
@@ -1878,6 +1983,15 @@
           state.sort = s.id; renderFilters(); renderGifts();
         }));
       });
+    }
+    if (focusBack) {
+      var boxEl = $(focusBack.box);
+      if (boxEl) {
+        var cs = boxEl.querySelectorAll('.chip');
+        for (var fi = 0; fi < cs.length; fi += 1) {
+          if (cs[fi].textContent === focusBack.label) { cs[fi].focus(); break; }
+        }
+      }
     }
   }
 
@@ -1902,6 +2016,9 @@
     else if (state.sort === 'desc') { label += ' · 높은 가격순'; }
     $('giftCount').textContent = list.length + '개 상품 · ' + label;
     saveGiftFilterState();
+    // 결과·친구 화면에서 들어왔을 때만 "내 결과로 돌아가기" 버튼을 보여줍니다.
+    var btr = $('backToResultWrap');
+    if (btr) { btr.hidden = !state.fromResult; }
 
     var box = $('giftList');
     if (!list.length) {
@@ -2228,6 +2345,7 @@
   // 안 되면 기존처럼 파일로 다운로드합니다.
   function shareCardFile(canvas, filename) {
     var okMsg = '결과 카드를 저장했어요 🎄 인스타 스토리에 올려보세요!';
+    var fallbackMsg = '공유 시트가 안 떠서 이미지로 저장했어요. 저장한 이미지를 직접 올려 주세요.';
     if (!canvas || !canvas.toBlob) { saveCanvas(canvas, filename, okMsg); return; }
     try {
       if (navigator.share && navigator.canShare) {
@@ -2237,16 +2355,18 @@
           try { file = new File([blob], filename, { type: 'image/png' }); } catch (e) { file = null; }
           var canShareFile = false;
           try { canShareFile = !!file && navigator.canShare({ files: [file] }); } catch (e) { canShareFile = false; }
-          if (!canShareFile) { saveCanvas(canvas, filename, okMsg); return; }
+          if (!canShareFile) { saveCanvas(canvas, filename, fallbackMsg); return; }
+          // iOS는 파일+URL을 함께 공유하지 못해 공유 시트 대신 다운로드로 떨어집니다.
+          // 그래서 파일만 공유하고, 링크는 문장 안에 넣어 함께 전달합니다.
           var p = null;
-          try { p = navigator.share({ files: [file], text: '내 크리스마스 선물 타입은? 5문항이면 끝 🎄', url: shareUrl(state.typeId) }); } catch (e) { p = null; }
+          try { p = navigator.share({ files: [file], text: '내 크리스마스 선물 타입은? 5문항이면 끝 🎄 ' + shareUrl(state.typeId) }); } catch (e) { p = null; }
           if (p && typeof p.then === 'function') {
             p.then(function () { toast('공유했어요 🎄'); }, function (err) {
               if (err && err.name === 'AbortError') { return; }
-              saveCanvas(canvas, filename, okMsg);
+              saveCanvas(canvas, filename, fallbackMsg);
             });
           } else if (!p) {
-            saveCanvas(canvas, filename, okMsg);
+            saveCanvas(canvas, filename, fallbackMsg);
           }
         }, 'image/png');
         return;
@@ -2403,7 +2523,8 @@
 
     setFont(ctx, '800', 40, SANS);
     ctx.fillStyle = '#FFF9EE';
-    ctx.fillText('5천원부터 보태줄 수 있어요', W / 2, gy + 20);
+    // 송금 링크가 있을 때만 "보태줄 수 있어요" 문구를 찍습니다.
+    if (data && data.l) { ctx.fillText('5천원부터 보태줄 수 있어요', W / 2, gy + 20); }
 
     // 주소 · 고지 — 카드만 봐도 접속 경로가 보이도록 실제 사이트 주소를 그대로 찍는다.
     // (기존에는 접속 중인 주소의 도메인만 표시했고, 해시(#wish=…)는 잘라냈다.)
@@ -2433,14 +2554,6 @@
       return;
     }
     state.pendingCard = { canvas: canvas, name: '크리스마스-위시-' + String(data.n || '친구').replace(/[\\/:*?"<>|]/g, '') + '.png' };
-    $('modalImg').src = canvas.toDataURL('image/png');
-    $('modal').classList.add('open');
-  }
-
-  function openPreview() {
-    if (!state.typeId) { return; }
-    var canvas = buildCard(state.typeId);
-    state.lastCard = canvas;
     $('modalImg').src = canvas.toDataURL('image/png');
     $('modal').classList.add('open');
   }
@@ -2492,9 +2605,11 @@
   function shareResult() {
     var t = TYPES[state.typeId] || TYPES.HOME;
     track('share_click', { screen: 'result', gift_type: state.typeId });
+    var topGift = topGiftForType(state.typeId);
+    var giftLink = topGift ? coupangUrl(topGift) : '';
     doShare({
       title: '2026 크리스마스, 산타가 내게 줄 선물 타입은?',
-      text: '내 크리스마스 선물 타입은 "' + t.name + '" ' + t.emoji + '\n너는 뭐야? 5문항이면 끝 🎄',
+      text: '내 크리스마스 선물 타입은 "' + t.name + '" ' + t.emoji + '\n너는 뭐야? 5문항이면 끝 🎄' + (giftLink ? '\n🎁 찰떡 선물 바로 보기: ' + giftLink : ''),
       url: shareUrl(state.typeId)
     });
   }
@@ -2556,7 +2671,9 @@
   }
 
   // 친구 화면의 메인 상품 버튼은 항상 PARTNERS_LINKS를 거칩니다(내 파트너스 귀속 유지).
+  // 직접 입력한 쿠팡 링크가 있으면 그걸 먼저 씁니다.
   function wishPartnerUrl(data) {
+    if (data && data.cu && isCoupangLink(data.cu)) { return affUrl(data.cu); }
     var g = data && data.g ? giftById(data.g) : null;
     if (g) { return coupangUrl(g); }
     return searchUrl(wishGiftTitle(data));
@@ -2580,7 +2697,13 @@
     var goal = Number((data && data.a) || 0);
     var t = nick + ' 님이 크리스마스 선물 펀딩을 열었어요 🎁\n"' + wishGiftTitle(data) + '"';
     if (goal > 0) { t += ' · 목표 ' + goal.toLocaleString('ko-KR') + '원'; }
-    t += '\n5천원부터 보태줄 수 있어요. 링크 눌러서 확인해줘!';
+    if (data && data.l) { t += '\n5천원부터 보태줄 수 있어요. 링크 눌러서 확인해줘!'; }
+    var sg = data && data.g ? giftById(data.g) : null;
+    var giftLink = '';
+    if (sg) { giftLink = coupangUrl(sg); }
+    else if (data && data.cu && isCoupangLink(data.cu)) { giftLink = affUrl(data.cu); }
+    else { giftLink = searchUrl(wishGiftTitle(data)); }
+    if (giftLink) { t += '\n🎁 찰떡 선물 바로 보기: ' + giftLink; }
     return t;
   }
 
@@ -2602,11 +2725,27 @@
         ? '직접 입력한 선물 이름으로 펀딩 링크를 만들어요. 쿠팡 링크는 넣어도 되고 안 넣어도 돼요.'
         : state.wishGift.e + ' ' + shortGiftName(state.wishGift) + ' · ' + state.wishGift.p;
     }
+    // 직접 입력 모드에서는 추천 선물 가격이 목표 금액으로 남지 않게 비웁니다.
+    var goalInput = $('wishGoal');
+    var goalHint = $('wishGoalHint');
+    if (state.wishMode === 'custom') {
+      if (goalInput) { goalInput.value = ''; }
+      if (goalHint) { goalHint.textContent = '목표 금액을 직접 적어주세요'; }
+    } else {
+      if (goalInput && state.wishGift) { goalInput.value = String(state.wishGift.pv); }
+      if (goalHint) { goalHint.textContent = '선물 가격으로 자동 입력됐어요'; }
+    }
   }
 
   function openWishMake(gift) {
     if (!gift) { return; }
     state.wishGift = gift;
+    // 두 번째 펀딩을 만들 때 첫 번째 입력값이 남지 않게 비웁니다 (송금 링크는 같은 사람 것이라 유지합니다).
+    $('wishNick').value = '';
+    $('wishMsg').value = '얘들아 나 올해 이거 진짜 필요해 🎄';
+    $('wishReceived').value = '';
+    $('customGiftName').value = '';
+    $('customCoupangUrl').value = '';
     $('wishmakeGiftLine').textContent = gift.e + ' ' + shortGiftName(gift) + ' · ' + gift.p;
     $('curatedEmoji').textContent = gift.e;
     $('curatedName').textContent = gift.n;
@@ -2641,7 +2780,8 @@
     }
 
     var link = ($('wishLink').value || '').trim();
-    if (link && !/^https:\/\//i.test(link)) { toast('송금 링크는 https:// 로 시작해야 해요.'); $('wishLink').focus(); return null; }
+    // 송금 링크는 카카오페이 송금 요청 링크(qr.kakaopay.com)만 받습니다. 빈 링크는 기존처럼 확인 대화로 묻습니다.
+    if (link && !/^https:\/\/qr\.kakaopay\.com\//i.test(link)) { toast('카카오페이 송금 요청 링크(qr.kakaopay.com)만 넣을 수 있어요.'); $('wishLink').focus(); return null; }
 
     var goal = parseInt($('wishGoal').value, 10);
     if (!isFinite(goal) || goal < 0) { goal = 0; }
@@ -2707,6 +2847,10 @@
     var nick = data.n || '익명';
     var title = wishGiftTitle(data);
     state.viewWishData = data;
+    // 지금 그리는 위시가 내가 만든 위시와 다르면, 공유할 때 내 위시 링크가 나가지 않게 비웁니다.
+    if (state.lastWishData && JSON.stringify(state.lastWishData) !== JSON.stringify(data)) {
+      state.lastWishUrl = '';
+    }
 
     $('wGiftEmoji').textContent = gift ? gift.e : '🎁';
     $('wTitle').textContent = nick + ' 님의 2026 크리스마스 위시 🎁';
@@ -2718,13 +2862,29 @@
     $('wGoal').textContent = goal > 0 ? '목표 금액 ' + goal.toLocaleString('ko-KR') + '원' : '';
 
     // 지금까지 받은 금액: 링크에 들어간 값(data.r) + 이 기기에서 직접 업데이트한 값(localStorage)
+    // 저장된 값이 있으면 0이어도 그대로 씁니다 (0으로 지운 뒤에도 링크 값이 이기지 않게).
     var received = Number(data.r || 0);
-    var stored = 0;
-    try { stored = parseInt(localStorage.getItem(receivedKey(data)) || '0', 10) || 0; } catch (e) { stored = 0; }
-    if (stored > 0) { received = stored; }
+    var storedRaw = null;
+    try { storedRaw = localStorage.getItem(receivedKey(data)); } catch (e) { storedRaw = null; }
+    if (storedRaw !== null) {
+      var storedNum = parseInt(storedRaw, 10);
+      received = (isFinite(storedNum) && storedNum >= 0) ? storedNum : 0;
+    }
     var wRec = $('wReceived');
     if (wRec) {
       wRec.textContent = received > 0 ? '지금까지 받은 금액 ' + received.toLocaleString('ko-KR') + '원' : '';
+    }
+    // 펀딩 진행률: 받은 금액 / 목표 금액 + 달성률(%) + 진행 바 (목표가 0원이면 숨깁니다)
+    var wProg = $('wProgress');
+    if (wProg) {
+      if (goal > 0) {
+        var pct = Math.min(100, Math.round((received / goal) * 100));
+        wProg.hidden = false;
+        $('wProgressFill').style.width = pct + '%';
+        $('wProgressText').textContent = '받은 금액 ' + received.toLocaleString('ko-KR') + '원 / 목표 ' + goal.toLocaleString('ko-KR') + '원 · ' + pct + '%';
+      } else {
+        wProg.hidden = true;
+      }
     }
     var recInput = $('receivedInput');
     if (recInput) { recInput.value = received > 0 ? String(received) : ''; }
@@ -2747,13 +2907,19 @@
       customBtn.hidden = true;
     }
 
+    // 보태기 버튼은 유효한 카카오페이 송금 요청 링크가 있을 때만 보여줍니다.
+    // 링크가 없거나 형식이 맞지 않으면 안내 문구를 대신 보여줍니다.
     var pay = $('wBtnPay');
-    if (data.l) {
+    var noPay = $('wNoPay');
+    var payOk = !!(data.l && /^https:\/\/qr\.kakaopay\.com\//i.test(data.l));
+    if (payOk) {
       pay.style.display = '';
       pay.href = data.l;
       pay.textContent = '💸 ' + nick + '에게 선물 보태주기';
+      if (noPay) { noPay.hidden = true; }
     } else {
       pay.style.display = 'none';
+      if (noPay) { noPay.hidden = false; }
     }
 
     show('wish');
@@ -2790,8 +2956,12 @@
     var best = TYPES[t.best], worst = TYPES[t.worst];
     $('fBestEmoji').textContent = best.emoji;
     $('fBestName').textContent = best.name;
+    var fBestWhy = $('fBestWhy');
+    if (fBestWhy) { fBestWhy.textContent = t.bestWhy || ''; }
     $('fWorstEmoji').textContent = worst.emoji;
     $('fWorstName').textContent = worst.name;
+    var fWorstWhy = $('fWorstWhy');
+    if (fWorstWhy) { fWorstWhy.textContent = t.worstWhy || ''; }
     $('friendGifts').innerHTML = picksForType(typeId, 3).map(giftCardHtml).join('');
     // 친구 화면의 "선물 전체 보기"가 이 타입으로 필터되게 타입을 버튼에 남깁니다.
     var fAll = $('btnAllGiftsFriend');
@@ -2815,12 +2985,32 @@
     return true;
   }
 
+  // 해시로 들어온 위시 데이터는 만든 사람이 직접 손댈 수 있어, 그리기 전에
+  // 만드는 화면과 같은 기준으로 다듬습니다. 송금 링크는 카카오페이만 남기고,
+  // 닉네임·한마디·금액은 길이와 범위를 잘라 카드가 넘치지 않게 합니다.
+  function normalizeWishData(data) {
+    if (!data || typeof data !== 'object') { return null; }
+    var out = { v: 2 };
+    if (data.g && giftById(data.g)) { out.g = data.g; }
+    if (data.cn) { out.cn = String(data.cn).replace(/\s+/g, ' ').trim().slice(0, 40); }
+    if (data.cu && isCoupangLink(String(data.cu).slice(0, 500))) { out.cu = String(data.cu).trim().slice(0, 500); }
+    if (data.n) { out.n = String(data.n).trim().slice(0, 12); }
+    if (data.m) { out.m = String(data.m).trim().slice(0, 80); }
+    var goal = parseInt(data.a, 10);
+    out.a = (isFinite(goal) && goal > 0) ? Math.min(goal, 99999999) : 0;
+    var received = parseInt(data.r, 10);
+    if (isFinite(received) && received > 0) { out.r = Math.min(received, 99999999); }
+    if (data.l && /^https:\/\/qr\.kakaopay\.com\//i.test(String(data.l).trim())) { out.l = String(data.l).trim(); }
+    if (!out.g && !out.cn) { return null; }
+    return out;
+  }
+
   function handleHash() {
     var w = (location.hash || '').match(/^#wish=([A-Za-z0-9\-_]+)$/);
     if (w) {
       try {
-        var data = JSON.parse(b64UrlDecode(w[1]));
-        if (data && (data.g || data.cn)) { renderWish(data); return true; }
+        var data = normalizeWishData(JSON.parse(b64UrlDecode(w[1])));
+        if (data) { renderWish(data); return true; }
       } catch (e) { /* 잘못된 링크면 홈으로 */ }
     }
     var m = (location.hash || '').match(/^#r=([A-Z]+)$/);
@@ -2875,8 +3065,30 @@
 
   function initAds() {
     var slots = document.querySelectorAll('[data-ad]');
+    var hasAdfit = !!(AD_CONFIG.adfit && AD_CONFIG.adfit.unitId);
+    var hasAdsense = !!(AD_CONFIG.adsense && AD_CONFIG.adsense.client && AD_CONFIG.adsense.slot);
+    // 광고 스크립트는 슬롯 개수와 상관없이 한 번만 로드합니다.
+    var adScript = null;
+    if (hasAdfit) {
+      adScript = document.createElement('script');
+      adScript.async = true;
+      adScript.src = '//t1.daumcdn.net/kas/static/ba.min.js';
+    } else if (hasAdsense) {
+      adScript = document.createElement('script');
+      adScript.async = true;
+      adScript.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(AD_CONFIG.adsense.client);
+      adScript.crossOrigin = 'anonymous';
+      // 스크립트가 async라 로드 전에 push하면 광고가 안 뜰 수 있어, 로드 완료 후에 슬롯마다 한 번씩 push합니다.
+      adScript.onload = function () {
+        if (window.adsbygoogle && window.adsbygoogle.push) {
+          Array.prototype.forEach.call(slots, function (el) {
+            if (el.querySelector('.adsbygoogle')) { window.adsbygoogle.push({}); }
+          });
+        }
+      };
+    }
     Array.prototype.forEach.call(slots, function (el) {
-      if (AD_CONFIG.adfit && AD_CONFIG.adfit.unitId) {
+      if (hasAdfit) {
         el.innerHTML = '';
         var ins = document.createElement('ins');
         ins.className = 'kakao_ad_area';
@@ -2884,12 +3096,8 @@
         ins.setAttribute('data-ad-unit', AD_CONFIG.adfit.unitId);
         ins.setAttribute('data-ad-width', '320');
         ins.setAttribute('data-ad-height', '100');
-        var sc = document.createElement('script');
-        sc.async = true;
-        sc.src = '//t1.daumcdn.net/kas/static/ba.min.js';
         el.appendChild(ins);
-        el.appendChild(sc);
-      } else if (AD_CONFIG.adsense && AD_CONFIG.adsense.client && AD_CONFIG.adsense.slot) {
+      } else if (hasAdsense) {
         el.innerHTML = '';
         var ins2 = document.createElement('ins');
         ins2.className = 'adsbygoogle';
@@ -2899,22 +3107,19 @@
         ins2.setAttribute('data-ad-format', 'auto');
         ins2.setAttribute('data-full-width-responsive', 'true');
         el.appendChild(ins2);
-        var sc2 = document.createElement('script');
-        sc2.async = true;
-        sc2.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + encodeURIComponent(AD_CONFIG.adsense.client);
-        sc2.crossOrigin = 'anonymous';
-        el.appendChild(sc2);
-        // 스크립트가 async라 로드 전에 push하면 광고가 안 뜰 수 있어, 로드 완료 후에 push합니다.
-        sc2.onload = function () {
-          if (window.adsbygoogle && window.adsbygoogle.push) {
-            window.adsbygoogle.push({});
-          }
-        };
       } else {
         // 광고 ID가 없으면 빈 '광고 영역' 박스를 방문자에게 보이지 않게 숨깁니다.
         el.style.display = 'none';
       }
     });
+    // ins를 모두 만든 뒤에 스크립트를 한 번만 붙입니다.
+    // 광고 스크립트가 차단되면 빈 점선 박스만 남지 않게 슬롯을 숨깁니다.
+    if (adScript) {
+      adScript.onerror = function () {
+        Array.prototype.forEach.call(slots, function (el) { el.style.display = 'none'; });
+      };
+      document.head.appendChild(adScript);
+    }
   }
 
   function bind() {
@@ -2937,7 +3142,12 @@
       var bg = e.target.closest ? e.target.closest('[data-budget-go]') : null;
       if (bg) {
         e.preventDefault();
+        // 예산대만 눌렀다고 이전 필터가 남으면 안 돼서, 선물 화면 진입과 같은 규칙으로 전부 초기화합니다.
         state.budget = bg.getAttribute('data-budget-go');
+        state.target = 'all';
+        state.type = 'all';
+        state.sort = 'default';
+        state.fromResult = false;
         renderGifts();
         show('gift');
         return;
@@ -2969,6 +3179,8 @@
     });
 
     $('btnBack').addEventListener('click', function () {
+      // 선택지 대기 중(220ms)에 뒤로가기를 누르면, 대기 중이던 전진 타이머를 취소합니다.
+      if (pickTimer) { clearTimeout(pickTimer); pickTimer = null; state.locked = false; }
       if (state.idx > 0) {
         state.idx -= 1;
         renderQuestion();
@@ -2991,7 +3203,18 @@
     $('btnAllGifts').addEventListener('click', function () { goGiftWithType(state.typeId); });
     $('btnAllGiftsFriend').addEventListener('click', function () {
       var tid = this.getAttribute('data-type');
-      goGiftWithType(tid && TYPES[tid] ? tid : null);
+      goGiftWithType(tid && TYPES[tid] ? tid : null, true);
+    });
+    // 결과·친구 화면에서 들어왔을 때만 보이는 "내 결과로 돌아가기" 버튼
+    $('btnBackToResult').addEventListener('click', function () {
+      if (state.fromFriend && state.fromResultType && TYPES[state.fromResultType]) { renderFriend(state.fromResultType); return; }
+      if (state.typeId && TYPES[state.typeId]) { renderResult(state.typeId, true); show('result'); return; }
+      if (state.fromResultType && TYPES[state.fromResultType]) { renderResult(state.fromResultType, true); show('result'); }
+    });
+    $('btnResetFilters').addEventListener('click', function () {
+      state.budget = 'all'; state.target = 'all'; state.type = 'all'; state.sort = 'default';
+      renderGifts();
+      toast('필터를 초기화했어요 🎄');
     });
     $('btnToTop').addEventListener('click', function () {
       try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { try { window.scrollTo(0, 0); } catch (e2) { /* noop */ } }
@@ -3009,11 +3232,14 @@
       try { localStorage.setItem(receivedKey(data), String(v)); } catch (e) { /* noop */ }
       renderWish(data);
       toast(v > 0 ? '받은 금액을 저장했어요 🎄' : '받은 금액을 지웠어요.');
+      // 화면을 다시 그리면 포커스가 날아가므로 입력란으로 되돌립니다.
+      var ri = $('receivedInput');
+      if (ri) { try { ri.focus(); } catch (e) { /* noop */ } }
     });
     $('wBtnCard').addEventListener('click', openWishCard);
     $('wBtnStart').addEventListener('click', function () {
       try { history.replaceState(null, '', location.pathname + location.search); } catch (err) { location.hash = ''; }
-      show('home');
+      go('gift');
     });
     $('btnMine').addEventListener('click', function () {
       if (location.hash) {
@@ -3023,7 +3249,6 @@
     });
     $('btnModalSave').addEventListener('click', function () {
       $('modal').classList.remove('open');
-      toast('이미지 저장 중이에요…');
       if (state.pendingCard) { var pc = state.pendingCard; state.pendingCard = null; saveCanvas(pc.canvas, pc.name); return; }
       downloadCard();
     });
@@ -3038,7 +3263,23 @@
       }
     });
 
+    // 브라우저 뒤로가기: 히스토리 상태를 따라 이전 화면으로 돌아갑니다.
+    window.addEventListener('popstate', function () {
+      hashFromPop = true;
+      if ((location.hash || '').match(/^#(r|wish)=/)) { handleHash(); return; }
+      var s = null;
+      try { s = history.state; } catch (e) { s = null; }
+      if (s && s.screen && SCREENS.indexOf(s.screen) !== -1) {
+        if (s.screen === 'gift') { renderGifts(); }
+        show(s.screen, { push: false });
+      } else {
+        show('home', { push: false });
+      }
+    });
+
     window.addEventListener('hashchange', function () {
+      // popstate와 같은 이동이면 popstate에서 이미 처리했으니 건너뜁니다.
+      if (hashFromPop) { hashFromPop = false; return; }
       if (!handleHash()) { show('home'); }
     });
   }
